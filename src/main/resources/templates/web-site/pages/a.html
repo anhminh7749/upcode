@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+</head>
+
+<body th:fragment="chat">
+
+  <body>
+
+    <div id="body">
+      <div id="chat-circle" class="btn btn-raised">
+        <div id="chat-overlay"></div>
+        <a  id="btn-chat"><i class="icon-comment"></i></a>
+      </div>
+
+      <div class="chat-box" id="chat-box">
+        <div class="chat-box-header">
+          <span class="chat-box-toggle" id="room-id-display"><i class="material-icons">close</i></span>
+        </div>
+        <div class="chat-box-body">
+          <div class="chat-box-overlay"> </div>
+          <div class="connecting">
+            Connecting...
+          </div>
+          <ul class="chat-logs" id="messageArea"></ul>
+          <!--chat-log -->
+        </div>
+        <div class="chat-input">
+          <form id="messageForm" name="messageForm" nameForm="messageForm">
+            <input type="text" id="chat-input" placeholder="Send a message..." />
+            <button type="submit" class="chat-submit" id="chat-submit"><i class="material-icons">send</i></button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+
+</html>

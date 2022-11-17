@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+</head>
+<body>
+    
+    <div th:fragment="img" >        
+		<label class="custom-file-upload" >
+            <input type="file" id="upload-button1" accept="image/*"
+                onclick="changeContentImage()" />
+            <i class="fa fa-plus-circle icon-add-image"></i>
+            <img class="chosen" th:field="*{img1}" name="img1"
+            th:src="${listimage.img1!=null?'/admin/product/images/'+listimage.img1:'/images/Background.png'}" id="chosen-image1">
+            <h6 class="name-add-image" id="file-name1">HÃ¬nh áº£nh </h6>
+        </label>
+        
+        
+        <label class="custom-file-upload">
+            <input type="file" id="upload-button2" accept="image/*"
+                onclick="changeContentImage()" />
+            <i class="fa fa-plus-circle icon-add-image"></i>
+            <img class="chosen" id="chosen-image2">
+            <h6 class="name-add-image" id="file-name2">HÃ¬nh áº£nh </h6>
+        </label>
+        
+        <label class="custom-file-upload">
+            <input type="file" id="upload-button3" accept="image/*"
+                onclick="changeContentImage()" />
+            <i class="fa fa-plus-circle icon-add-image"></i>
+            <img class="chosen" id="chosen-image3">
+            <h6 class="name-add-image" id="file-name3">HÃ¬nh áº£nh </h6>
+        </label>
+        
+        <label class="custom-file-upload">
+            <input type="file" id="upload-button4" accept="image/*"
+                onclick="changeContentImage()" />
+            <i class="fa fa-plus-circle icon-add-image"></i>
+            <img class="chosen" id="chosen-image4">
+            <h6 class="name-add-image" id="file-name4">HÃ¬nh áº£nh </h6>
+        </label>
+        
+        <label class="custom-file-upload">
+            <input type="file" id="upload-button5" accept="image/*"
+                onclick="changeContentImage()" />
+            <i class="fa fa-plus-circle icon-add-image"></i>
+            <img class="chosen" id="chosen-image5">
+            <h6 class="name-add-image" id="file-name5">HÃ¬nh áº£nh </h6>
+        </label>
+</div>
+
+</body>
+</html>

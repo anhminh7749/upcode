@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{web-site/layout}">
+
+<head>
+
+</head>
+
+<body>
+	<div layout:fragment="content">
+		<div class="men">
+			<div class="container">
+
+				<div class="newsletter">
+					<h3>Newsletter</h3>
+					<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
+						the
+						industry's standard</p>
+
+				</div>
+				<div class="row justify-content-center">
+					<div class="col-lg-4 col-md-6" th:each="item, iStart:${blogPage}">
+						<div class="blog-card-single">
+							<div class="grids5-info">
+								<a href="blog-single.html"><img class="tbl-list img-fluid" id="image"
+									th:src="${item.banner!=null?'/admin/blog/images/'+item.banner:'/images/Background.png'}"
+									alt="edit"></a>
+								<div class="blog-info">
+									<h5><a th:href="@{'/site/product/detail/'+${item.product.id}}" class=" primary-clr-bg" th:text="${item.product.name}"></a></h5>
+									<h3><a th:href="@{'/site/blog/detail/'+${item.id}}" th:text="${item.title}"></a></h3>
+									<div class="d-flex align-items-center justify-content-between mb-3">
+										<a class="d-flex align-items-center" title="23k followers">
+											<i class="icon-user"></i><span class="small ml-2"> Eetey Cruis</span>
+										</a>
+										<p class="float_right"><i class="icon-calendar"></i> <a th:text="${item.createAt}"></a></p>
+									</div>
+									<p class="quick_desc" th:text="${item.shortdecs}"></p>
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+
+
+
+				</div>
+				<!-- pagination -->
+
+				<!-- //pagination -->
+
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+	</div>
+	</div>
+	</div>
+</body>
+
+</html>

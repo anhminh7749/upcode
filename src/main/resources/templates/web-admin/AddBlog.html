@@ -1,0 +1,168 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{web-admin/layout}">
+
+<head>
+
+</head>
+
+<body class="cbp-spmenu-push">
+	<div layout:fragment="content">
+		<div id="page-wrapper" style="min-height: 1800px;">
+			<div class="main-page">
+
+				<div class="forms" id="static-content">
+					<h2>ThÃªm Sáº£n Pháº©m</h2>
+					<div class="row">
+						<ol class="breadcrumb">
+							<li><a href="#">Trang Chá»§</a></li>
+							<li><a id="par-1">Sáº£n Pháº©m</a></li>
+							<li class="active">ThÃªm Sáº£n Pháº©m</li>
+						</ol>
+					</div>
+				</div>
+				<form th:action="@{/admin/blog/update}" method="post" enctype="multipart/form-data" th:object="${blog}">
+
+					<input type="hidden" th:field="*{isEdit}">
+					<input hidden readonly="readonly" th:field="*{Id}">
+
+					<div class="form-three widget-shadow  col-sm-12 col-lg-12">
+						<div class="form-group row mb-5">
+							<div class="lable-add-image">
+								<label class="">HÃ¬nh áº£nh sáº£n pháº©m</label>
+							</div>
+
+							<div style=" max-width: 700px; float: left;">
+								<label class="custom-file-upload">
+									<input id="upload-button-thumbnail" name="imageFile" accept=".png, .jpg, .jpeg"
+										onclick="changeContentThumbnail()" type="file" />
+									<i class="fa fa-plus-circle icon-add-image"></i>
+									<img class="chosen" th:field="*{banner}" id="chosen-thumbnail" alt="edit"
+										th:src="${blog.banner!=null?'/admin/blog/images/'+blog.banner:'/images/Background.png'}">
+									<a class="name-add-image" id="file-thumbnail">áº¢nh bÃ¬a</a>
+								</label>
+
+								<label class="custom-file-upload">
+									<input onclick="changeContentImage()" multiple name="listImageFile" id="listImage"
+										type="file" />
+									<i class="fa fa-plus-circle icon-add-image"></i>
+									<img class="chosen">
+									<a class="name-add-image">áº¢nh bÃ¬a</a>
+								</label>
+
+								<div id="pushImage">
+									<label class="custom-file-upload" th:if="${blog.isEdit}" th:each="img:${pushImage}">
+										<img class="chosen"
+											th:src="${img.name!=null?'/admin/blog/images/'+img.name:'/images/Background.png'}">
+									</label>
+								</div>
+
+
+								<label class="custom-file-upload" id="file-upload0">
+
+									<img class="chosen" id="chosen-image0">
+
+								</label>
+								<label class="custom-file-upload" id="file-upload1">
+
+									<img class="chosen" id="chosen-image1">
+
+								</label>
+								<label class="custom-file-upload" id="file-upload2">
+
+									<img class="chosen" id="chosen-image2">
+
+								</label>
+								<label class="custom-file-upload" id="file-upload3">
+
+									<img class="chosen" id="chosen-image3">
+
+								</label>
+								<label class="custom-file-upload" id="file-upload4">
+
+									<img class="chosen" id="chosen-image4">
+
+								</label>
+								<label class="custom-file-upload" id="file-upload5">
+
+									<img class="chosen" id="chosen-image5">
+
+								</label>
+
+
+							</div>
+						</div>
+
+						<div class="form-group  col-sm-12 col-lg-12  ">
+							<label for="disabledinput" class=" control-label">ThÆ°Æ¡ng Hiá»‡u</label>
+<div>
+							<select th:field="*{ProductId}" name="products" id="select-state"
+								class="form-control input-sm">
+								
+								<option th:each="p:${products}"th:selected="${p.Id==blog.productId}" th:value="${p.Id}"
+									th:text="${p.name}"></option>
+							</select>
+						</div>
+						</div>
+
+						<div class="form-group row mb-5">
+							<label for="focusedinput" class="col-sm-2 control-label">TÃªn sáº£n pháº©m</label>
+							<div class="col-sm-12 col-lg-12">
+								<input onclick="changeContentNamePro()" th:field="*{title}" name="title" type="text"
+									class="form-control1" id="focusedinput" placeholder="">
+							</div>
+							<small th:if="${#fields.hasErrors('title')}"
+												id="messError" class="form-text text-muted">Category Id is required!</small>
+							</div>
+
+							<div class="form-group row">
+								<label for="focusedinput" class="col-sm-2 control-label">MÃ´ táº£ sáº£n pháº©m</label>
+								<div class="col-sm-12 col-lg-12">
+									<textarea onclick="changeContentDecs()" th:field="*{description}" name="description"
+										rows="4" type="text" class="form-control" id="focusedinput"
+										placeholder=""></textarea>
+								</div>
+								<small th:if="${#fields.hasErrors('description')}"
+												id="messError" class="form-text text-muted">Category Id is required!</small>
+							</div>
+							<div class="form-group mb-5 row">
+								<label for="focusedinput" class="col-sm-2 control-label">MÃ´ táº£ sáº£n pháº©m</label>
+								<div class="col-sm-12 col-lg-12">
+									<textarea onclick="changeContentDecs()" th:field="*{shortdecs}" name="shortdecs"
+										rows="4" type="text" class="form-control" id="focusedinput"
+										placeholder=""></textarea>
+								</div>
+								<small th:if="${#fields.hasErrors('shortdecs')}"
+												id="messError" class="form-text text-muted">Category Id is required!</small>
+							</div>
+						
+							
+					
+
+							
+
+						
+							
+							
+						</div>
+						<div class="sticky-fooder header-section row">
+
+							<div class="header-right">
+
+								<button name="submit" type="submit" class="btn btn-primary">
+									<span th:unless="${blog.isEdit}">Save</span>
+									<span th:if="${blog.isEdit}">Update</span>
+								</button>
+							</div>
+						</div>
+					</form>
+
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+</body>
+
+</html>

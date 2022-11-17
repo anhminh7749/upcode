@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{web-site/layout}">
+
+<head>
+</head>
+
+<body>
+    <div layout:fragment="content">
+
+        <section class="w3l-text-11 py-5" th:object="${blog}">
+            <div class="text11 py-md-5 py-4">
+                <div class="container">
+                    
+                        <div class=" text11-content mx-auto">
+                            <img th:src="${blog.banner!=null?'/admin/blog/images/'+blog.banner:'/images/Background.png'}"
+                                class="img-fluid radius-image img-rounded" alt="">
+                            <h3 class="title font-weight-bold mt-4" th:text="${blog.title}"></h3>
+                            <ul class="admin-list mt-2 mb-4">
+                                <li><a href="blog-single.html">Eetey Cruis<i class="icon-user"></i>
+                                    </a></li>
+                                <li><a th:href="@{'/site/product/detail/'+${blog.product.id}}" class=" primary-clr-bg"
+                                        th:text="${blog.product.name}"></a></i>
+                                    </a></li>
+                                <li> <i class="icon-calendar"></i><a href="blog-single.html"
+                                        th:text="${blog.createAt}"></a>
+                                </li>
+                            </ul>
+                            <blockquote class="quote my-sm-5 my-4">
+                                <q class="quick_desc" th:text="${blog.shortdecs}"> </q>
+
+                            </blockquote>
+                            <p class="quick_desc" th:text="${blog.description}"></p>
+
+
+                            <div class="item mt-5">
+                                <h3 class="aside-title">img </h3>
+                                <div class="row">
+                                    <div class="col-sm-6" th:each="img, iStart:${listimage}">
+                                        <div class="list-view list-view1">
+                                            <div class="grids5-info">
+                                                <a  class="d-block zoom"><img
+                                                        th:src="${img.name!=null?'/admin/blog/images/'+img.name:'/images/Background.png'}"
+                                                        class="img-fluid radius-image news-image"></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                   
+                </div>
+            </div>
+        </section>
+    </div>
+
+
+
+</body>
+
+</html>

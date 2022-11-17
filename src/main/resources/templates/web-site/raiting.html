@@ -1,0 +1,79 @@
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Electronics Mart - Ecommerce Category Bootstrap Responsive Web Template | Product 2 :: w3layouts</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0-9/css/all.min.css"
+        integrity="sha512-X8jR8oYnEmXhGB43u+qxt0mQezR37NUxHhtukvD4bzeWDthOz0mvNOYOzPCMZ7VB0mG607nrkd+kakmSmbffyQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        .stars-outer {
+            position: relative;
+            display: inline-block;
+        }
+
+        .stars-inner {
+            position: absolute;
+            top: 0;
+            left: 0;
+            white-space: nowrap;
+            overflow: hidden;
+            width: 0;
+        }
+
+        .stars-outer::before {
+            content: "\f005 \f005 \f005 \f005 \f005";
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            color: #ccc;
+        }
+
+        .stars-inner::before {
+            content: "\f005 \f005 \f005 \f005 \f005";
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            color: #f8ce0b;
+        }
+    </style>
+</head>
+
+<body>
+
+    <a class="averagerating">
+        <div class="stars-outer">
+            <div class="stars-inner"></div>
+        </div>
+    </a>
+
+
+
+    <script>
+        const ratings = {
+            averagerating: 3.5,
+        }
+        const starsTotal = 5;
+        document.addEventListener('DOMContentLoaded', getRatings);
+
+        function getRatings() {
+            for (let rating in ratings) {
+                const starPercentage = (ratings[rating] / starsTotal) * 100;
+                const starPercentageRounded = `${Math.round(starPercentage / 10) * 10}%`;
+                document.querySelector(`.${rating} .stars-inner`).style.width = starPercentageRounded;
+                document.querySelector(`.${rating} .number-rating`).innerHTML = ratings[rating];
+            }
+        }
+    </script>
+</body>
+
+</html>

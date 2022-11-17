@@ -1,0 +1,161 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+    <title>Watch Shop</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <!-- Bootstrap Core CSS -->
+    <link href="/admin/css/bootstrap.css" rel='stylesheet' type='text/css' />
+
+    <!-- Custom CSS -->
+    <link href="/admin/css/style.css" rel='stylesheet' type='text/css' />
+
+    <!-- font-awesome icons CSS -->
+    <link href="/admin/css/font-awesome.css" rel="stylesheet">
+    <!-- //font-awesome icons CSS -->
+
+    <!-- side nav css file -->
+    <link href='/admin/css/SidebarNav.min.css' media='all' rel='stylesheet' type='text/css' />
+    <!-- side nav css file -->
+
+    <!-- js-->
+    <script src="/admin/js/jquery-1.11.1.min.js"></script>
+    <script src="/admin/js/modernizr.custom.js"></script>
+
+    <!--webfonts-->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <!--//webfonts-->
+
+    <!-- Metis Menu -->
+    <script src="/admin/js/metisMenu.min.js"></script>
+    <script src="/admin/js/custom.js"></script>
+    <link href="/admin/css/custom.css" rel="stylesheet">
+    <!--//Metis Menu -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/js/standalone/selectize.min.js"
+        integrity="sha256-+C0A5Ilqmu4QcSPxrlGpaZxJ04VjsRjKu+G82kl5UJk=" crossorigin="anonymous"></script>
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/css/selectize.bootstrap3.min.css"
+        integrity="sha256-ze/OEYGcFbPRmvCnrSeKbRTtjG4vGLHXgOqsyLFTRjg=" crossorigin="anonymous" />
+
+</head>
+
+<body class="cbp-spmenu-push">
+    <div class="main-content">
+        <div th:replace="web-admin/pages/sidebar :: siderbar"></div>
+        <!--left-fixed -navigation-->
+
+
+        <!-- header-starts -->
+
+        <div th:replace="web-admin/pages/header :: header"></div>
+        <!-- //header-ends -->
+
+        <!-- main content start-->
+        <div layout:fragment="content"></div>
+
+        <!--//footer-->
+        <!-- <div th:replace="web-admin/pages/footer :: footer"></div> -->
+    </div>
+    <!-- side nav js -->
+    <script src='/admin/js/SidebarNav.min.js' type='text/javascript'></script>
+    <script>
+        $('.sidebar-menu').SidebarNav()
+    </script>
+    <!-- //side nav js -->
+
+    <!-- Classie -->
+    <!-- for toggle left push menu script -->
+    <script src="/admin/js/classie.js"></script>
+    <script>
+        var menuLeft = document.getElementById('cbp-spmenu-s1'),
+            showLeftPush = document.getElementById('showLeftPush'),
+            body = document.body;
+
+        showLeftPush.onclick = function () {
+            classie.toggle(this, 'active');
+            classie.toggle(body, 'cbp-spmenu-push-toright');
+            classie.toggle(menuLeft, 'cbp-spmenu-open');
+            disableOther('showLeftPush');
+        };
+
+        function disableOther(button) {
+            if (button !== 'showLeftPush') {
+                classie.toggle(showLeftPush, 'disabled');
+            }
+        }
+    </script>
+
+
+    <script>
+        $(function () {
+
+            for (var i = 0; i < 6; i++) {
+                const img = document.getElementById("chosen-image" + i);
+                const lableimg = document.getElementById("file-upload" + i);
+                if (img != null) {
+                    img.setAttribute('src', '');
+                    lableimg.style.display = 'none';
+                }
+            }
+
+            $("#listImage:file").change(function () {
+                const list = document.getElementById("pushImage");
+                list.style.display = 'none';
+                for (var i = 0; i < 6; i++) {
+                    const img = document.getElementById("chosen-image" + i);
+                    const lableimg = document.getElementById("file-upload" + i);
+                    if (img != null) {
+                        img.setAttribute('src', '');
+                        lableimg.style.display = 'none';
+                    }
+                }
+
+                for (var i = 0; i < this.files.length; i++) {
+                    let chosenImage = document.getElementById("chosen-image" + i);
+                    const lableimg = document.getElementById("file-upload" + i);
+                    lableimg.style.display = 'inline';
+                    let reader = new FileReader();
+                    reader.onload = () => {
+                        chosenImage.setAttribute("src", reader.result);
+                    }
+                    reader.readAsDataURL(this.files[i]);
+                }
+
+            });
+
+        });
+
+        // find Selection
+    </script>
+
+    <script>
+        $("#select-state").ready(function () {
+            $('select').selectize({
+                sortField: 'text'
+            });
+        });
+    </script>
+    <!-- //Classie -->
+    <!-- //for toggle left push menu script -->
+
+    <!--scrolling js-->
+    <script src="/admin/js/jquery.nicescroll.js"></script>
+    <script src="/admin/js/scripts.js"></script>
+    <!--//scrolling js-->
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/admin/js/bootstrap.js"> </script>
+    <script src="/admin/js/chatbox.js" type="text/javascript"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.4.0/sockjs.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js" integrity="sha512-iKDtgDyTHjAitUDdLljGhenhPwrbBfqTKWO1mkhSFH3A7blITC9MhYon6SjnMhp4o0rADGw9yAC6EW4t5a4K3g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/3.0.1/js.cookie.js" integrity="sha512-DJw15+xxGmXB1/c6pvu2eRoVCGo5s6rdeswkFS4HLFfzNQSc6V71jk6t+eMYzlyakoLTwBrKnyhVc7SCDZOK4Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+   
+</body>
+
+</html>
