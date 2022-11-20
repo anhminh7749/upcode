@@ -1,18 +1,19 @@
 <!DOCTYPE HTML>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-    layout:decorate="~{web-admin/layout}">
+    layout:decorate="~{web-site/layout}">
 
 <head>
 
 </head> 
 <body layout:fragment="content" class="cbp-spmenu-push">
-		
+
+		<div class="account-in">
+   	  <div class="container">
 		<div id="page-wrapper">
-			<div class="main-page signup-page">
 				<h2 class="title1">SignUp Here</h2>
-				<div class="sign-up-row widget-shadow">
 					<h5>Personal Information :</h5>
 				<form th:action="@{/api/auth/signup}" method="post" th:object="${signUpRequest}">
+					<div class="register-top-grid">
 					<div class="sign-u">
 								<input type="text" name="username" placeholder="First Name" required="">
 						<div class="clearfix"> </div>
@@ -42,28 +43,30 @@
 						</div>
 						<div class="clearfix"> </div>
 					</div>
-					<h6>Login Information :</h6>
-					<div class="sign-u">
-								<input type="password" placeholder="Password" name="password" required="">
-						<div class="clearfix"> </div>
 					</div>
-					<div class="sign-u">
-								<input type="password" placeholder="Confirm Password" required="">
+					<div class="register-bottom-grid">
+						<h6>Login Information :</h6>
+						<div class="sign-u">
+									<input type="password" placeholder="Password" name="password" required="">
+							<div class="clearfix"> </div>
 						</div>
-						<div class="clearfix"> </div>
-					<div class="sub_home">
-							<input type="submit" value="Submit">
-						<div class="clearfix"> </div>
+						<div class="sign-u">
+									<input type="password" placeholder="Confirm Password" required="">
+							</div>
+							<div class="clearfix"> </div>
+						<div class="sub_home">
+								<input type="submit" value="Submit">
+							<div class="clearfix"> </div>
+						</div>
+						<div class="registration">
+							Already Registered.
+						
 					</div>
-					<div class="registration">
-						Already Registered.
-						<a class="" href="login.html">
-							Login
-						</a>
 					</div>
 				</form>
-				</div>
+				
 			</div>
+		</div>
 		</div>
 		
 </body>

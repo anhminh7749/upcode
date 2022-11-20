@@ -18,6 +18,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import com.watch.shopwatchonline.Model.Erole;
 import com.watch.shopwatchonline.Service.ServiceImpl.UserDetailsServiceImpl;
 import com.watch.shopwatchonline.security.jwt.AuthEntryPointJwt;
 import com.watch.shopwatchonline.security.jwt.AuthTokenFilter;
@@ -65,8 +66,9 @@ public class WebSecurityConfig { // extends WebSecurityConfigurerAdapter {
     http.cors().and().csrf().disable()
         .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
         .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
-        .authorizeRequests().antMatchers("/api/auth/**").permitAll()
-        .antMatchers("/**").permitAll()
+        .authorizeRequests().antMatchers("/api/auth/**", "/**/*.{js,html,css}", "/").permitAll()
+        	.antMatchers("/admin/**", "/api/admin/**").hasAnyAuthority(Erole.ROLE_ADMIN.name())
+        .antMatchers("/api/test/**").permitAll()
         .anyRequest().authenticated();
     
     http.authenticationProvider(authenticationProvider());
