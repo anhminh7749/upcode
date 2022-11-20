@@ -12,12 +12,12 @@
 			<div class="main-page">
 
 				<div class="forms" id="static-content">
-					<h2>ThÃªm Sáº£n Pháº©m</h2>
+					<h2>Thêm Sản Phẩm</h2>
 					<div class="row">
 						<ol class="breadcrumb">
-							<li><a href="#">Trang Chá»§</a></li>
-							<li><a id="par-1">Sáº£n Pháº©m</a></li>
-							<li class="active">ThÃªm Sáº£n Pháº©m</li>
+							<li><a href="#">Trang Chủ</a></li>
+							<li><a id="par-1">Danh Sách Sản Phẩm</a></li>
+							<li class="active">Thêm Sản Phẩm</li>
 						</ol>
 					</div>
 				</div>
@@ -29,7 +29,7 @@
 					<div class="form-three widget-shadow  col-sm-12 col-lg-12">
 						<div class="form-group row mb-5">
 							<div class="lable-add-image">
-								<label class="">HÃ¬nh áº£nh sáº£n pháº©m</label>
+								<label class="">Hình Ảnh:</label>
 							</div>
 
 							<div style=" max-width: 700px; float: left;">
@@ -39,7 +39,7 @@
 									<i class="fa fa-plus-circle icon-add-image"></i>
 									<img class="chosen" th:field="*{banner}" id="chosen-thumbnail" alt="edit"
 										th:src="${blog.banner!=null?'/admin/blog/images/'+blog.banner:'/images/Background.png'}">
-									<a class="name-add-image" id="file-thumbnail">áº¢nh bÃ¬a</a>
+									<a class="name-add-image" id="file-thumbnail">Ảnh Bìa</a>
 								</label>
 
 								<label class="custom-file-upload">
@@ -47,7 +47,7 @@
 										type="file" />
 									<i class="fa fa-plus-circle icon-add-image"></i>
 									<img class="chosen">
-									<a class="name-add-image">áº¢nh bÃ¬a</a>
+									<a class="name-add-image">Hình Ảnh</a>
 								</label>
 
 								<div id="pushImage">
@@ -94,7 +94,7 @@
 						</div>
 
 						<div class="form-group  col-sm-12 col-lg-12  ">
-							<label for="disabledinput" class=" control-label">ThÆ°Æ¡ng Hiá»‡u</label>
+							<label for="disabledinput" class=" control-label">Tên:</label>
 <div>
 							<select th:field="*{ProductId}" name="products" id="select-state"
 								class="form-control input-sm">
@@ -106,7 +106,7 @@
 						</div>
 
 						<div class="form-group row mb-5">
-							<label for="focusedinput" class="col-sm-2 control-label">TÃªn sáº£n pháº©m</label>
+							<label for="focusedinput" class="col-sm-2 control-label">Tiêu Đề:</label>
 							<div class="col-sm-12 col-lg-12">
 								<input onclick="changeContentNamePro()" th:field="*{title}" name="title" type="text"
 									class="form-control1" id="focusedinput" placeholder="">
@@ -116,7 +116,7 @@
 							</div>
 
 							<div class="form-group row">
-								<label for="focusedinput" class="col-sm-2 control-label">MÃ´ táº£ sáº£n pháº©m</label>
+								<label for="focusedinput" class="col-sm-2 control-label">Mô Tả:</label>
 								<div class="col-sm-12 col-lg-12">
 									<textarea onclick="changeContentDecs()" th:field="*{description}" name="description"
 										rows="4" type="text" class="form-control" id="focusedinput"
@@ -126,7 +126,7 @@
 												id="messError" class="form-text text-muted">Category Id is required!</small>
 							</div>
 							<div class="form-group mb-5 row">
-								<label for="focusedinput" class="col-sm-2 control-label">MÃ´ táº£ sáº£n pháº©m</label>
+								<label for="focusedinput" class="col-sm-2 control-label">Mô Tả Ngắn:</label>
 								<div class="col-sm-12 col-lg-12">
 									<textarea onclick="changeContentDecs()" th:field="*{shortdecs}" name="shortdecs"
 										rows="4" type="text" class="form-control" id="focusedinput"

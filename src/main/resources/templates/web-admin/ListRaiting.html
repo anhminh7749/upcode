@@ -9,12 +9,12 @@
 <body class="cbp-spmenu-push">
     <div layout:fragment="content">
         <div id="page-wrapper">
-            <h2>Danh SÃ¡ch Sáº£n Pháº©m</h2>
+            <h2>Danh Sách Chờ</h2>
             <div class="row">
                 <ol class="breadcrumb">
-                    <li><a href="#">Trang Chá»§</a></li>
-                    <li><a>Sáº£n Pháº©m</a></li>
-                    <li class="active">Danh SÃ¡ch</li>
+                   <li><a href="#">Trang Chủ</a></li>
+                    <li><a href="#">Danh Sách</a></li>
+                    <li><a href="#">Thêm Mới</a></li>
                 </ol>
             </div>
 
@@ -47,11 +47,11 @@
                         <table class="table table-hover">
                             <thead>
                                 <tr>                                    
-                                    <th>name sp</th>
-                                    <th>name user</th>
-                                    <th>cmt</th>
-                                    <th>pont</th>
-                                    <th>date</th>
+                                    <th>Tên SP</th>
+                                    <th>Tên User</th>
+                                    <th>Nội Dung</th>
+                                    <th>Đánh Giá</th>
+                                    <th>Ngày Đánh Giá</th>
                                     
                                     <th>&nbsp;</th>
                                 </tr>
@@ -64,7 +64,7 @@
                                 <td th:text="${item.point}"></td>
 								<td th:text="${item.createAt}"></td>
                                 <td>              
-                                    <a th:href="@{'/api/admin/raiting/check/'+${item.Id}}"><i class="fa fa-check icon_del" ></i></a>
+                                    <a th:if="${item.active==0}" th:href="@{'/api/admin/raiting/check/'+${item.Id}}"><i class="fa fa-check icon_del" ></i></a>
                                     <a><i class="fa fa-exclamation-circle icon_del" ></i></a>
                                     <a th:href="@{'/api/admin/raiting/delete/' + ${item.Id}}"><i class="fa fa-trash-o icon_del" aria-hidden="true"></i></a>
                                     
@@ -81,7 +81,7 @@
                             <ul class="header-right pagination">
 								<li class="disabled" th:class="${1== raitingPage.number+1} ? 'active':''">
 								<a th:href="@{/admin/raiting/list-raiting(name=${keyword}, size = ${raitingPage.size}, page=${1})}" aria-label="Previous">
-								<span aria-hidden="true">«</span></a></li>
+								<span aria-hidden="true">Â«</span></a></li>
 								
 								<li th:each="pageNum:${pageNums}"
 										th:if="${raitingPage.totalPages>1}"
@@ -92,7 +92,7 @@
 								
 								<li th:class="${raitingPage.totalPages== raitingPage.number+1} ? 'active':''">
                                 <a th:href="@{/admin/raiting/list-raiting(name=${keyword}, size = ${raitingPage.size}, page=${raitingPage.totalPages})}" 
-								aria-label="Next"><span aria-hidden="true">»</span></a></li>
+								aria-label="Next"><span aria-hidden="true">Â»</span></a></li>
 							</ul>
 
                         </div>

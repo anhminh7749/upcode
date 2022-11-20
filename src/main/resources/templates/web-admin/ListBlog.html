@@ -9,12 +9,12 @@
 <body class="cbp-spmenu-push">
     <div layout:fragment="content">
         <div id="page-wrapper">
-            <h2>Danh SÃ¡ch Sáº£n Pháº©m</h2>
+            <h2>Danh Sách Blog</h2>
             <div class="row">
                 <ol class="breadcrumb">
-                    <li><a href="#">Trang Chá»§</a></li>
-                    <li><a>Sáº£n Pháº©m</a></li>
-                    <li class="active">Danh SÃ¡ch</li>
+                    <li><a href="#">Trang Chủ</a></li>
+                    <li><a href="#">Danh Sách</a></li>
+                    <li><a href="#">Thêm Mới</a></li>
                 </ol>
             </div>
 
@@ -49,39 +49,27 @@
                         <table class="table table-hover">
                             <thead>
                                 <tr>
-                                    <th>MÃ£ SP</th>
-                                    <th>áº¢nh SP</th>
-                                    <th>TÃªn SP</th>
-                                    <th>GiÃ¡</th>
-                                    <th>Giáº£m giÃ¡</th>
-                                    <th>Sá»‘ lÆ°á»£ng</th>
-                                    <th>Danh má»¥c</th>
-                                    <th>Tráº¡ng thÃ¡i</th>
+                               
+                                    <th>Ảnh</th>
+                                    <th>Tên</th>
+                                    <th>Tiêu Đề</th>
+                                    <th>Trạng Thái</th>
+                                    <th>Hoạt Động</th>
                                     <th>&nbsp;</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td><span class="label label-warning">in progress</span></td>
-                                    <td><span class="label label-warning">in progress</span></td>
-                                    <td><span class="badge badge-warning">30%</span></td>
-                                    <td><span class="label label-success">completed</span></td>
-                                    <td><span class="badge badge-success">80%</span></td>
-                                    <td><span class="label label-danger">in progress</span></td>
-                                    <td><span class="badge badge-info">70%</span></td>
-                                </tr>
 
                                 <tr th:each="item, iStart:${blogPage}">
-                                    <td scope="row" th:text="${item.Id}"></td>
+                                    
                                     <td><img class="tbl-list img-fluid" id="image"
                                             th:src="${item.banner!=null?'/admin/blog/images/'+item.banner:'/images/Background.png'}"
                                             alt="edit"></td>
-                                    <td th:text="${item.title}"></td>
+                                   
                                        
                                         <td th:text="${item.product.name}"></td> 
-                                        <td th:text="${item.createAt}"></td> 
-                                        <td th:text="${item.updateAt}"></td> 
+                                   <td th:text="${item.title}"></td>
+                                     
                                         <td><span th:class="${item.Active==0?'label label-success':'label label-danger'}"
                                             th:text="${item.Active==0?'ACTIVE':'INACTIVE'}"></span>
                                         </td>
