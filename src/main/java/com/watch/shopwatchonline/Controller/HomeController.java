@@ -42,7 +42,7 @@ public class HomeController {
   @Autowired
   private ChatBoxRepository boxRepository;
   @Autowired
-  private UserRepository userRepository   ;
+  private UserRepository userRepository;
   
 
   @GetMapping("/login")
@@ -52,6 +52,21 @@ public class HomeController {
   @GetMapping("/site/login")
   public String all() {
     return "web-site/login";
+  }
+
+  @GetMapping("/site/signup")
+  public String signup() {
+    return "web-site/register";
+  }
+
+  @GetMapping("/site/forgot-password")
+  public String forgotPassword() {
+    return "web-site/forgot-password";
+  }
+
+  @GetMapping("/site/user-information")
+  public String userInfo() {
+    return "web-site/user-info";
   }
 
   @GetMapping("/chatbox")

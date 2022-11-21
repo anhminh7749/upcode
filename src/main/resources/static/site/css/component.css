@@ -105,7 +105,7 @@ background: url(../images/grid_view.png)no-repeat;
 /* Individual view mode styles */
 /* Large grid view */
 .cbp-vm-view-grid ul li {
-	  width: 31.5555%;
+	  width: 31%;
 	  text-align: center;
 	  margin: 2% 2% 0 0;
 	  display: inline-block;

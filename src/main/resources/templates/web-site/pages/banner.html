@@ -1,33 +1,49 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
 <head>
 </head>
+
 <body th:fragment="banner">
-  
+
     <div class="men_banner">
         <div class="container">
             <div class="header_top">
-               <div class="header_top_left">
-                <div th:replace="web-site/pages/mini-cart :: mini-cart"></div> 
-             <div class="clearfix"> </div>
-          </div>
-          <div class="header_top_right">
-              <div class="lang_list">
-               <div class="dropdown"><span class="old"><select tabindex="4" class="" id="EasyDropDown57549B">
-                   <option value="" class="label">$ Us</option>
-                   <option value="1">Dollar</option>
-                   <option value="2">Euro</option>
-               </select></span><span class="selected">$ Us</span><span class="carat"></span><div><ul><li>Dollar</li><li>Euro</li></ul></div></div>
-            </div>
-            <ul class="header_user_info">
-             <a class="login" href="login.html">
-               <i class="user"> </i> 
-               <li class="user_desc">My Account</li>
-             </a>
-             <div class="clearfix"> </div>
-            </ul>
-           <!-- start search-->
-               <div class="search-box">
+                <div class="header_top_left">
+                    <div th:replace="web-site/pages/mini-cart :: mini-cart"></div>
+                    <div class="clearfix"> </div>
+                </div>
+                <div class="header_top_right">
+                    <!-- <div class="lang_list">
+                        <div class="dropdown"><span class="old"><select tabindex="4" class="" id="EasyDropDown57549B">
+                                    <option value="" class="label">$ Us</option>
+                                    <option value="1">Dollar</option>
+                                    <option value="2">Euro</option>
+                                </select></span><span class="selected">$ Us</span><span class="carat"></span>
+                            <div>
+                                <ul>
+                                    <li>Dollar</li>
+                                    <li>Euro</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div> -->
+                    <ul class="header_user_info">
+                        <div class="dropdown">
+                            <a data-toggle="dropdown"><i class="user"></i>Tài khoản</a>
+                            <ul class="dropdown-menu">
+                              <li><a th:href="@{/api/site/login}"><p>Đăng nhập</p></a></li>
+                              <li><a th:href="@{/api/site/signup}"><p>Đăng ký</p></a></li>
+                              <li><a th:href="@{/api/site/forgot-password}"><p>Quên mật khẩu?</p></a></li>
+                              <li class="divider"></li>
+                              <li><a th:href="@{/api/site/user-information}"><p>Thông tin tài khoản</p></a></li>
+                              <li><a th:href="@{/api/site/logoff}"><p>Đăng xuất</p></a></li>
+                            </ul>
+                        </div>
+                        <div class="clearfix"> </div>
+                    </ul>
+                    <!-- start search-->
+                    <!-- <div class="search-box">
                   <div id="sb-search" class="sb-search">
                      <form>
                         <input class="sb-search-input" placeholder="Enter your search term..." type="search" name="search" id="search">
@@ -35,188 +51,17 @@
                         <span class="sb-icon-search"> </span>
                      </form>
                    </div>
+                </div> -->
+                    <!----search-scripts---->
+
+                    <!----//search-scripts---->
+                    <div class="clearfix"> </div>
                 </div>
-                <!----search-scripts---->
-                
-                   <!----//search-scripts---->
-                   <div class="clearfix"> </div>
+                <div class="clearfix"> </div>
             </div>
-            <div class="clearfix"> </div>
-       </div>
-        <div class="header_bottom">
-      <div class="logo">
-         <h1><a href="index.html"><span class="m_1">W</span>atches</a></h1>
-      </div>
-      <div class="menu">
-        <ul class="megamenu skyblue"><li class="showhide" style="display: none;"><span class="title">MENU</span><span class="icon1"></span><span class="icon2"></span></li>
-           <li class="active grid" style="display: inline;"><a class="color2" href="#">Mens</a>
-               <div class="megapanel">
-                   <div class="row">
-                       <div class="col1">
-                           <div class="h_nav">
-                               <h4>Men</h4>
-                               <ul>
-                                   <li><a href="men.html">Watches</a></li>
-                                   <li><a href="men.html">watches</a></li>
-                                   <li><a href="men.html">Blazers</a></li>
-                                   <li><a href="men.html">Suits</a></li>
-                                   <li><a href="men.html">Trousers</a></li>
-                                   <li><a href="men.html">Jeans</a></li>
-                                   <li><a href="men.html">Shirts</a></li>
-                                   <li><a href="men.html">Sweatshirts &amp; Hoodies</a></li>
-                                   <li><a href="men.html">Swim Wear</a></li>
-                                   <li><a href="men.html">Accessories</a></li>
-                               </ul>	
-                           </div>							
-                       </div>
-                       <div class="col1">
-                           <div class="h_nav">
-                               <h4>Women</h4>
-                               <ul>
-                                   <li><a href="men.html">Watches</a></li>
-                                   <li><a href="men.html">Outerwear</a></li>
-                                   <li><a href="men.html">Dresses</a></li>
-                                   <li><a href="men.html">Handbags</a></li>
-                                   <li><a href="men.html">Trousers</a></li>
-                                   <li><a href="men.html">Jeans</a></li>
-                                   <li><a href="men.html">T-Shirts</a></li>
-                                   <li><a href="men.html">Shoes</a></li>
-                                   <li><a href="men.html">Coats</a></li>
-                                   <li><a href="men.html">Accessories</a></li>
-                               </ul>	
-                           </div>							
-                       </div>
-                       <div class="col2">
-                           <div class="h_nav">
-                               <h4>Trends</h4>
-                               <ul>
-                                   <li class="">
-                                       <div class="p_left">
-                                         <img src="images/p1.jpg" class="img-responsive" alt="">
-                                       </div>
-                                       <div class="p_right">
-                                           <h4><a href="#">Denim shirt</a></h4>
-                                           <span class="item-cat"><small><a href="#">watches</a></small></span>
-                                           <span class="price">29.99 $</span>
-                                       </div>
-                                       <div class="clearfix"> </div>
-                                   </li>
-                                   <li>
-                                       <div class="p_left">
-                                         <img src="images/p2.jpg" class="img-responsive" alt="">
-                                       </div>
-                                       <div class="p_right">
-                                           <h4><a href="#">Denim shirt</a></h4>
-                                           <span class="item-cat"><small><a href="#">watches</a></small></span>
-                                           <span class="price">29.99 $</span>
-                                       </div>
-                                       <div class="clearfix"> </div>
-                                   </li>
-                                   <li>
-                                       <div class="p_left">
-                                         <img src="images/p3.jpg" class="img-responsive" alt="">
-                                       </div>
-                                       <div class="p_right">
-                                           <h4><a href="#">Denim shirt</a></h4>
-                                           <span class="item-cat"><small><a href="#">watches</a></small></span>
-                                           <span class="price">29.99 $</span>
-                                       </div>
-                                       <div class="clearfix"> </div>
-                                   </li>
-                               </ul>	
-                           </div>												
-                       </div>
-                     </div>
-                   </div>
-           </li>
-           <li style="display: inline;"><a class="color4" href="#">womens</a>
-               <div class="megapanel">
-                   <div class="row">
-                       <div class="col1">
-                           <div class="h_nav">
-                               <h4>Men</h4>
-                               <ul>
-                                   <li><a href="men.html">Watches</a></li>
-                                   <li><a href="men.html">watches</a></li>
-                                   <li><a href="men.html">Blazers</a></li>
-                                   <li><a href="men.html">Suits</a></li>
-                                   <li><a href="men.html">Trousers</a></li>
-                                   <li><a href="men.html">Jeans</a></li>
-                                   <li><a href="men.html">Shirts</a></li>
-                                   <li><a href="men.html">Sweatshirts &amp; Hoodies</a></li>
-                                   <li><a href="men.html">Swim Wear</a></li>
-                                   <li><a href="men.html">Accessories</a></li>
-                               </ul>	
-                           </div>							
-                       </div>
-                       <div class="col1">
-                           <div class="h_nav">
-                               <h4>Women</h4>
-                               <ul>
-                                   <li><a href="men.html">Watches</a></li>
-                                   <li><a href="men.html">Outerwear</a></li>
-                                   <li><a href="men.html">Dresses</a></li>
-                                   <li><a href="men.html">Handbags</a></li>
-                                   <li><a href="men.html">Trousers</a></li>
-                                   <li><a href="men.html">Jeans</a></li>
-                                   <li><a href="men.html">T-Shirts</a></li>
-                                   <li><a href="men.html">Shoes</a></li>
-                                   <li><a href="men.html">Coats</a></li>
-                                   <li><a href="men.html">Accessories</a></li>
-                               </ul>	
-                           </div>							
-                       </div>
-                       <div class="col2">
-                           <div class="h_nav">
-                               <h4>Trends</h4>
-                               <ul>
-                                   <li class="">
-                                       <div class="p_left">
-                                         <img src="images/p1.jpg" class="img-responsive" alt="">
-                                       </div>
-                                       <div class="p_right">
-                                           <h4><a href="#">Denim shirt</a></h4>
-                                           <span class="item-cat"><small><a href="#">watches</a></small></span>
-                                           <span class="price">29.99 $</span>
-                                       </div>
-                                       <div class="clearfix"> </div>
-                                   </li>
-                                   <li>
-                                       <div class="p_left">
-                                         <img src="images/p2.jpg" class="img-responsive" alt="">
-                                       </div>
-                                       <div class="p_right">
-                                           <h4><a href="#">Denim shirt</a></h4>
-                                           <span class="item-cat"><small><a href="#">watches</a></small></span>
-                                           <span class="price">29.99 $</span>
-                                       </div>
-                                       <div class="clearfix"> </div>
-                                   </li>
-                                   <li>
-                                       <div class="p_left">
-                                         <img src="images/p3.jpg" class="img-responsive" alt="">
-                                       </div>
-                                       <div class="p_right">
-                                           <h4><a href="#">Denim shirt</a></h4>
-                                           <span class="item-cat"><small><a href="#">watches</a></small></span>
-                                           <span class="price">29.99 $</span>
-                                       </div>
-                                       <div class="clearfix"> </div>
-                                   </li>
-                               </ul>	
-                           </div>												
-                       </div>
-                     </div>
-                   </div>
-               </li>				
-               <li style="display: inline;"><a class="color10" href="brands.html">Brands</a></li>
-               <li style="display: inline;"><a class="color3" href="index.html">Sale</a></li>
-               <li style="display: inline;"><a class="color7" href="404.html">News</a></li>
-               <div class="clearfix"> </div>
-           </ul>
-           </div>
-           <div class="clearfix"> </div>
-       </div>
-     </div>
-  </div>
-</body></html>
+            <div th:replace="web-site/pages/menu :: menu"></div>
+        </div>
+    </div>
+</body>
+
+</html>
