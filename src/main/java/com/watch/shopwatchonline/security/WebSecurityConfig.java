@@ -66,8 +66,9 @@ public class WebSecurityConfig { // extends WebSecurityConfigurerAdapter {
     http.cors().and().csrf().disable()
         .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
         .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
-        .authorizeRequests().antMatchers("/api/auth/**", "/**/*.{js,html,css}", "/").permitAll()
+        .authorizeRequests().antMatchers("/api/auth/**", "/**/*.{js,html,css}", "/", "/forgot-password").permitAll()
         	.antMatchers("/admin/**", "/api/admin/**").hasAnyAuthority(Erole.ROLE_ADMIN.name())
+        	.antMatchers("/profile/**").hasAnyAuthority(Erole.ROLE_USER.name())
         .antMatchers("/api/test/**").permitAll()
         .anyRequest().authenticated();
     
