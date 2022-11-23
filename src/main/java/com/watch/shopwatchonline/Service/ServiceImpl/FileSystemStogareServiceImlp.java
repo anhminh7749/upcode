@@ -28,28 +28,26 @@ import com.watch.shopwatchonline.Repository.ImageRepository;
 import com.watch.shopwatchonline.Service.StogareService;
 import com.watch.shopwatchonline.config.StorageProperties;
 
-
 @Service
 public class FileSystemStogareServiceImlp implements StogareService {
 	private final Path rootLocation;
-@Autowired
-ImageRepository imageRepository;
+	@Autowired
+	ImageRepository imageRepository;
 
-@Override
-public List<Image> findImageByProductId(int productId) {
-	return imageRepository.findImageByProductId(productId);
-}
-@Override
-public List<Image> findImageByBlogId(int BlogId) {
-	return imageRepository.findImageByBlogId(BlogId);
-}
+	@Override
+	public List<Image> findImageByProductId(int productId) {
+		return imageRepository.findImageByProductId(productId);
+	}
 
-
+	@Override
+	public List<Image> findImageByBlogId(int BlogId) {
+		return imageRepository.findImageByBlogId(BlogId);
+	}
 
 	@Override
 	public String getFileName(MultipartFile file) {
 		UUID uuid = UUID.randomUUID();
-            String uu = uuid.toString();
+		String uu = uuid.toString();
 		String ext = FilenameUtils.getExtension(file.getOriginalFilename());
 		return "p" + uu + "." + ext;
 	}
@@ -76,14 +74,15 @@ public List<Image> findImageByBlogId(int BlogId) {
 			throw new StrorageException("Failed to store file! " + e);
 		}
 	}
+
 	@Override
 	public void save(MultipartFile file) {
 		try {
-		  Files.copy(file.getInputStream(), this.rootLocation.resolve(file.getOriginalFilename()));
+			Files.copy(file.getInputStream(), this.rootLocation.resolve(file.getOriginalFilename()));
 		} catch (Exception e) {
-		  throw new RuntimeException("Could not store the file. Error: " + e.getMessage());
+			throw new RuntimeException("Could not store the file. Error: " + e.getMessage());
 		}
-	  }
+	}
 
 	@Override
 	public Resource loadResource(String fileName) {
@@ -121,11 +120,12 @@ public List<Image> findImageByBlogId(int BlogId) {
 	}
 
 	@Override
-  public Stream<Path> loadAll() {
-    try {
-      return Files.walk(this.rootLocation, 1).filter(path -> !path.equals(this.rootLocation)).map(this.rootLocation::relativize);
-    } catch (IOException e) {
-      throw new RuntimeException("Could not load the files!");
-    }
-  }
+	public Stream<Path> loadAll() {
+		try {
+			return Files.walk(this.rootLocation, 1).filter(path -> !path.equals(this.rootLocation))
+					.map(this.rootLocation::relativize);
+		} catch (IOException e) {
+			throw new RuntimeException("Could not load the files!");
+		}
+	}
 }

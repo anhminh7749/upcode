@@ -72,6 +72,44 @@
                                         <td th:text="${item.ApplicableDate}"></td>
                                         <td th:text="${item.ExpirationDate}"></td> 
                                         <td>
+                                        <a data-toggle="modal" data-target="#gridSystemModal"
+											th:attr="onclick=|showProfileDiscountcode('${item.name}', '${item.ReductionAmount}','${item.AmountApplied}',
+											'${item.Quantity}','${item.ByteCode}','${item.ApplicableDate}','${item.ExpirationDate}')|"
+											class="fa fa-search"></a>
+										<div class="modal fade" id="gridSystemModal" tabindex="-1" role="dialog"
+											aria-labelledby="gridSystemModalLabel">
+											<div class="modal-dialog" role="document">
+												<div class="modal-content">
+													<div class="modal-header">
+														<button type="button" class="close" data-dismiss="modal"
+															aria-label="Close">
+															<span aria-hidden="true">&times;</span>
+														</button>
+														<h4 class="modal-title text-center" id="gridSystemModalLabel">Thông Tin</h4>
+													</div>
+													<div class="modal-body">
+														<div>
+															<label class="control-label">Tên: </label> 
+															<input class="form-control" id="name" readonly><br> 
+															<label class="control-label">Giảm giá:</label> 
+															<input class="form-control" id="ReductionAmount" readonly><br>
+															<label class="control-label">Giá áp dụng: </label> 
+															<input class="form-control" id="AmountApplied" readonly><br>
+															<label class="control-label">Số lượng: </label> 
+															<input class="form-control" id="Quantity" readonly><br>
+															<label class="control-label">Mã giảm giá: </label> 
+															<input class="form-control" id="ByteCode" readonly><br>
+															<label class="control-label">Ngày áp dụng: </label> 
+															<input class="form-control" id="ApplicableDate" readonly><br>
+															<label class="control-label">Ngày hết hạng: </label> 
+															<input class="form-control" id="ExpirationDate" readonly><br>
+														</div>
+													</div>
+												</div>
+										</div>
+												<!-- /.modal-content -->
+											</div>
+											<!-- /.modal-dialog -->
                                             <a th:href="@{'/api/admin/DiscountCode/edit/' + ${item.Id}}"><i class="fa fa-pencil-square-o icon_del" aria-hidden="true"></i></a>
                                             <a th:href="@{'/api/admin/DiscountCode/delete/' + ${item.Id}}"><i class="fa fa-trash-o icon_del" aria-hidden="true"></i></a>
                                         </td>

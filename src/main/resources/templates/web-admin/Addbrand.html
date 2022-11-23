@@ -22,14 +22,14 @@
 							</ul>
 
 							<div class="form-inline my-2 my-lg-0 text-right">
-										<a th:href="@{/admin/brands/}" class="btn btn-success">ListStaff</a>
+								<a th:href="@{/admin/brands/}" class="btn btn-success">ListStaff</a>
 							</div>
 						</div>
 						<div class="form-three widget-shadow">
 							<div class=" panel-body-inputin">
 								<form class="form-horizontal" th:action="@{/admin/brands/saveOrUpdate}" method="post"
 									th:object="${brand}">
-									<input type="hidden" th:filed="*{isEdit}"> 
+									<input type="hidden" th:filed="*{isEdit}">
 									<input type="text" hidden th:field="*{id}">
 									<div class="form-group">
 										<label class="col-md-2 control-label">Tên Thương Hiệu:</label>
@@ -40,7 +40,7 @@
 												<input type="text" class="form-control1" th:field="*{name}"
 													placeholder="Name">
 											</div>
-											<small th:if="${#fields.hasErrors('name')}" id="customerIdHid"
+											<small th:if="${#fields.hasErrors('name')}" 
 												class="form-text text-muted">Brand
 												is required</small>
 										</div>
@@ -52,9 +52,9 @@
 												<span class="input-group-addon"> <i class="fa fa-user"></i>
 												</span>
 												<input type="text" class="form-control1" th:field="*{thumbnail}"
-													placeholder="Name">
+													placeholder="Ảnh">
 											</div>
-											<small th:if="${#fields.hasErrors('thumbnail')}" id="customerIdHid"
+											<small th:if="${#fields.hasErrors('thumbnail')}" 
 												class="form-text text-muted">Image
 												is required</small>
 										</div>

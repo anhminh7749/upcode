@@ -80,6 +80,70 @@
                                             th:text="${item.Active==0?'ACTIVE':'INACTIVE'}"></span>
                                         </td>
                                         <td>
+                                        <a data-toggle="modal" data-target="#gridSystemModal"
+											th:attr="onclick=|showProfileProduct('${item.thumbnail}', '${item.Name}','${item.Price}',
+											'${item.Quantity}','${item.Discount}','${item.Category.name}','${item.brand.name}','${item.Active}')|"
+											class="fa fa-search"></a>
+										<div class="modal fade" id="gridSystemModal" tabindex="-1" role="dialog"
+											aria-labelledby="gridSystemModalLabel">
+											<div class="modal-dialog" role="document">
+												<div class="modal-content">
+													<div class="modal-header">
+														<button type="button" class="close" data-dismiss="modal"
+															aria-label="Close">
+															<span aria-hidden="true">&times;</span>
+														</button>
+														<h4 class="modal-title text-center" id="gridSystemModalLabel">Thông Tin</h4>
+													</div>
+													<div class="modal-body">
+
+
+														<!-- Email input -->
+														<div class="form-outline mb-4">
+															<label class="form-label">Ảnh:</label>
+															<input class="form-control" id="thumbnail" readonly/>
+														</div>
+														
+														<div class="form-outline mb-4">
+															<label class="form-label">Tên:</label>
+															<input class="form-control" id="Name" readonly />
+														</div>
+														
+														<div class="form-outline mb-4">
+															<label class="form-label">Giá:</label>
+															<input class="form-control" id="Price" readonly />
+														</div>
+														
+														<div class="form-outline mb-4">
+															<label class="form-label">Số lượng:</label>
+															<input class="form-control" id="Quantity" readonly />
+														</div>
+														
+														<div class="form-outline mb-4">
+															<label class="form-label">Giảm giá:</label>
+															<input class="form-control" id="Discount" readonly />
+														</div>
+														
+														<div class="form-outline mb-4">
+															<label class="form-label">Danh mục:</label>
+															<input class="form-control" id="Category.name" readonly />
+														</div>
+														
+														<div class="form-outline mb-4">
+															<label class="form-label">Thương hiệu:</label>
+															<input class="form-control" id="brand.name" readonly />
+														</div>
+														
+														<div class="form-outline mb-4">
+															<label class="form-label">Trạng thái:</label>
+															<input class="form-control" id="Active" readonly />
+														</div>
+													</div>
+												</div>
+												<!-- /.modal-content -->
+											</div>
+											<!-- /.modal-dialog -->
+										</div> <!-- /.modal --> 
                                             <a th:href="@{'/api/admin/product/edit/' + ${item.Id}}"><i class="fa fa-pencil-square-o icon_del" aria-hidden="true"></i></a>
                                             <a th:href="@{'/api/admin/product/delete/' + ${item.Id}}"><i class="fa fa-trash-o icon_del" aria-hidden="true"></i></a>
                                         </td>
