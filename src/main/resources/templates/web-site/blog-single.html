@@ -7,51 +7,402 @@
 
 <body>
     <div layout:fragment="content">
-
-        <section class="w3l-text-11 py-5" th:object="${blog}">
-            <div class="text11 py-md-5 py-4">
-                <div class="container">
-                    
-                        <div class=" text11-content mx-auto">
-                            <img th:src="${blog.banner!=null?'/admin/blog/images/'+blog.banner:'/images/Background.png'}"
-                                class="img-fluid radius-image img-rounded" alt="">
-                            <h3 class="title font-weight-bold mt-4" th:text="${blog.title}"></h3>
-                            <ul class="admin-list mt-2 mb-4">
-                                <li><a href="blog-single.html">Eetey Cruis<i class="icon-user"></i>
-                                    </a></li>
-                                <li><a th:href="@{'/site/product/detail/'+${blog.product.id}}" class=" primary-clr-bg"
-                                        th:text="${blog.product.name}"></a></i>
-                                    </a></li>
-                                <li> <i class="icon-calendar"></i><a href="blog-single.html"
-                                        th:text="${blog.createAt}"></a>
-                                </li>
-                            </ul>
-                            <blockquote class="quote my-sm-5 my-4">
-                                <q class="quick_desc" th:text="${blog.shortdecs}"> </q>
-
-                            </blockquote>
-                            <p class="quick_desc" th:text="${blog.description}"></p>
-
-
-                            <div class="item mt-5">
-                                <h3 class="aside-title">img </h3>
-                                <div class="row">
-                                    <div class="col-sm-6" th:each="img, iStart:${listimage}">
-                                        <div class="list-view list-view1">
-                                            <div class="grids5-info">
-                                                <a  class="d-block zoom"><img
-                                                        th:src="${img.name!=null?'/admin/blog/images/'+img.name:'/images/Background.png'}"
-                                                        class="img-fluid radius-image news-image"></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+        <div class="container">
+            <!-- block -->
+            <div>
+                <div class="row">
+                    <div class="col-7 mx-auto">
+                        <div>
+                            <div class="text-center"><img src="/site/images/abt-1.jpg" class="img-fluid" width="800px" alt=""></div>
+                            <hr>
+                            <small>Đăng bởi Luxury Watch</small>
+                            <h1>Đồng hồ Rolex - câu chuyện của một huyền thoại</h1>
+                            <br>
+                            Một trong những tên tuổi sáng chói nhất trong ngành sản xuất đồng hồ cao cấp chính là Rolex.
+                            Với tên gọi chính xác là Rolex SA, trải qua hơn 100 năm hình thành và phát triển, thương
+                            hiệu đồng hồ Rolex đã chứng minh sức ảnh hưởng vô cùng lớn đối với các tín đồ thời trang
+                            trên toàn thế giới. Hãy cùng Boss Luxury ngược dòng thời gian để nhìn lại quá trình phát
+                            triển vượt bậc của thương hiệu đồng hồ nổi tiếng này qua bài viết ngay sau đây.
+                            <br><br>
+                            <h4>Lịch sử hình thành và phát triển thương hiệu đồng hồ Rolex</h4>
+                            Rolex có tiền thân là công ty Wilsdorf and Davis, được thành lập vào năm 1905 bởi Hans
+                            Wilsdorf
+                            và người em vợ của mình là Alfred Davis. Ban đầu, công ty Wilsdorf and Davis hoạt động trong
+                            lĩnh vực lắp ráp đồng hồ bằng cách nhập khẩu những bộ máy đồng hồ Thụy Sỹ từ những nhà sản
+                            xuất
+                            Hermann Aegler đến Anh Quốc. Từ đó kết hợp với những bộ vỏ đồng hồ chất lượng cao của nhà
+                            sản
+                            xuất Dennison và nhiều nhà sản xuất uy tín khác nữa. Lúc bấy giờ, những chiếc đồng hồ do
+                            Wilsdorf and Davis lắp ráp mang nhãn hiệu “W&D” và được khắc ở mặt sau của đồng hồ.
+                            <div class="text-center"><img src="/site/images/3-dong-ho-rolex-1.jpg" class="img-fluid" alt=""></div><br>
+                            <p class="text-center"><small>Rolex thế hệ mới</small></p><br>
+                            Với tầm nhìn xa trông rộng của mình, Hans Wilsdorf đã mơ về những chiếc đồng hồ đeo tay với
+                            độ
+                            chính xác cao, thanh lịch và đáng tin cậy. Năm 1908, Hans Wilsdorf bắt đầu đăng ký thương
+                            hiệu
+                            Rolex. Vì ông muốn những chiếc đồng hồ của mình mang một cái tên ngắn, dễ đọc, dễ nhớ. Và
+                            bất kỳ
+                            một ngôn ngữ nào cũng có thể đọc tên thương hiệu đồng hồ Rolex một cách dễ dàng.Cùng năm đó,
+                            ông
+                            đã mở một văn phòng tại La Chaux-de-Fonds, Thụy Sĩ. <br>
+                            Năm 1910 là năm đánh dấu những chiếc đồng hồ đầu tiên mang thương hiệu Rolex ra đời. Những
+                            chiếc
+                            đồng hồ đời đầu tập trung vào chất lượng của bộ chuyển động. Các kỹ thuật viên, nhà sáng chế
+                            đã
+                            phải nỗ lực tìm kiếm và sáng tạo không ngừng nghỉ để đạt đến được độ đếm nhịp một cách chính
+                            xác
+                            nhất. Đây cũng chính là yếu tố làm nên thành công của đồng hồ Rolex. Và trong năm này, chiếc
+                            đồng hồ đầu tiên trên thế giới đạt chứng nhận Chronometric uy tín về độ chính xác tuyệt đối
+                            của
+                            Thụy Sỹ, chính là đồng hồ mang thương hiệu Rolex. Chứng nhận do Trung tâm Đánh giá Đồng hồ
+                            chính
+                            thức ở Bienne cấp. <br>
+                            Bốn năm sau đó, năm 1914, Kew Observatory đã trao cho Rolex chứng chỉ về độ chính xác loại
+                            A. Ở
+                            thời điểm lúc bấy giờ, chứng nhận này chỉ được sử dụng để cấp riêng cho các loại đồng hồ hải
+                            quân có độ chính xác tuyệt đối, hay còn gọi là Marine Chronometer. <br>
+                            Năm 1919, dưới tác động của chiến tranh thế giới thứ nhất, các loại thuế nhập khẩu và xuất
+                            khẩu
+                            tăng vọt, đánh trực tiếp vào các sản phẩm cao cấp, xa xỉ, nhất là các sản phẩm làm từ vàng,
+                            bạc,
+                            nhà sáng lập Hans Wilsdorf đã quyết định rời Anh và chuyển toàn bộ công ty sang Geneva – thủ
+                            phủ
+                            về chế tác đồng hồ của thế giới. Lúc này, Montres Rolex SA đã được đăng ký và sau đó là
+                            Rolex SA
+                            như thời điểm hiện tại. <br>
+                            Năm 1926, chiếc đồng hồ Rolex thấm nước và chống bụi đầu tiên ra đời và lấy tên là Oyster.
+                            Đây
+                            được xem là bước tiến lớn của ngành chế tạo đồng hồ trên toàn thế giới. Và ưu điểm vượt trội
+                            này
+                            được chứng minh một các xác đáng nhất vào năm 1927 khi đồng hồ Rolex Oyster cùng với tay bơi
+                            trẻ
+                            tuổi Mercedes Gleitze vượt qua kênh đào Anh. Trong suốt 10 tiếng đồng hồ bơi dưới nước,
+                            chiếc
+                            đồng hồ vẫn hoạt động hoàn hảo. Cũng trong thời gian này, Rolex lần đầu xuất bản quảng cáo
+                            trên
+                            trang nhất của Daily Mail. Từ đó đánh dấu sự ra đời của khái niệm Testimonee. <br>
+                            Năm 1931, Rolex đã phát minh ra Perpetual rotor với cơ chế tự lên dây đầu tiên trên toàn thế
+                            giới. Phát minh này được cấp bằng sáng chế bởi cơ quan uy tín nhất thời bấy giờ. <br>
+                            <div class="text-center"><img src="/site/images/3-dong-ho-rolex-2.jpg" class="img-fluid" alt=""></div><br>
+                            <p class="text-center"><small>Chiếc đồng hồ đầu tiên hiển thị ngày</small></p><br>
+                            Năm 1945, chiếc đồng hồ Datejust đầu tiên ra đời cùng với thiết kế Chronometer tự lên dây
+                            đầu
+                            tiên hiển thị ngày trong một cửa sổ trên mặt số. Đây chính là một trong những sản phẩm mà
+                            cho
+                            đến bây giờ vẫn là biểu tượng cho thương hiệu đồng hồ Rolex trên toàn cầu. <br>
+                            Đầu thập niên 50, hãng Rolex bắt đầu phát triển dòng đồng hồ chuyên dụng, sử dụng trong
+                            những
+                            ngành nghề đặc biệt. Ví dụ như lặn biển, hàng không, leo núi, thăm dò khoa học. Những ảnh
+                            hưởng
+                            tích cực đã khiến chúng trở thành những chiếc đồng hồ dành cho những người thành công. <br>
+                            Năm 1971, Rolex đã cho ra mắt mẫu Oyster Perpetual Explorer II có kim 24 giờ. Mẫu đồng hồ
+                            dành
+                            cho những nhà thám hiểm vùng cực, các nhà nghiên cứu hang động, giúp họ phân biệt được ngày,
+                            đêm
+                            cho dù ở sâu dưới lòng đất. <br>
+                            Năm 1976, giải thưởng Rolex ra đời dành cho những cá nhân phi thường, có lòng dũng cảm và
+                            niềm
+                            tin để đối mặt với những thách thức lớn. Đến đây, hãng Rolex không chỉ là một hãng đồng hồ
+                            nổi
+                            tiếng. Mà còn là một “ông lớn” có sức ảnh hưởng lớn đến đời sống xã hội trên toàn thế giới.
+                            <br>
+                            Năm 1978, Rolex cho ra đời đồng hồ Sea-Dweller 4000 với tính năng chống thấm nước ở độ sâu
+                            lên
+                            đến 4000 feet, tương đương với 1.200m. <br>
+                            Năm 1985, những chiếc đồng hồ Rolex bằng thép sản xuất từ hợp kim 904L ra đời. Đây là sản
+                            phẩm
+                            chống ăn mòn tuyệt vời và luôn sáng bóng rực rỡ. <br>
+                            Năm 1992 là năm đánh dấu sự ra đời của một dòng sản phẩm khiến cho hãng Rolex càng trở nên
+                            nổi
+                            tiếng hơn. Đó chính là Yacht-Master. <br>
+                            <div class="text-center"><img src="/site/images/3-dong-ho-rolex-3.jpg" class="img-fluid" alt=""></div><br>
+                            <p class="text-center"><small>Mẫu đồng hồ Yacht-Master đánh dấu mối quan hệ giữa Rolex và thuyền buồm</small></p><br>
+                            Năm 2000, Rolex cho ra đời mẫu đồng hồ với bộ chuyển động 4130. Đây là mẫu đồng hồ chỉ tích
+                            hợp
+                            290 linh kiện – ít hơn rất nhiều so với một chiếc chronograph tiêu chuẩn. Chúng đề cao tính
+                            đơn
+                            giản nhưng vẫn toàn diện về tính năng. <br>
+                            Năm 2005, Rolex tiếp tục nhận bằng sáng chế cho thiết kế vàng đồng hồ Cerachrom dành riêng
+                            cho
+                            các phiên bản Professional. Mẫu này có khả năng lưu giữ vẻ đẹp và tính năng hoàn hảo cho
+                            đồng hồ
+                            dù ở trong bất kỳ điều kiện khắc nghiệt nào. <br>
+                            Cũng trong năm, Rolex trình làng những chiếc đồng hồ có mẫu dây tóc xanh Parachrom. Những
+                            dây
+                            tóc này được làm từ hợp kim, không bị ảnh hưởng bởi từ trường và chịu được va chạm gấp 10
+                            lần
+                            thông thường. <br>
+                            Năm 2007, mẫu đồng hồ Rolex Oyster Perpetual Yacht-Master II ra đời được trang bị bộ đếm
+                            ngược,
+                            có thẻ lập trình với bộ nhớ cơ. Đây là mẫu đồng hồ đầu tiên trên thế giới có tính năng này.
+                            <br>
+                            Tiếp đến năm 2008 là mẫu Rolex Deepsea dành cho thăm dò dưới biển. 2009 là mẫu Sky-Dweller
+                            dành
+                            cho những người thường xuyên đi lại trên toàn thế giới. <br>
+                            Năm 2013, Rolex chính thức trở thành đối tác lâu dài với Formula 1. <br>
+                            Năm 2017, thương hiệu Rolex được đánh giá là một biểu tượng của phong cách, đẳng cấp. Những
+                            mẫu
+                            đồng hồ Rolex là một phụ kiện thể hiện cho sự sang trọng và xa xỉ. <br><br>
+                            <h4>Đồng hồ Rolex chính là biểu tượng của giới thượng lưu</h4>
+                            Trên khắp thế giới, những chiếc đồng hồ thương hiệu Rolex chiếm lĩnh một thị trường rộng
+                            lớn.
+                            Người ta không chỉ mua Rolex bởi chất lượng hay sự chính xác. Mà hơn thế nữa, những chiếc <a
+                                th:href="@{/api/site/product}">đồng
+                                hồ Rolex chính hãng</a> có thể giúp khẳng định chính mình và nâng cao vị thế xã hội của
+                            chủ
+                            nhân.
+                            Phụ kiện này được ví như một chiếc Porsche có thể mang theo trên tay và giá trị của Rolex
+                            cũng
+                            tương đương như vậy, chứ không hề kém cạnh. <br>
+                            <div class="text-center"><img src="/site/images/3-dong-ho-rolex-4.jpg" class="img-fluid" alt=""></div><br>
+                            <p class="text-center"><small>Chiếc đồng hồ Rolex trên tay của cựu Tổng thống Mỹ</small></p><br>
+                            Trên thực tế, những phiên bản đồng hồ thương hiệu Rolex luôn xuất hiện cùng với những người
+                            nổi
+                            tiếng, từ chính khách cho đến ca sĩ, nghệ sĩ. Có thể điểm qua một số ví dụ cơ bản như chiếc
+                            đồng
+                            hồ dòng Rolex Datejust bằng vàng hồng của thủ tướng Winston Churchill sử dụng. Tổng thống
+                            Eisenhower cũng sở hữu cho mình một chiếc Rolex Datejust màu vàng vàng. Tổng thống Kennedy
+                            từng
+                            được ca sĩ lừng danh Marilyn monroe tặng chiếc Datejust với dòng chữ Jack Jack. Tiếp đến,
+                            chúng
+                            ta có thể nhắc đến chiếc đồng hồ Rolex Oyster Date Perpetual Oyster đã xuất hiện cùng với
+                            Lyndon
+                            B. Johnson trên tạp chí Time lừng danh. Trong một chiến dịch vận động, chính trị gia Che
+                            Guevara
+                            đã đeo chiếc Rolex Submariner ấn tượng. Ronald Reagan được biết đến là tổng thống đương
+                            nhiệm
+                            cuối cùng đeo Rolex trong nhà trắng. Bởi khi đó, việc tặng quà cho chính trị gia được chính
+                            phủ
+                            Mỹ xem xét kỹ lưỡng hơn. <br>
+                            Nhưng cho dù là vậy, đồng hồ Rolex chưa bao giờ mất đi sự tín nhiệm. Ngay say khi Bill
+                            Clinton
+                            từ chức tổng thống thì đã sở hữu ngay một phiên bản đặc biệt của Rolex. Cũng trong một
+                            trường
+                            hợp tương tự, trong một trận bóng rổ gần đây, giới mộ điệu đã tinh mắt nhận ra chiếc Fitbit
+                            ionic đã xuất hiện cùng với cựu Tổng thống Obama. <br>
+                            Gần đây nhất, năm 2016, trong chiến dịch tranh cử của mình, ông Donald Trump đã đeo một
+                            chiếc
+                            Rolex Day-Date thể hiện sự lịch sự và đẳng cấp của mình. <br>
+                            Bên cạnh đó, có vô số những ca sĩ, nghệ sĩ yêu thích và sở hữu những chiếc đồng hồ Rolex
+                            sang
+                            trọng. <br><br>
+                            <h4>Nghệ thuật chế tác - dấu ấn riêng của đồng hồ Rolex</h4>
+                            Rolex là một trong những thương hiệu nổi tiếng và có nhiều thành tựu, đóng góp không nhỏ vào
+                            sự
+                            phát triển vượt bậc của ngành công nghệ chế tác đồng hồ trên toàn thế giới. Trong suốt quá
+                            trình
+                            hoạt động và phát triển của mình, Rolex luôn có những sáng tạo và đổi mới không ngừng nghỉ,
+                            mang
+                            đến những kiệt xuất đáng nể phục. Chúng ta có thể kể đến những dấu ấn quan trọng nhất trong
+                            sự
+                            phấn đấu, sáng tạo không ngừng đó như sau: <br>
+                            <div class="text-center"><img src="/site/images/3-dong-ho-rolex-5.jpg" class="img-fluid" alt=""></div><br>
+                            <p class="text-center"><small>Sự sáng tạo của Rolex là không ngừng nghỉ</small></p><br>
+                            - Lần đầu tiên trong lịch sử chế tác đồng hồ thế giới có một hãng đồng hồ nhận được chứng
+                            nhận
+                            Chronometer khẳng định về độ chính xác vượt trội. <br>
+                            - Chiếc đồng hồ Rolex có khả năng chống nước đầu tiên trên toàn thế giới, ra đời năm 1926
+                            với
+                            tên gọi Oyster. <br>
+                            - Chiếc đồng hồ đeo tay với bộ máy tự động đầu tiên sản xuất vào năm 1928 với mã sản phẩm là
+                            Bubbleback có nắp kim loại mặt sau lớn. Chúng được ra mắt vào năm 1931. <br>
+                            - Chiếc đồng hồ đeo tay có lịch thứ tự động thay đổi đầu tiên trên mặt số với phiên bản
+                            Rolex
+                            Datejust ref 4447, được giới thiệu vào năm 1945. <br>
+                            - Chiếc đồng hồ Rolex có bộ vỏ chống xước có thể chịu được áp lực nước tới độ sâu 330 feet
+                            (tương đương với 100m). Thậm chí, hãng Rolex còn tạo ra một phiên bản đặc biệt được sử dụng
+                            trong chuyến thám hiểm vực Mariana dưới đáy biển sâu. Chiếc Rolex Deepsea này đã được xác
+                            nhận
+                            dù ở độ sâu 11.000m vẫn hoạt động một cách chính xác như trên mặt đất. <br>
+                            Chiếc đồng hồ đầu tiên trên thế giới có hiển thị múi giờ thứ hai trên mặt số. Có thể nhắc
+                            đến
+                            phiên bản đầu tiên là chiếc Rolex GMT Master rè 654 được hãng trình làng vào năm 1954. <br>
+                            - Vào năm 1956, Rolex mang đến cho giới mộ điệu thêm một phát minh cực kỳ xuất sắc. Chiếc
+                            đồng
+                            hồ Rolex đeo tay đầu tiên trên toàn thế giới tự động thay đổi lịch ngày và lịch thứ trên mặt
+                            số.
+                            Đó là chiếc Rolex Day-Date. <br>
+                            <div class="text-center"><img src="/site/images/3-dong-ho-rolex-6.jpg" class="img-fluid" alt=""></div><br>
+                            <p class="text-center"><small>Những thiết kế luôn mang đến mới lạ và hoàn hảo hơn</small></p><br>
+                            - Sau cuộc khủng hoảng thạch anh ở Nhật Bản, hãng Rolex đã quyết định tham gia phát triển
+                            các
+                            đồng hồ thạch anh ấn tượng của riêng mình. Vào cuối thập niên 1960, đầu thập niên 1970, các
+                            kỹ
+                            sư của Rolex đã phát triển các trang thiết bị máy móc công nghệ để sản xuất đồng hồ thạch
+                            anh.
+                            Vào năm 1968, Rolex đã liên kết với 16 nhà sản xuất đồng hồ Thụy Sỹ khác để phát triển bộ
+                            máy
+                            thạch anh Beta 1. Và thành công vang dội với phiên bản Rolex Quartz Date 5100 và phiên bản
+                            Omega
+                            Electro quartz. Trong suốt 5 năm nghiên cứu sau đó, hãng đã sáng tạo ra bộ máy Clean-Slate
+                            5035/5055 sử dụng trong dòng Oysterquartz của Rolex. <br>
+                            Không chỉ như vậy, khi nhắc đến những phát minh của Rolex không thể không nhắc đến sự kết
+                            hợp
+                            tuyệt vời các chất liệu quý hiếm trong một chiếc đồng hồ. Rolex vàng hồng được phát minh năm
+                            002
+                            với sự kết hợp 76% vàng, 22% đồng, 2% bạch kim. Đó là một trong những tuyệt tác không thể
+                            không
+                            nhắc đến trong thế giới đồng hồ cao cấp. <br>
+                            Dây tóc anh Parachrom được Rolex phát minh năm 2005 với một loại chất liệu chống từ vô cùng
+                            ấn
+                            tượng. <br>
+                            Sử dụng Cerachrom – là một loại vật liệu gốm có sự kết hợp với các sắc tố từ khoáng chất.
+                            Đây là
+                            chất liệu siêu cứng, bền màu và chống ăn mòn. Rolex là hãng đồng hồ đầu tiên và duy nhất
+                            trên
+                            thế giới sử dụng chất liệu này trong chế tác đồng hồ. <br>
+                            Rolesor – là sự sáng tạo vô cùng tuyệt vời của đồng hồ Rolex. Đó là sự kết hợp hoàn hảo giữa
+                            hai
+                            loại kim loại chuẩn, là vàng và thép. Không chỉ đảm bảo độ bền mà còn tạo ra sự tương phản
+                            màu
+                            sắc cực kỳ độc đáo và đẹp mắt. <br>
+                            Nói đến nghệ thuật chế tác đồng hồ của Rolex, có lẽ sẽ tốn rất nhiều thời gian. Bởi với
+                            Rolex,
+                            sự sáng tạo chưa bao giờ là giới hạn hoặc có điểm dừng. Mỗi ngày trôi qua đều là sự đào sâu,
+                            tìm
+                            kiếm ra những phát minh mới để hoàn thiện hơn các thiết kế của mình. Nhờ đó mang lại cho
+                            người
+                            tiêu dùng những phiên bản đồng hồ Rolex tuyệt vời nhất. <br> <br>
+                            <h4>Mỗi chiếc đồng hồ Rolex viết nên một câu chuyện</h4>
+                            Không chỉ đến khi khởi xướng chiến dịch Every Rolex tells a story thì Rolex mới đưa những
+                            câu
+                            chuyện thú vị về những người nổi tiếng để thổi bùng lên đam mê và khát khao. Trước đó, có
+                            thể
+                            nói là ngay từ khi cho ra đời những sản phẩm đầu tiên, Rolex đã đặt vào đó những câu chuyện,
+                            những khát vọng truyền cảm hứng. <br>
+                            <div class="text-center"><img src="/site/images/3-dong-ho-rolex-7.jpg" class="img-fluid" alt=""></div><br>
+                            <p class="text-center"><small>Rolex Gary ra đời gắn liền với câu chuyện của golf thủ vĩ đại Gary Player</small></p><br>
+                            Có một câu chuyện về những chiếc đồng hồ cho tù binh và cuộc đào thoát vĩ đại” diễn ra trong
+                            thế
+                            chiến thứ 2. Chuyện kể rằng, khi bắt đầu cho chiến tranh thế giới thứ 2, Hoàng gia Anh đã
+                            trang
+                            bị cho phi công của lực lượng không quân những chiếc đồng hồ Rolex bền chắc. Nhưng, khi bị
+                            bắt
+                            làm tù binh, những chiếc đồng hồ này đã bị tịch thu. Khi biết điều này, người sáng lập đồng
+                            hồ
+                            Rolex Hans Wilsdorf đã đề nghị cấp 3000 chiếc đồng hồ cho tù binh và không yêu cầu thanh
+                            toán.
+                            Thêm một câu chuyện khác nữa, năm 1943, khi còn là một từ nhân trong trại tù binh của Đức,
+                            Live
+                            James Nutting đã yêu cầu một chiếc Rolex Oyster 3525 Chronograph bằng thép không gỉ và trả
+                            từ
+                            tiền đóng giày trong trại tù. Đây là chiếc đồng hồ Rolex đã giúp làm nên kỳ tích trong cuộc
+                            đào
+                            tẩu vĩ đại của 76 tù nhân. Chiếc đồng hồ này, năm 2007, được bán đấu giá với mức giá 66.000
+                            bảng
+                            Anh – một con số vô cùng ấn tượng. <br>
+                            Tiếp đến là những câu chuyện về các nhà thám hiểm. Rolex đã chế tạo ra rất nhiều các mẫu
+                            đồng hồ
+                            gắn liền với những ngành nghề đặc biệt. Có thể nhắc đến như: <br>
+                            Những phiên bản đồng hồ thể thao đầu tiên như Rolex Submariner, Rolex Oyster Perpetual Date
+                            Sea
+                            Dweller hay những phiên bản mới Valve helium có khả năng bảo vệ bộ máy và giải phóng khí
+                            Heli
+                            trong quá trình giải áp của đồng hồ lặn. Những mẫu đồng hồ Rolex này gắn liền với những
+                            người
+                            thợ lặn biển sâu vô cùng nguy hiểm, nhưng rất thú vị. <br>
+                            <div class="text-center"><img src="/site/images/3-dong-ho-rolex-8.jpg" class="img-fluid" alt=""></div><br>
+                            <p class="text-center"><small>Mẫu đồng hồ Rolex cho thợ lặn biển sâu</small></p><br>
+                            Những mẫu đồng hồ Explorer ra đời năm 1953 hay Explorer II ra đời năm 1971 là phiên bản đặc
+                            biệt
+                            dành riêng cho những nhà thám hiểm chuyên chinh phục những địa hình gồ ghề, hiểm trở. Ví dụ
+                            như
+                            cuộc thám hiểm Everest nổi tiếng thế giới cho đến tận ngày hôm nay. <br>
+                            Năm 1954, chiếc Rolex GMT Master ra đời là được chế tác theo yêu cầu của Pan Sm Airway để
+                            dành
+                            riêng cho các đội bay. Với thiết kế giờ địa phương có thể sử dụng để hiển thị giờ thế giới
+                            Greenwich Mean time. Đó chính là thời gian quốc tế tiêu chuẩn trong ngành hàng không và rất
+                            cần
+                            thiết cho các phi công trong các chuyến bay. Và đồng hồ Rolex đã làm được điều đó một cách
+                            tuyệt
+                            vời. <br><br>
+                            <h4>Đồng hồ Rolex và những cái tên đình đám</h4>
+                            Quay trở lại với chiến dịch Every Rolex tells a story. Với thông điệp trở thành một biểu
+                            tượng
+                            của cảm xúc, mang đến những khoảnh khắc thật đặc biệt, Rolex đã thổi hồn vào mỗi thiết kế
+                            đặc
+                            biệt của mình với một câu chuyện người thật việc thật. Ở nơi đó, chúng ta thấy được sự nỗ
+                            lực cố
+                            gắng vươn lên của những con người từng là bình thường đã trở nên kiệt xuất. Ở nơi đó có
+                            những
+                            giá trị nhân văn sâu sắc. Ở nơi đó, chúng ta tìm thấy được con người thật của bản thân mình.
+                            Và
+                            ở nơi đó, truyền cảm hứng cho chúng ta vượt qua giới hạn của bản thân, hướng đến những điều
+                            tốt
+                            đẹp hơn. <br>
+                            <div class="text-center">
+                                <img src="/site/images/3-dong-ho-rolex-9.jpg" class="img-fluid" alt="">
+                            </div><br>
+                            <p class="text-center"><small>Roger Federer và đồng hồ Rolex năm 2009</small></p><br>
+                            Lần đầu tiên phá vỡ kỷ lục thế giới vào năm 2009 của tay vợt vĩ đại nhất mọi thời đại Roger
+                            Federer gắn liền với chiếc đồng hồ Rolex anh đeo trên tay khi nâng cup. Để mỗi lần nhìn thấy
+                            chiếc đồng hồ này, anh lại nhớ đến một kỷ niệm đẹp và coi đó là “sự vĩ đại của riêng mình”.
+                            <br>
+                            Chiếc Rolex Submariner luôn theo đạo diễn lừng danh James Cameron trong suốt hơn 20 năm ông
+                            tìm
+                            tòi, khám phá những điều mới lạ để làm đề tài cho những bộ phim kinh điển của mình. Đối với
+                            ông,
+                            Rolex là biểu tượng của sự tìm kiếm bền bỉ. Và điều đó khiến một nhà thám hiểm như James
+                            luôn
+                            mang theo đồng hồ hãng Rolex bên mình. Ông từng rằng “mọi người đến và đi, nhưng đồng hồ thì
+                            luôn ở đó”. <br>
+                            Đối với tay golf nữ thành công nhất mọi thời đại Annika Sorenstam, đồng hồ Rolex là minh
+                            chứng
+                            của cuộc hành trình 20 năm đưa cô đạt đến vinh quang. Cô nhận được chiếc Rolex đầu tiên khi
+                            thắng tại giải Rolex Rookie of the Year năm 1994 và mua thêm một chiếc khác sau 20 năm. 2
+                            chiếc
+                            Rolex đã tóm tắt toàn bộ sự nghiệp của Annika – theo như lời cô đã nói. <br>
+                            Chiếc đồng hồ Rolex là tặng phẩm đầu tiên mà ca sĩ nổi tiếng Michael Bublé nhận được sau
+                            thành
+                            công của album đầu tiên. Mỗi lần nhìn chiếc đồng hồ, anh lại xem đó như là thước đo cho sự
+                            chăm
+                            chỉ và cống hiến của mình để đạt được ước mơ từ thuở nhỏ. <br>
+                            Chúng ta cũng không quên nhắc đến câu chuyện của tay vợt người Tây Ban Nha Venezuela Garbine
+                            Muguruza. Chiếc đồng hồ thương hiệu Rolex chính là quà tặng cô tự thưởng cho mình khi lần
+                            đầu
+                            tiên lọt vào top 20 thế giới. Ở trong đó là phần thưởng và cũng là sự hy sinh để có được
+                            thành
+                            công. <br>
+                            Chắc hẳn không ai không biết đến du thuyền người Mỹ Paul Cayard lừng danh với bảy chức vô
+                            địch
+                            thế giới, hai lần tham gia thế vận hội Olympic và bảy lần trong Cup của Mỹ. Khi đối mặt với
+                            rất
+                            nhiều những nguy hiểm trên biển, Paul luôn có đồng hồ Rolex là bạn đồng hành. Chính Rolex là
+                            hiện thân của những cuộc phiêu lưu mà ông không thể quên trong suốt cuộc đời mình. <br>
+                            <div class="text-center">
+                                <img src="/site/images/3-dong-ho-rolex-10.jpg" class="img-fluid" alt="">
+                            </div><br>
+                            <p class="text-center"><small>Chiếc đồng hồ Rolex Nico Rosberg</small></p><br>
+                            Nico Rosberg là Tay đua công thức 1 vô cùng nổi tiếng. Sau 30 năm cha anh lên ngôi vô địch
+                            thế
+                            giới giải Công thức 1, thì năm 2013, anh cũng lần đầu tiên được cầm cờ ca rô ở Monaco. Và
+                            anh đã
+                            mua chiếc Rolex Submariner xanh ngay sau khi thắng giải. Chiếc Rolex đã luôn nhắc nhở anh
+                            liên
+                            tục cố gắng để đạt được giấc mơ lớn nhất của đời mình. <br>
+                            Chiếc đồng hồ Rolex còn chứng kiến rất nhiều câu chuyện của những nhân vật khác nữa. Ví dụ
+                            như
+                            câu chuyện thám hiểm của nhà sinh vật học biển nổi tiếng Sylvia Earle; Món tặng phẩm tuyệt
+                            vời
+                            dành cho người cha của mình của nghệ sĩ piano cổ điển Trung Quốc Yundi; Câu chuyện thành
+                            công
+                            của nhà vô địch quần vợt người Mỹ Chris Evert; Chứng kiến câu chuyện vượt qua bệnh tật để
+                            trở
+                            thành vận động viên chuyên nghiệp đầu tiên của Ấn Độ của Vijay Amritraj; Hay sự nỗ lực để
+                            đạt
+                            được những thành tựu rực rỡ của tay golf chuyên nghiệp trẻ tuổi người New Zealand gốc Hàn
+                            Quốc
+                            Lydia Ko... Và còn rất nhiều những câu chuyện khác, mà chiếc đồng hồ của hãng Rolex đã gắn
+                            bó và
+                            đồng hành cùng họ. Đây cũng chính là lý do vì sao, Rolex được coi là thương hiệu dành cho
+                            những
+                            người thành công. <br>
+                            <p class="text-end"><strong>Nguồn: <a href="#">Luxury Watch</a></strong></p>
                         </div>
-                   
+                    </div>
                 </div>
             </div>
-        </section>
+        </div>
     </div>
 
 

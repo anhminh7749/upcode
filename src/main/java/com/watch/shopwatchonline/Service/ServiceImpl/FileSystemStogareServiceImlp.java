@@ -95,7 +95,7 @@ public List<Image> findImageByBlogId(int BlogId) {
 			}
 			throw new StorageFileException("Could not read file: " + fileName);
 		} catch (Exception e) {
-			throw new StorageFileException("Could not read file: " + fileName + e);
+			throw new StorageFileException("Could not read file: " + fileName + " " +e);
 		}
 	}
 

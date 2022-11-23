@@ -69,6 +69,12 @@ public class HomeController {
     return "web-site/user-info";
   }
 
+  // Test modal
+  @GetMapping("/site/modal")
+  public String modalTest(){
+    return "web-site/modal";
+  }
+
   @GetMapping("/chatbox")
   public String chatbox(Model model, HttpServletRequest request) {
     try {

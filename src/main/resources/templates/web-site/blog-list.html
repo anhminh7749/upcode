@@ -1,0 +1,72 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{web-site/layout}">
+
+<head>
+
+</head>
+
+<body>
+	<div layout:fragment="content">
+		<div class="container">
+			<!-- block -->
+			<div class="row">
+				<div class="d-flex justify-content-center">
+					<h1>TIN TỨC MỚI</h1>
+				</div>
+				<div class="row row-cols-1 row-cols-md-3 g-4">
+					<div class="col">
+						<div class="card h-100">
+							<a th:href="@{/api/site/blog-details}"><img src="/site/images/abt-1.jpg"
+									class="card-img-top" alt="..."></a>
+							<div class="card-body">
+								<a th:href="@{/api/site/blog-details}">
+									<h5 class="card-title">Đồng hồ Rolex - câu chuyện của một huyền thoại</h5>
+								</a>
+								<p class="card-text">Một trong những tên tuổi sáng chói nhất trong ngành sản xuất đồng
+									hồ cao cấp chính là Rolex. Với tên gọi chính xác là Rolex SA, trải qua hơn 100 năm
+									hình thành và phát triển,...</p>
+							</div>
+							<div class="card-footer">
+								<small class="text-muted">Tác giả: Luxury Watch</small>
+							</div>
+						</div>
+					</div>
+					<div class="col">
+						<div class="card h-100">
+							<a th:href="@{/api/site/blog-details}"><img src="/site/images/abt-2.jpg"
+									class="card-img-top" alt="..."></a>
+							<div class="card-body">
+								<a th:href="@{/api/site/blog-details}"><h5 class="card-title">Đồng hồ Breitling của nước nào? Đánh giá đồng hồ Breitling từ các
+									chuyên gia</h5></a>
+								<p class="card-text">Breitling được biết đến với sự chính xác, thiết thực và sáng tạo
+									không ngừng, đặc biệt là với dòng đồng dành cho phi công.</p>
+							</div>
+							<div class="card-footer">
+								<small class="text-muted">Tác giả: Luxury Watch</small>
+							</div>
+						</div>
+					</div>
+					<div class="col">
+						<div class="card h-100">
+							<a th:href="@{/api/site/blog-details}"><img src="/site/images/abt-3.jpg"
+									class="card-img-top" alt="..."></a>
+							<div class="card-body">
+								<a th:href="@{/api/site/blog-details}"><h5 class="card-title">Đồng hồ 2LMX sử dụng trống quay để biểu thị thời gian</h5></a>
+								<p class="card-text">Thương hiệu đồng hồ mới được công bố 2LMX đã phát hành chiếc đồng
+									hồ đầu tiên của mình. Thương hiệu đã được tạo ra bởi Arnaud Tellier, cựu giám đốc
+									của bảo tàng Geneva Patek Philippe.</p>
+							</div>
+							<div class="card-footer">
+								<small class="text-muted">Tác giả: Luxury Watch</small>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- //block-->
+		</div>
+	</div>
+</body>
+
+</html>
