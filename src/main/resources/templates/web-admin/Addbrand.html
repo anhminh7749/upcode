@@ -40,9 +40,11 @@
 												<input type="text" class="form-control1" th:field="*{name}"
 													placeholder="Name">
 											</div>
-											<small th:if="${#fields.hasErrors('name')}" 
-												class="form-text text-muted">Brand
-												is required</small>
+											<div class="has-error">
+												<small th:if="${#fields.hasErrors('name')}"
+													id="customerIdHid" class="form-text text-muted help-block" th:errors="*{name}">
+												</small>
+											</div>
 										</div>
 									</div>
 									<div class="form-group">
@@ -54,9 +56,11 @@
 												<input type="text" class="form-control1" th:field="*{thumbnail}"
 													placeholder="Ảnh">
 											</div>
-											<small th:if="${#fields.hasErrors('thumbnail')}" 
-												class="form-text text-muted">Image
-												is required</small>
+											<div class="has-error">
+												<small th:if="${#fields.hasErrors('thumbnail')}"
+													id="customerIdHid" class="form-text text-muted help-block" th:errors="*{thumbnail}">
+												</small>
+											</div>
 										</div>
 									</div>
 									<div class="form-group">
@@ -66,17 +70,19 @@
 												<span class="input-group-addon"> <i class="fa fa-user"></i>
 												</span>
 												<input type="text" class="form-control1" th:field="*{description}"
-													placeholder="Name">
+													placeholder="Nội dung">
 											</div>
-											<small th:if="${#fields.hasErrors('description')}" id="customerIdHid"
-												class="form-text text-muted">Image
-												is required</small>
+											<div class="has-error">
+												<small th:if="${#fields.hasErrors('description')}"
+													id="customerIdHid" class="form-text text-muted help-block" th:errors="*{description}">
+												</small>
+											</div>
 										</div>
 									</div>
 									<div class="card-footer text-center">
 										<button class="btn btn-primary">
-											<span th:if="${brand.isEdit}">Update</span> <span
-												th:unless="${brand.isEdit}">Save</span>
+											<span th:if="${brand.isEdit}">Cập Nhật</span> <span
+												th:unless="${brand.isEdit}">Thêm</span>
 										</button>
 
 									</div>

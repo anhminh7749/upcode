@@ -5,6 +5,8 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -34,107 +36,103 @@ import com.watch.shopwatchonline.Repository.DiscountCodeRepository;
 @Controller
 @RequestMapping("api/admin/DiscountCode")
 public class DiscountCodeController {
-    
-@Autowired
-private DiscountCodeRepository codeRepository;
 
-@GetMapping("")
-public String index(Model model){
-   
-    DiscountCodeDto dto = new DiscountCodeDto();
-        dto.setIsEdit(false);
-        model.addAttribute("code", dto);
-    return "web-admin/AddDiscountCode";
-}
-@GetMapping("list-code")
-public ModelAndView indexL(ModelMap model, @RequestParam(name = "keyword", required = false) String keyword,
-@RequestParam("page") Optional<Integer> page, @RequestParam("size") Optional<Integer> size) {
+	@Autowired
+	private DiscountCodeRepository codeRepository;
 
-    int curPage = page.orElse(1);
-    int pageSize = size.orElse(5);
+	@GetMapping("")
+	public String index(Model model) {
 
-  
-    Page<DiscountCode> resultPage = null;
-   
-    if (StringUtils.hasText(keyword)) {
-        Pageable pageable = PageRequest.of(curPage - 1, pageSize);
-        resultPage = codeRepository.findByNameContaining(keyword, pageable);
-        model.addAttribute("keyword", keyword);
-    } else {
-        Pageable pageable = PageRequest.of(curPage - 1, pageSize);
-        resultPage = codeRepository.findAll(pageable);
-        
-    }
+		DiscountCodeDto dto = new DiscountCodeDto();
+		dto.setIsEdit(false);
+		model.addAttribute("code", dto);
+		return "web-admin/AddDiscountCode";
+	}
 
-    int totalPages = resultPage.getTotalPages();
+	@GetMapping("list-code")
+	public ModelAndView indexL(ModelMap model, @RequestParam(name = "keyword", required = false) String keyword,
+			@RequestParam("page") Optional<Integer> page, @RequestParam("size") Optional<Integer> size) {
 
-    if (totalPages > 0) {
-        int start = Math.max(1, curPage - 2);
-        int end = Math.min(curPage + 2, totalPages);
+		int curPage = page.orElse(1);
+		int pageSize = size.orElse(5);
 
-        if (totalPages > 5) {
-            if (end == totalPages){
-                start = end - 5;
-            }else{
-                if (start == 1){
-                    end = start + 5;
-                }
-            }
-        }
+		Page<DiscountCode> resultPage = null;
 
-        List<Integer> pageNums = IntStream.rangeClosed(start, end).boxed().collect(Collectors.toList());
-        model.addAttribute("pageNums", pageNums);
-    
-    }
+		if (StringUtils.hasText(keyword)) {
+			Pageable pageable = PageRequest.of(curPage - 1, pageSize);
+			resultPage = codeRepository.findByNameContaining(keyword, pageable);
+			model.addAttribute("keyword", keyword);
+		} else {
+			Pageable pageable = PageRequest.of(curPage - 1, pageSize);
+			resultPage = codeRepository.findAll(pageable);
 
-    List<DiscountCode> p = codeRepository.findAll();
+		}
 
+		int totalPages = resultPage.getTotalPages();
 
-    model.addAttribute("keyword", keyword);
-    model.addAttribute("codePage", resultPage);
-    model.addAttribute("tt", p.size());
-    return new ModelAndView("web-admin/ListDiscountCode", model);
-}
+		if (totalPages > 0) {
+			int start = Math.max(1, curPage - 2);
+			int end = Math.min(curPage + 2, totalPages);
 
+			if (totalPages > 5) {
+				if (end == totalPages) {
+					start = end - 5;
+				} else {
+					if (start == 1) {
+						end = start + 5;
+					}
+				}
+			}
 
-@PostMapping("/update")
-public String update(ModelMap model, @Validated @ModelAttribute("code") DiscountCodeDto dto, BindingResult result)
-throws ParseException {
-if (result.hasErrors()) {
-return "";
-}
-DiscountCode code = new DiscountCode();
-    BeanUtils.copyProperties(dto, code);
-   
-    codeRepository.save(code);   
-    return "redirect:/api/admin/DiscountCode/list-code";
-}
+			List<Integer> pageNums = IntStream.rangeClosed(start, end).boxed().collect(Collectors.toList());
+			model.addAttribute("pageNums", pageNums);
 
+		}
 
-@GetMapping("edit/{Id}")
+		List<DiscountCode> p = codeRepository.findAll();
+
+		model.addAttribute("keyword", keyword);
+		model.addAttribute("codePage", resultPage);
+		model.addAttribute("tt", p.size());
+		return new ModelAndView("web-admin/ListDiscountCode", model);
+	}
+
+	@PostMapping("/update")
+	public String update(ModelMap model, @Valid @ModelAttribute("code") DiscountCodeDto dto, BindingResult result)
+			 {
+		if (result.hasErrors()) {
+			return "/api/admin/DiscountCode/add-code";
+		}
+		DiscountCode code = new DiscountCode();
+		BeanUtils.copyProperties(dto, code);
+
+		codeRepository.save(code);
+		return "redirect:/api/admin/DiscountCode/list-code";
+	}
+
+	@GetMapping("edit/{Id}")
 	public ModelAndView edit(ModelMap map, @PathVariable("Id") Integer Id) {
 
 		Optional<DiscountCode> opt = codeRepository.findById(Id);
-      
+
 		DiscountCodeDto dto = new DiscountCodeDto();
 
 		if (opt.isPresent()) {
 			DiscountCode entity = opt.get();
 			BeanUtils.copyProperties(entity, dto);
 			dto.setIsEdit(true);
-           
+
 			map.addAttribute("code", dto);
 			return new ModelAndView("web-admin/AddDiscountCode", map);
 		}
 
-            return new ModelAndView("web-admin/ListDiscountCode");
-            }
+		return new ModelAndView("web-admin/ListDiscountCode");
+	}
 
-            
-            @GetMapping("delete/{Id}")
-            public String delete(ModelMap map, @PathVariable("Id") Integer id) {
-                codeRepository.deleteById(id);
+	@GetMapping("delete/{Id}")
+	public String delete(ModelMap map, @PathVariable("Id") Integer id) {
+		codeRepository.deleteById(id);
 
-            return "redirect:/api/admin/DiscountCode/list-code";
-            }
+		return "redirect:/api/admin/DiscountCode/list-code";
+	}
 }

@@ -1,7 +1,6 @@
 package com.watch.shopwatchonline.Model;
 
 import java.io.Serializable;
-import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,6 +10,14 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -23,26 +30,33 @@ import lombok.NoArgsConstructor;
 @Table(name = "Customers")
 public class Customer implements Serializable {
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int customerId;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int customerId;
 
-    @Column(length = 100, columnDefinition = "nvarchar(50) not null")
-    private String name;
-    
+	@NotEmpty(message = "Tên không để trống!")
+	@Column(length = 50, columnDefinition = "nvarchar(50) not null")
+	@Size(max = 30, min = 5, message = "Tên phải từ 5 kí tự trở lên  và 30 kí tự trở xuống!")
+	private String name;
+
     @Column(length = 100, columnDefinition = "nvarchar(100) not null")
-    private String email;
-    
-    @Column(length = 10)
-    private String phone;
-    
-    @Column(nullable = false)
-    private Short gender = 0;
-    
-    @Column(nullable = false)
-    private String birthday;
-    
-    @Column(nullable = false)
-    private Short status = 0;
+	@NotEmpty(message = "Email không để trống!")
+	@Pattern(regexp = ".+@.+\\.[a-z]+")
+	private String email;
+
+    @NotNull(message = "SĐT không để trống!")
+	@Max(value = 10, message = "SĐT không đúng định dạng!")
+	@Min(value = 10, message = "SĐT không đúng định dạng!")
+	private Integer phone;
+
+	@Column(nullable = false)
+	private Short gender = 0;
+
+	@NotEmpty(message = "Ngày sinh không để trống!")
+	@Column(length = 10, columnDefinition = "nvarchar(10) not null")
+	private String birthday;
+
+	@Column(nullable = false)
+	private Short status = 0;
 //
 //    @ManyToOne
 //    @JoinColumn(name = "GiohangId",nullable = false)

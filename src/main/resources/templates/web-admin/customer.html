@@ -42,9 +42,11 @@
 												<input type="text" class="form-control1" th:field="*{name}"
 													placeholder="Name">
 											</div>
-											<small th:if="${#fields.hasErrors('name')}"
-												id="customerIdHid" class="form-text text-muted">Name
-												is required</small>
+											<div class="has-error">
+												<small th:if="${#fields.hasErrors('name')}"
+													id="customerIdHid" class="form-text text-muted help-block" th:errors="*{name}">
+												</small>
+											</div>
 										</div>
 									</div>
 									<div class="form-group">
@@ -56,8 +58,11 @@
 												</span> <input type="text" class="form-control1"
 													th:field="*{email}" placeholder="Email">
 											</div>
-											<small th:if="${#fields.hasErrors('email')}" id="EmailHid"
-												class="form-text text-muted">Email is required</small>
+											<div class="has-error">
+												<small th:if="${#fields.hasErrors('email')}"
+													id="customerIdHid" class="form-text text-muted help-block" th:errors="*{email}">!
+												</small>
+											</div>
 										</div>
 									</div>
 									<div class="form-group">
@@ -84,8 +89,11 @@
 												</span> <input type="text" class="form-control1"
 													th:field="*{phone}" placeholder="Phone">
 											</div>
-											<small th:if="${#fields.hasErrors('phone')}" id="phoneHid"
-												class="form-text text-muted">Phone is required</small>
+											<div class="has-error">
+												<small th:if="${#fields.hasErrors('phone')}"
+													id="customerIdHid" class="form-text text-muted help-block" th:errors="*{phone}">!
+												</small>
+											</div>
 										</div>
 									</div>
 									<div class="form-group">
@@ -97,15 +105,17 @@
 												</span> <input type="date" class="form-control1"
 													th:field="*{birthday}" placeholder="dd/mm/yyyy">
 											</div>
-											<small th:if="${#fields.hasErrors('birthday')}"
-												id="birthdayHid" class="form-text text-muted">Birthday
-												is required</small>
+											<div class="has-error">
+												<small th:if="${#fields.hasErrors('birthday')}"
+													id="customerIdHid" class="form-text text-muted help-block" th:errors="*{birthday}">!
+												</small>
+											</div>
 										</div>
 									</div>
 									<div class="card-footer text-center">
 										<button class="btn btn-primary">
-											<span th:if="${customer.isEdit}">Update</span> <span
-												th:unless="${customer.isEdit}">Save</span>
+											<span th:if="${customer.isEdit}">Sửa</span> <span
+												th:unless="${customer.isEdit}">Thêm</span>
 										</button>
 
 									</div>

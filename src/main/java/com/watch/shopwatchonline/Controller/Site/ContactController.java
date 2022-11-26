@@ -6,6 +6,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
@@ -70,7 +72,7 @@ public class ContactController {
 	}
 
 	@PostMapping("send")
-	public ModelAndView sendMail(ModelMap model, @ModelAttribute("mail") MailDto dto,
+	public ModelAndView sendMail(ModelMap model,@Valid @ModelAttribute("mail") MailDto dto,
 			@RequestParam("gmail") String to,
 			@RequestParam("title") String subject,
 			@RequestParam("description") String content) {

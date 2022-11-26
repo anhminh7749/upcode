@@ -35,7 +35,7 @@
 									th:object="${staff}">
 									<input type="text" hidden th:field="*{staffId}">
 									<div class="form-group">
-										<label class="col-md-2 control-label">Ho Va Ten:</label>
+										<label class="col-md-2 control-label">Họ và Tên:</label>
 
 										<div class="col-md-8">
 											<div class="input-group">
@@ -44,12 +44,15 @@
 												</span> <input type="text" class="form-control1" th:field="*{name}"
 													placeholder="Name">
 											</div>
-											<small th:if="${#fields.hasErrors('name')}" id="nameHid"
-												class="form-text text-muted">Name is required</small>
+											<div class="has-error">
+												<small th:if="${#fields.hasErrors('name')}"
+													id="customerIdHid" class="form-text text-muted help-block" th:errors="*{name}">
+												</small>
+											</div>
 										</div>
 									</div>
 									<div class="form-group" th:field="${staff.isEdit}">
-										<label class="col-md-2 control-label">Email</label>
+										<label class="col-md-2 control-label">Email:</label>
 										<div class="col-md-8">
 											<div class="input-group">
 												<span class="input-group-addon"> <i
@@ -57,13 +60,16 @@
 												</span> <input type="text" class="form-control1"
 													th:field="*{email}" placeholder="Email">
 											</div>
-											<small th:if="${#fields.hasErrors('email')}" id="emailHid"
-												class="form-text text-muted">Email is required</small>
+											<div class="has-error">
+												<small th:if="${#fields.hasErrors('email')}"
+													id="customerIdHid" class="form-text text-muted help-block" th:errors="*{email}">
+												</small>
+											</div>
 										</div>
 									</div>
 
 									<div class="form-group">
-										<label class="col-md-2 control-label">Phong Ban</label>
+										<label class="col-md-2 control-label">Phòng Ban:</label>
 										<div class="col-md-8">
 											<div class="input-group">
 												<span class="input-group-addon"> <i class="fa fa-key"></i>
@@ -79,7 +85,7 @@
 										</div>
 									</div>
 									<div class="form-group">
-										<label class="col-md-2 control-label">Chuc VU</label>
+										<label class="col-md-2 control-label">Chức Vụ:</label>
 										<div class="col-md-8">
 											<div class="input-group">
 												<span class="input-group-addon"> <i
@@ -94,33 +100,39 @@
 										</div>
 									</div>
 									<div class="form-group">
-										<label class="col-md-2 control-label">Phone</label>
+										<label class="col-md-2 control-label">SĐT:</label>
 										<div class="col-md-8">
 											<div class="input-group">
 												<span class="input-group-addon"> <i
 													class="fa fa-phone"></i>
-												</span> <input type="text" class="form-control1"
+												</span> <input type="number" class="form-control1"
 													th:field="*{phone}" placeholder="Phone">
 											</div>
-											<small th:if="${#fields.hasErrors('phone')}" id="phoneHid"
-												class="form-text text-muted">Phone is required</small>
+											<div class="has-error">
+												<small th:if="${#fields.hasErrors('phone')}"
+													id="customerIdHid" class="form-text text-muted help-block" th:errors="*{phone}">
+												</small>
+											</div>
 										</div>
 									</div>
 									<div class="form-group">
-										<label class="col-md-2 control-label">Luong</label>
+										<label class="col-md-2 control-label">Lương:</label>
 										<div class="col-md-8">
 											<div class="input-group">
 												<span class="input-group-addon"> <i
 													class="fa fa-money"></i>
 												</span> <input type="number" class="form-control1"
-													th:field="*{luong}">
+													th:field="*{luong}" placeholder="Luong">
 											</div>
-											<small th:if="${#fields.hasErrors('luong')}" id="luongHid"
-												class="form-text text-muted">Luong is required</small>
+											<div class="has-error">
+												<small th:if="${#fields.hasErrors('luong')}"
+													id="customerIdHid" class="form-text text-muted help-block" th:errors="*{luong}">
+												</small>
+											</div>
 										</div>
 									</div>
 									<div class="form-group">
-										<label class="col-md-2 control-label">Ngay Bat Dau</label>
+										<label class="col-md-2 control-label">Ngày Bắt Đầu:</label>
 										<div class="col-md-8">
 											<div class="input-group">
 												<span class="input-group-addon"> <i
@@ -128,16 +140,19 @@
 												</span> <input type="date" class="form-control1"
 													th:field="*{ngayBD}" placeholder="dd/mm/yyyy">
 											</div>
-											<small th:if="${#fields.hasErrors('ngayBD')}" id="ngayBDHid"
-												class="form-text text-muted">NgayBD is required</small>
+											<div class="has-error">
+												<small th:if="${#fields.hasErrors('ngayBD')}"
+													id="customerIdHid" class="form-text text-muted help-block" th:errors="*{ngayBD}">
+												</small>
+											</div>
 										</div>
 									</div>
 									<div class="card-footer text-center">
-										<a th:href="@{/admin/staffs/}" class="btn btn-success">ListStaff</a>
+										<a th:href="@{/admin/staffs/}" class="btn btn-success">Danh Sách</a>
 
 										<button class="btn btn-primary">
-											<span th:if="${staff.isEdit}">Update</span> <span
-												th:unless="${staff.isEdit}">Save</span>
+											<span th:if="${staff.isEdit}">Cập Nhật</span> <span
+												th:unless="${staff.isEdit}">Thêm</span>
 										</button>
 									</div>
 								</form>

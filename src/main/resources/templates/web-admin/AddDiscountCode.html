@@ -1,5 +1,6 @@
 <!DOCTYPE HTML>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorate="~{web-admin/layout}">
 
 <head>
@@ -15,58 +16,63 @@
 
 					<div class="form-three widget-shadow">
 						<div class=" panel-body-inputin">
-							<form class="form-horizontal" th:action="@{/api/admin/DiscountCode/update}" method="post"
+							<form class="form-horizontal"
+								th:action="@{/api/admin/DiscountCode/update}" method="post"
 								th:object="${code}">
-								<input type="hidden" th:field="*{isEdit}"> <input hidden readonly="readonly"
-									th:field="*{Id}">
+								<input type="hidden" th:field="*{isEdit}"> <input hidden
+									readonly="readonly" th:field="*{Id}">
 
 								<div id="par-2"></div>
 								<div class=" ">
 
 									<div class="form-group">
 
-										<div class="col-md-6">
-											<label>Tên:</label>
-											<input type="email" class="form-control" th:field="*{name}" name="name" placeholder="Name">
-
+										<div class="col-md-6" 
+										th:classappend="${#fields.hasErrors('name')} ? 'has-error'">
+											<label>Tên:</label> <input type="text" class="form-control"
+												th:field="*{name}" name="name" placeholder="Name">
+											<div class="has-error">
+												<small th:if="${#fields.hasErrors('name')}"
+													id="customerIdHid" class="form-text text-muted help-block"
+													th:errors="*{name}"> </small>
+											</div>
 										</div>
 										<div class="col-md-6"
-											th:classappend="${#fields.hasErrors('ApplicableDate')} ? 'has-error'">
-											<label>Email address</label> <input type="email" class="form-control"
-												id="exampleInputEmail1" placeholder="Email">
+											>
+											<label>Email address</label> <input type="email"
+												class="form-control" id="exampleInputEmail1"
+												placeholder="Email">
 										</div>
 									</div>
 
 									<div class="form-group">
 										<div class="col-md-6">
-											<label>Ngày hết hạn::</label>
-											<input type="datetime-local" class="form-control1"
-												th:field="*{ExpirationDate}" name="ExpirationDate">
+											<label>Ngày hết hạn::</label> <input type="datetime-local"
+												class="form-control1" th:field="*{ExpirationDate}"
+												name="ExpirationDate">
 										</div>
 										<div class="col-md-6"
 											th:classappend="${#fields.hasErrors('ApplicableDate')} ? 'has-error'">
-											<label>Mã byte:</label>
-											<input type="text" class="form-control1" th:field="*{ByteCode}"
-												name="ByteCode">
+											<label>Mã byte:</label> <input type="text"
+												class="form-control1" th:field="*{ByteCode}" name="ByteCode">
 										</div>
 									</div>
 									<div class="form-group">
 										<div class="col-md-6">
-											<label>Số lượng:</label>
-											<input type="number" class="form-control1" th:field="*{Quantity}"
-												name="Quantity">
+											<label>Số lượng:</label> <input type="number"
+												class="form-control1" th:field="*{Quantity}" name="Quantity">
 										</div>
 										<div class="col-md-6"
 											th:classappend="${#fields.hasErrors('ApplicableDate')} ? 'has-error'">
-											<label> Giá giảm:</label>
-											<input type="number" class="form-control1" th:field="*{ReductionAmount}"
+											<label> Giá giảm:</label> <input type="number"
+												class="form-control1" th:field="*{ReductionAmount}"
 												name="ReductionAmount">
 										</div>
 									</div>
 									<div class="form-group">
 										<div class="col-md-6">
-											<label>Giá áp dụng:</label>
-											<input type="number" class="form-control1" th:field="*{AmountApplied}"
+											<label>Giá áp dụng:</label> <input type="number"
+												class="form-control1" th:field="*{AmountApplied}"
 												name="AmountApplied">
 										</div>
 										<div class="col-md-6"
@@ -78,8 +84,8 @@
 									</div>
 									<div class="form-group">
 										<div class="col-md-6">
-											<label>Trạng thái:</label>
-											<input type="number" class="form-control1" th:field="*{status}"
+											<label>Trạng thái:</label> <input type="number"
+												class="form-control1" th:field="*{status}"
 												name="ReductionAmount">
 										</div>
 									</div>

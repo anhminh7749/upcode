@@ -40,9 +40,11 @@
 												<input type="text" class="form-control1" th:field="*{name}"
 													placeholder="Name">
 											</div>
-											<small th:if="${#fields.hasErrors('name')}" id="customerIdHid"
-												class="form-text text-muted">Category
-												is required</small>
+											<div class="has-error">
+												<small th:if="${#fields.hasErrors('name')}"
+													id="customerIdHid" class="form-text text-muted help-block" th:errors="*{name}">
+												</small>
+											</div>
 										</div>
 									</div>
 									<div class="card-footer text-center">

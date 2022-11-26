@@ -22,17 +22,17 @@
 							</ul>
 
 							<div class="form-inline my-2 my-lg-0 text-right">
-								<a th:href="@{/admin/contacs/}" class="btn btn-primary">Trở Về &gt;&gt;</a>
+								<a th:href="@{/admin/contacs/}" class="btn btn-primary">Trở
+									Về &gt;&gt;</a>
 							</div>
 						</div>
 						<div class="form-three widget-shadow">
 							<div class=" panel-body-inputin">
-								<form class="form-horizontal"
-									th:action="@{/admin/contacs/send}" method="post"
-									th:object="${mail}">
+								<form class="form-horizontal" th:action="@{/admin/contacs/send}"
+									method="post" th:object="${mail}">
 									<input type="hidden" th:filed="*{isEdit}"> <input
 										type="text" hidden th:field="*{mailId}">
-										<div class="form-group">
+									<div class="form-group">
 										<label class="col-md-2 control-label">Gmail</label>
 										<div class="col-md-8">
 											<div class="input-group">
@@ -51,9 +51,8 @@
 											<div class="input-group">
 												<span class="input-group-addon"> <i
 													class="fa fa-pencil"></i>
-												</span> 
-												<input type="text" class="form-control1" 
-													name="title" placeholder="Title">
+												</span> <input type="text" class="form-control1" name="title"
+													placeholder="Title">
 											</div>
 											<small th:if="${#fields.hasErrors('title')}"
 												id="customerIdHid" class="form-text text-muted">Name
@@ -66,14 +65,14 @@
 											<div class="input-group">
 												<span class="input-group-addon"> <i
 													class="fa fa-comment-o"></i>
-												</span> <input type="text" class="form-control1"
-													  name="description" placeholder="Message">
+												</span> <input type="text" class="form-control1" name="description"
+													placeholder="Message">
 											</div>
 											<small th:if="${#fields.hasErrors('gmail')}" id="EmailHid"
 												class="form-text text-muted">Email is required</small>
 										</div>
 									</div>
-									
+
 									<div class="card-footer text-center">
 										<button class="btn btn-primary">
 											<span th:if="${mail.isEdit}">Send Mail</span>
