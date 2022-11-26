@@ -18,8 +18,8 @@ public class AppBean {
     JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
     mailSender.setHost("smtp.gmail.com");
     mailSender.setPort(587);
-    mailSender.setUsername("tranvi1201@gmail.com");
-    mailSender.setPassword("rrhuibouvgppmgxs");
+    mailSender.setUsername("watchingshop.24.7@gmail.com");
+    mailSender.setPassword("uumvdocbuclbyjwj");
 
     Properties props = mailSender.getJavaMailProperties();
     props.put("mail.transport.protocol", "smtp");

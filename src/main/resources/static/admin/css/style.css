@@ -1872,7 +1872,7 @@ form.search-form {
 .login-top  h4  a:hover{
     color: #555;
 }
-.login-page input[type="email"], .login-page input[type="password"] {
+.login-page input[type="text"], .login-page input[type="password"] {
     font-size: 1em;
     padding: 14px 15px 14px 37px;
     width: 100%;
