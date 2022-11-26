@@ -13,8 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,9 +23,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.watch.shopwatchonline.Domain.CustomerDto;
 import com.watch.shopwatchonline.Domain.MailDto;
-import com.watch.shopwatchonline.Model.Customer;
 import com.watch.shopwatchonline.Model.Mail;
 import com.watch.shopwatchonline.Repository.MailRepository;
 
@@ -75,8 +73,12 @@ public class ContactController {
 	public ModelAndView sendMail(ModelMap model,@Valid @ModelAttribute("mail") MailDto dto,
 			@RequestParam("gmail") String to,
 			@RequestParam("title") String subject,
-			@RequestParam("description") String content) {
+			@RequestParam("description") String content,
+			BindingResult result) {
 
+		if(result.hasErrors()) {
+            return new ModelAndView("web-admin/mail");
+        }
 		SimpleMailMessage msg = new SimpleMailMessage();
 		msg.setTo(to);
 		msg.setSubject(subject);
@@ -104,7 +106,7 @@ public class ContactController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println(entity);
+//		System.out.println(entity);
 
 		mailRepository.save(entity);
 		model.addAttribute("message", "Mail is saved!");

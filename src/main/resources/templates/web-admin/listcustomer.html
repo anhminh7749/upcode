@@ -28,8 +28,9 @@
 									<th>Email</th>
 									<th>Tên</th>
 									<th>Giới tính</th>
-									<th>Bản tin</th>
+									<th>SĐT</th>
 									<th>Ngày sinh</th>
+									<th>Trạng thái</th>
 									<th>Hoạt động</th>
 								</tr>
 							</thead>
@@ -40,12 +41,13 @@
 									<td><span th:class="${item.gender==0?'label label-danger':'label  label-success'}"
 											th:text="${item.gender==0?'Nam':'Nữ'}">
 										</span></td>
+									<td th:text="${item.phone}">1</td>
+									<td th:text="${item.birthday}">1</td>
 									<td>
 										<span th:class="${item.status==0?'label label-danger':'label  label-success'}"
 											th:text="${item.status==0?'đã ngừng hoạt động':'đang hoạt động'}">
 										</span>
 									</td>
-									<td th:text="${item.birthday}">1</td>
 									<td>
 										<a data-toggle="modal" data-target="#gridSystemModal"
 											th:attr="onclick=|showProfileCustomer('${item.email}', '${item.name}','${item.gender}','${item.status}','${item.birthday}')|"

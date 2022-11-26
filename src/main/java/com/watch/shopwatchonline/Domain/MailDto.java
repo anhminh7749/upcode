@@ -21,15 +21,18 @@ public class MailDto implements Serializable {
 
 	private int mailId;
 	
-	@NotEmpty(message = "Tiêu đề không để trống!")
-    @Size(min = 5, message = "5 kí tự trở lên!")
+//	@NotEmpty
+////	(message = "Tiêu đề không để trống!")
+//    @Size(min = 5, message = "5 kí tự trở lên!")
 	private String title;
 
-	@NotEmpty(message = "Email không để trống!")
-	@Pattern(regexp = ".+@.+\\.[a-z]+",message = "email không đúng định dạng!")
+//	@NotEmpty
+//	(message = "Email không để trống!")
+//	@Pattern(regexp = ".+@.+\\.[a-z]+",message = "email không đúng định dạng!")
 	private String gmail;
 	
-	@NotEmpty(message = "Nội dung không để trống!")
+//	@NotEmpty
+//	(message = "Nội dung không để trống!")
 	private String description;
 
 	private Date CreateAt ;

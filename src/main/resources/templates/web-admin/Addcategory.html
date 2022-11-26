@@ -31,7 +31,8 @@
 									method="post" th:object="${category}">
 									<input type="hidden" th:filed="*{isEdit}">
 									<input type="text" hidden th:field="*{id}">
-									<div class="form-group">
+									<div class="form-group"
+									th:classappend="${#fields.hasErrors('name')} ? 'has-error'">
 										<label class="col-md-2 control-label">Tên Loại:</label>
 										<div class="col-md-8">
 											<div class="input-group">
@@ -40,11 +41,9 @@
 												<input type="text" class="form-control1" th:field="*{name}"
 													placeholder="Name">
 											</div>
-											<div class="has-error">
 												<small th:if="${#fields.hasErrors('name')}" id="customerIdHid"
 													class="form-text text-muted help-block" th:errors="*{name}">
 												</small>
-											</div>
 										</div>
 									</div>
 									<div class="card-footer text-center">

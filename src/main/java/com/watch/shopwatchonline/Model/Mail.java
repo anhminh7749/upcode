@@ -30,17 +30,20 @@ public class Mail implements Serializable {
     private int mailId;
 
     @Column(length = 100, columnDefinition = "nvarchar(50) not null")
-    @NotEmpty(message = "Tiêu đề không để trống!")
-    @Size(min = 5, message = "5 kí tự trở lên!")
+//    @NotEmpty
+//    (message = "Tiêu đề không để trống!")
+//    @Size(min = 5, message = "5 kí tự trở lên!")
     private String title;
     
     @Column(length = 100, columnDefinition = "nvarchar(100) not null")
-    @NotEmpty(message = "Email không để trống!")
-	@Pattern(regexp = ".+@.+\\.[a-z]+",message = "email không đúng định dạng!")
+//    @NotEmpty
+//    (message = "Email không để trống!")
+//	@Pattern(regexp = ".+@.+\\.[a-z]+",message = "email không đúng định dạng!")
     private String gmail;
     
 	@Column(length = 1000, columnDefinition = "nvarchar(1000) not null")
-	@NotEmpty(message = "Nội dung không để trống!")
+//	@NotEmpty
+//	(message = "Nội dung không để trống!")
 	private String description;
     
     @Temporal(TemporalType.TIMESTAMP)

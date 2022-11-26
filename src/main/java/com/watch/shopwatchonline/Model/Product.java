@@ -88,9 +88,9 @@ public class Product implements Serializable{
 
 	@OneToMany(mappedBy = "Product", cascade = CascadeType.ALL)
 	private Set<wishlist> wishlists;
-	
-	@OneToMany(mappedBy = "Product")
-	private Set<OrderDetail> orderDetails;
+//	
+//	@OneToMany(mappedBy = "Product")
+//	private Set<OrderDetail> orderDetails;
 
 	@OneToMany(mappedBy = "Product", cascade = CascadeType.ALL)
 	private Set<Blog> blogs;

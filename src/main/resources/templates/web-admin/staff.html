@@ -32,7 +32,8 @@
 								<form class="form-horizontal" th:action="@{/admin/staffs/saveOrUpdate}" method="post"
 									th:object="${staff}">
 									<input type="text" hidden th:field="*{staffId}">
-									<div class="form-group">
+									<div class="form-group"
+									th:classappend="${#fields.hasErrors('name')} ? 'has-error'">
 										<label class="col-md-2 control-label">Họ và Tên:</label>
 
 										<div class="col-md-8">
@@ -41,14 +42,13 @@
 												</span> <input type="text" class="form-control1" th:field="*{name}"
 													placeholder="Name">
 											</div>
-											<div class="has-error">
 												<small th:if="${#fields.hasErrors('name')}" id="customerIdHid"
 													class="form-text text-muted help-block" th:errors="*{name}">
 												</small>
-											</div>
 										</div>
 									</div>
-									<div class="form-group" th:field="${staff.isEdit}">
+									<div class="form-group"
+									th:classappend="${#fields.hasErrors('email')} ? 'has-error'">
 										<label class="col-md-2 control-label">Email:</label>
 										<div class="col-md-8">
 											<div class="input-group">
@@ -56,11 +56,9 @@
 												</span> <input type="text" class="form-control1" th:field="*{email}"
 													placeholder="Email">
 											</div>
-											<div class="has-error">
 												<small th:if="${#fields.hasErrors('email')}" id="customerIdHid"
 													class="form-text text-muted help-block" th:errors="*{email}">
 												</small>
-											</div>
 										</div>
 									</div>
 
@@ -94,7 +92,8 @@
 											</div>
 										</div>
 									</div>
-									<div class="form-group">
+									<div class="form-group"
+									th:classappend="${#fields.hasErrors('phone')} ? 'has-error'">
 										<label class="col-md-2 control-label">SĐT:</label>
 										<div class="col-md-8">
 											<div class="input-group">
@@ -102,14 +101,13 @@
 												</span> <input type="number" class="form-control1" th:field="*{phone}"
 													placeholder="Phone">
 											</div>
-											<div class="has-error">
 												<small th:if="${#fields.hasErrors('phone')}" id="customerIdHid"
 													class="form-text text-muted help-block" th:errors="*{phone}">
 												</small>
-											</div>
 										</div>
 									</div>
-									<div class="form-group">
+									<div class="form-group"
+									th:classappend="${#fields.hasErrors('luong')} ? 'has-error'">
 										<label class="col-md-2 control-label">Lương:</label>
 										<div class="col-md-8">
 											<div class="input-group">
@@ -117,14 +115,13 @@
 												</span> <input type="number" class="form-control1" th:field="*{luong}"
 													placeholder="Luong">
 											</div>
-											<div class="has-error">
 												<small th:if="${#fields.hasErrors('luong')}" id="customerIdHid"
 													class="form-text text-muted help-block" th:errors="*{luong}">
 												</small>
-											</div>
 										</div>
 									</div>
-									<div class="form-group">
+									<div class="form-group"
+									th:classappend="${#fields.hasErrors('ngayBD')} ? 'has-error'">
 										<label class="col-md-2 control-label">Ngày Bắt Đầu:</label>
 										<div class="col-md-8">
 											<div class="input-group">
@@ -132,11 +129,9 @@
 												</span> <input type="date" class="form-control1" th:field="*{ngayBD}"
 													placeholder="dd/mm/yyyy">
 											</div>
-											<div class="has-error">
 												<small th:if="${#fields.hasErrors('ngayBD')}" id="customerIdHid"
 													class="form-text text-muted help-block" th:errors="*{ngayBD}">
 												</small>
-											</div>
 										</div>
 									</div>
 									<div class="card-footer text-center">

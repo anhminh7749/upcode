@@ -34,17 +34,17 @@ public class MailComtroller {
 
  
     @GetMapping("form")
-	public String showForm(Model model) {
-		
+	public String showForm() {
 		return "web-site/contact";
 	}
 
     @PostMapping("send")
-	public ModelAndView sendMail(ModelMap model,@Valid @ModelAttribute("mail") MailDto dto,
+	public ModelAndView sendMail(ModelMap model, @Valid @ModelAttribute("mail") MailDto dto,
 			BindingResult result) {
     	if(result.hasErrors()) {
             return new ModelAndView("web-site/contact");
         }
+    	System.out.println(result);
 		Mail entity = new Mail();
 		BeanUtils.copyProperties(dto, entity);
 		Date date = new Date();
