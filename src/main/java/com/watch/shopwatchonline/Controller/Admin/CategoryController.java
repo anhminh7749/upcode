@@ -1,86 +1,103 @@
 package com.watch.shopwatchonline.Controller.Admin;
 
 import java.util.List;
-import java.util.Locale;
+import java.util.Optional;
+
+import javax.validation.Valid;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
-import com.github.javafaker.Faker;
+import com.watch.shopwatchonline.Domain.CategoryDto;
 import com.watch.shopwatchonline.Model.Category;
-import com.watch.shopwatchonline.Model.Product;
 import com.watch.shopwatchonline.Service.CategoryService;
-import com.watch.shopwatchonline.Service.ProductService;
+
 
 @Controller
 @RequestMapping("admin/categories")
 public class CategoryController {
 
     @Autowired
-	private CategoryService CategoryService;
-	// @Autowired
-	// private ProductService ProductService;
-
-    @GetMapping("/listshow")
-    public String index() {
-        return "web-admin/ListProduct";
-    }
-    @ModelAttribute("")
-	public List<Category> getCategoryDtos(){
-		return CategoryService.findAll();
-	}
-   
-    @PostMapping("/store")
-    public String store(ModelMap model) {
-
-        return "web-admin/ListProduct";
-    }
-   
-    @GetMapping("/create")
-    public String create() {
-
-        Faker fk = new Faker(new Locale("vi"));
-
-        
-            Category  cate = new Category();
-            cate.setName("Men");
-            
-        
-
-        return "web-admin/AddProduct";
+	private CategoryService categoryService;
+    
+    @GetMapping("add-category")
+    public String add(Model model) {
+        CategoryDto dto = new CategoryDto();
+        dto.setIsEdit(false);
+        model.addAttribute("category", dto);
+        return "web-admin/Addcategory";
     }
 
-    @GetMapping("/showAdd")
-    public String showAdd() {
+    @GetMapping("edit/{id}")
+    public ModelAndView edit(ModelMap model, @PathVariable("id") Integer id) {
 
-        return "web-admin/AddProduct";
-    }
-   
-    @PatchMapping("/update")
-    public String update() {
+    	Optional<Category> opt = categoryService.findById(id);
+        CategoryDto dto = new CategoryDto();
 
-        return "web-admin/ListProduct";
-    }
-   
-    @DeleteMapping("/delete")
-    public String destroy(int id) {
+        if (opt.isPresent()) {
+            Category entity = opt.get();
 
-        return "web-admin/ListProduct";
-    }
-   
-    @GetMapping("/edit/{id}")
-    public String edit(ModelMap model,  @PathVariable("id") int Id) {
+            BeanUtils.copyProperties(entity, dto);
+            dto.setIsEdit(true);
 
-        return "web-admin/ListProduct";
+            model.addAttribute("category", dto);
+
+            return new ModelAndView("web-admin/Addcategory", model);
+        }
+
+        model.addAttribute("message", "Category is existed");
+
+        return new ModelAndView("forward:/admin/categories", model);
     }
-   
+
+    @GetMapping("delete/{id}")
+    public ModelAndView delete(ModelMap model, @PathVariable("id") Integer id) {
+
+        Optional<Category> opt = categoryService.findById(id);
+        categoryService.deleteById(id);
+
+        model.addAttribute("message", "Category is delete!");
+
+        return new ModelAndView("forward:/admin/categories", model);
+    }
+
+    @PostMapping("saveOrUpdate")
+    public ModelAndView saveOrUpdate(ModelMap model, @Valid @ModelAttribute("category") CategoryDto dto,
+            BindingResult result) {
+
+        if(result.hasErrors()) {
+            return new ModelAndView("web-admin/Addcategory");
+        }
+        Category entity = new Category();
+        BeanUtils.copyProperties(dto, entity);
+
+        categoryService.save(entity);
+
+        model.addAttribute("message", "Category is saved!");
+
+        return new ModelAndView("forward:/admin/categories", model);
+    }
+
+    @RequestMapping("")
+    public String list(ModelMap model) {
+        List<Category> list = categoryService.findAll();
+
+        model.addAttribute("categorys", list);
+        return "web-admin/listcategory";
+    }
+
+    @GetMapping("search")
+    public String search() {
+        return "web-admin/Addcategory";
+    }
 }

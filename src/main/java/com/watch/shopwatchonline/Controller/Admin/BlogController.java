@@ -60,185 +60,165 @@ import com.watch.shopwatchonline.Service.BrandService;
 @RequestMapping("admin/blog")
 public class BlogController {
 
-    @Autowired
-private BlogService blogService;
+	@Autowired
+	private BlogService blogService;
 
-@Autowired
-private ProductService ProductService;
+	@Autowired
+	private ProductService ProductService;
 
-@Autowired
-private StogareService stogareService;
+	@Autowired
+	private StogareService stogareService;
 
+	@GetMapping("add-blog")
+	public String indexA(Model model) {
+		blogDto dto = new blogDto();
+		dto.setIsEdit(false);
+		model.addAttribute("blog", dto);
+		return "web-admin/AddBlog";
+	}
 
-@GetMapping("add-blog")
-public String indexA(Model model) {
-    blogDto dto = new blogDto();
-    dto.setIsEdit(false);
-    model.addAttribute("blog", dto);
-return "web-admin/AddBlog";
-}
+	@ModelAttribute("products")
+	public List<Product> getProductDtos() {
+		return ProductService.findAll();
+	}
 
-@ModelAttribute("products")
-public List<Product> getProductDtos(){
-    return ProductService.findAll();
-    }
+	@GetMapping("list-blog")
+	public ModelAndView indexL(ModelMap model, @RequestParam(name = "keyword", required = false) String keyword,
+			@RequestParam("page") Optional<Integer> page, @RequestParam("size") Optional<Integer> size) {
 
-@GetMapping("list-blog")
-public ModelAndView indexL(ModelMap model, @RequestParam(name = "keyword", required = false) String keyword,
-@RequestParam("page") Optional<Integer> page, @RequestParam("size") Optional<Integer> size) {
+		int curPage = page.orElse(1);
+		int pageSize = size.orElse(5);
 
-    int curPage = page.orElse(1);
-    int pageSize = size.orElse(5);
+		Page<Blog> resultPage = null;
 
-  
-    Page<Blog> resultPage = null;
-   
-    if (StringUtils.hasText(keyword)) {
-        Pageable pageable = PageRequest.of(curPage - 1, pageSize);
-        // resultPage = ProductService.findByNameContaining(keyword, pageable);
-        model.addAttribute("keyword", keyword);
-    } else {
-        Pageable pageable = PageRequest.of(curPage - 1, pageSize);
-        resultPage = blogService.findAll(pageable);
-        
-    }
+		if (StringUtils.hasText(keyword)) {
+			Pageable pageable = PageRequest.of(curPage - 1, pageSize);
+			// resultPage = ProductService.findByNameContaining(keyword, pageable);
+			model.addAttribute("keyword", keyword);
+		} else {
+			Pageable pageable = PageRequest.of(curPage - 1, pageSize);
+			resultPage = blogService.findAll(pageable);
 
-    int totalPages = resultPage.getTotalPages();
+		}
 
-    if (totalPages > 0) {
-        int start = Math.max(1, curPage - 2);
-        int end = Math.min(curPage + 2, totalPages);
+		int totalPages = resultPage.getTotalPages();
 
-        if (totalPages > 5) {
-            if (end == totalPages){
-                start = end - 5;
-            }else{
-                if (start == 1){
-                    end = start + 5;
-                }
-            }
-        }
+		if (totalPages > 0) {
+			int start = Math.max(1, curPage - 2);
+			int end = Math.min(curPage + 2, totalPages);
 
-        List<Integer> pageNums = IntStream.rangeClosed(start, end).boxed().collect(Collectors.toList());
-        model.addAttribute("pageNums", pageNums);
-    
-    }
+			if (totalPages > 5) {
+				if (end == totalPages) {
+					start = end - 5;
+				} else {
+					if (start == 1) {
+						end = start + 5;
+					}
+				}
+			}
 
-    List<Blog> p = blogService.findAll();
+			List<Integer> pageNums = IntStream.rangeClosed(start, end).boxed().collect(Collectors.toList());
+			model.addAttribute("pageNums", pageNums);
 
+		}
 
-    model.addAttribute("keyword", keyword);
-    model.addAttribute("blogPage", resultPage);
-    model.addAttribute("tt", p.size());
-    return new ModelAndView("web-admin/ListBlog", model);
-}
+		List<Blog> p = blogService.findAll();
 
+		model.addAttribute("keyword", keyword);
+		model.addAttribute("blogPage", resultPage);
+		model.addAttribute("tt", p.size());
+		return new ModelAndView("web-admin/ListBlog", model);
+	}
 
+	@PostMapping(value = "update", consumes = { MediaType.MULTIPART_FORM_DATA_VALUE })
+	public ModelAndView update(ModelMap model, @Validated @ModelAttribute("blog") blogDto dto,
+			@RequestParam("listImageFile") MultipartFile[] file, BindingResult result) throws ParseException {
 
-        @PostMapping(value = "update", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE })
-        public ModelAndView update(ModelMap model, 
-        @Validated @ModelAttribute("blog") blogDto dto,
-        @RequestParam("listImageFile") MultipartFile[] file ,BindingResult result)
-        throws ParseException {
+		if (result.hasErrors()) {
 
-        if (result.hasErrors()) {
-       
-        return new ModelAndView("admin/blog/AddBlog");
-        }
-        if(!dto.getIsEdit().booleanValue()) {
-       dto.setCreateAt(new Date());
-        }else {
-            Optional<Blog> s = blogService.findById( dto.getId());           
-		    Date pdto = s.get().getCreateAt();
-             dto.setCreateAt(pdto);
-        }
-        
-        
-           Blog bl = new Blog();
-            BeanUtils.copyProperties(dto, bl);
+			return new ModelAndView("admin/blog/AddBlog");
+		}
+		if (!dto.getIsEdit().booleanValue()) {
+			dto.setCreateAt(new Date());
+		} else {
+			Optional<Blog> s = blogService.findById(dto.getId());
+			Date pdto = s.get().getCreateAt();
+			dto.setCreateAt(pdto);
+		}
 
-            Product pro = new Product();
-            pro.setId(dto.getProductId());
-            bl.setProduct(pro);
+		Blog bl = new Blog();
+		BeanUtils.copyProperties(dto, bl);
 
+		Product pro = new Product();
+		pro.setId(dto.getProductId());
+		bl.setProduct(pro);
 
-           bl.setUpdateAt(new Date());
-            bl.setBanner(stogareService.getFileName(dto.getImageFile()));
-            stogareService.store(dto.getImageFile(), bl.getBanner());
-            
+		bl.setUpdateAt(new Date());
+		bl.setBanner(stogareService.getFileName(dto.getImageFile()));
+		stogareService.store(dto.getImageFile(), bl.getBanner());
 
-            try {       
-           
-                Set<Image> images = uploadImage(file);
-                bl.setBlogImages(images);
-                
-            } catch (Exception e) {
-                System.out.println(e);
+		try {
 
-            }
+			Set<Image> images = uploadImage(file);
+			bl.setBlogImages(images);
 
-            blogService.save(bl);
+		} catch (Exception e) {
+			System.out.println(e);
 
+		}
 
+		blogService.save(bl);
 
-            return new ModelAndView("redirect:/admin/blog/list-blog");
-            }
+		return new ModelAndView("redirect:/admin/blog/list-blog");
+	}
 
+	public Set<Image> uploadImage(MultipartFile[] multipartFiles) throws IOException {
+		Set<Image> images = new HashSet<>();
 
-            public Set<Image> uploadImage(MultipartFile[] multipartFiles) throws IOException{
-                Set<Image> images = new HashSet<>();
+		for (MultipartFile file : multipartFiles) {
+			Image img = new Image(stogareService.getFileName(file), file.getContentType(), file.getBytes());
+			stogareService.store(file, img.getName());
+			images.add(img);
 
-                for(MultipartFile file:multipartFiles){
-                    Image img = new Image(
-                        stogareService.getFileName(file),
-                        file.getContentType(),
-                        file.getBytes());
-                        stogareService.store(file,  img.getName());
-                       images.add(img);
+		}
 
-                       
-                }
+		return images;
+	}
 
-             return images;
-            }
+	@GetMapping("images/{filename:.+}")
+	@ResponseBody
+	public ResponseEntity<Resource> serverFile(@PathVariable(name = "filename") String fileName) {
 
+		Resource file = stogareService.loadResource(fileName);
+		return ResponseEntity.ok()
+				.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + file.getFilename() + "\"")
+				.body(file);
+	}
 
+	@GetMapping("delete/{Id}")
+	public String delete(ModelMap map, @PathVariable("Id") Integer id) {
+		blogService.deleteById(id);
 
-            @GetMapping("images/{filename:.+}")
-            @ResponseBody
-            public ResponseEntity<Resource> serverFile(@PathVariable(name = "filename") String fileName) {
-        
-                Resource file = stogareService.loadResource(fileName);
-                return ResponseEntity.ok()
-                        .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + file.getFilename() + "\"")
-                        .body(file);
-            }
+		return "redirect:/admin/blog/list-blog";
+	}
 
-            @GetMapping("delete/{Id}")
-            public String delete(ModelMap map, @PathVariable("Id") Integer id) {
-            blogService.deleteById(id);
-
-            return "redirect:/admin/blog/list-blog";
-            }
-
-    @GetMapping("edit/{Id}")
+	@GetMapping("edit/{Id}")
 	public ModelAndView edit(ModelMap map, @PathVariable("Id") Integer Id) {
 
 		Optional<Blog> opt = blogService.findById(Id);
-        List<Image> images = stogareService.findImageByBlogId(Id);
+		List<Image> images = stogareService.findImageByBlogId(Id);
 		blogDto dto = new blogDto();
 
 		if (opt.isPresent()) {
 			Blog entity = opt.get();
 			BeanUtils.copyProperties(entity, dto);
 			dto.setIsEdit(true);
-            map.addAttribute("pushImage", images);
+			map.addAttribute("pushImage", images);
 			map.addAttribute("blog", dto);
 			return new ModelAndView("web-admin/AddBlog", map);
 		}
 
-            return new ModelAndView("web-admin/AddBlog");
-            }
+		return new ModelAndView("web-admin/AddBlog");
+	}
 
-
-            }
+}

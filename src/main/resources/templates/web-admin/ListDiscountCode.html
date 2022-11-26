@@ -9,12 +9,12 @@
 <body class="cbp-spmenu-push">
     <div layout:fragment="content">
         <div id="page-wrapper">
-            <h2>Danh SÃ¡ch Sáº£n Pháº©m</h2>
+            <h2>Danh Sách Giảm Giá</h2>
             <div class="row">
                 <ol class="breadcrumb">
-                    <li><a href="#">Trang Chá»§</a></li>
-                    <li><a>Sáº£n Pháº©m</a></li>
-                    <li class="active">Danh SÃ¡ch</li>
+                    <li><a href="#">Trang Chủ</a></li>
+                    <li><a href="#">Danh Sách</a></li>
+                    <li><a href="#">Thêm Mới</a></li>
                 </ol>
             </div>
 
@@ -49,14 +49,14 @@
                         <table class="table table-hover">
                             <thead>
                                 <tr>
-                                    <th>MÃ£ SP</th>
-                                    <th>áº¢nh SP</th>
-                                    <th>TÃªn SP</th>
-                                    <th>GiÃ¡</th>
-                                    <th>Giáº£m giÃ¡</th>
-                                    <th>Sá»‘ lÆ°á»£ng</th>
-                                    <th>Danh má»¥c</th>
-                                    <th>Tráº¡ng thÃ¡i</th>
+                                    <th>Tên</th>
+                                    <th>Giá Giảm</th>
+                                    <th>Giá Áp Dụng</th>
+                                    <th>Số Lượng</th>
+                                    <th>Mã Giảm Giá</th>
+                                    <th>Ngày Áp Dụng</th>
+                                    <th>Ngày Hết Hạng</th>
+                                    <th>Hoạt Động</th>
                                     <th>&nbsp;</th>
                                 </tr>
                             </thead>
@@ -69,10 +69,47 @@
                                         <td th:text="${item.AmountApplied}"></td> 
                                         <td th:text="${item.Quantity}"></td> 
                                         <td th:text="${item.ByteCode}"></td> 
-                                        <td th:text="${item.ApplicableDate}"></td> 
+                                        <td th:text="${item.ApplicableDate}"></td>
                                         <td th:text="${item.ExpirationDate}"></td> 
-                                        <td th:text="${item.status}"></td> 
                                         <td>
+                                        <a data-toggle="modal" data-target="#gridSystemModal"
+											th:attr="onclick=|showProfileDiscountcode('${item.name}', '${item.ReductionAmount}','${item.AmountApplied}',
+											'${item.Quantity}','${item.ByteCode}','${item.ApplicableDate}','${item.ExpirationDate}')|"
+											class="fa fa-search"></a>
+										<div class="modal fade" id="gridSystemModal" tabindex="-1" role="dialog"
+											aria-labelledby="gridSystemModalLabel">
+											<div class="modal-dialog" role="document">
+												<div class="modal-content">
+													<div class="modal-header">
+														<button type="button" class="close" data-dismiss="modal"
+															aria-label="Close">
+															<span aria-hidden="true">&times;</span>
+														</button>
+														<h4 class="modal-title text-center" id="gridSystemModalLabel">Thông Tin</h4>
+													</div>
+													<div class="modal-body">
+														<div>
+															<label class="control-label">Tên: </label> 
+															<input class="form-control" id="name" readonly><br> 
+															<label class="control-label">Giảm giá:</label> 
+															<input class="form-control" id="ReductionAmount" readonly><br>
+															<label class="control-label">Giá áp dụng: </label> 
+															<input class="form-control" id="AmountApplied" readonly><br>
+															<label class="control-label">Số lượng: </label> 
+															<input class="form-control" id="Quantity" readonly><br>
+															<label class="control-label">Mã giảm giá: </label> 
+															<input class="form-control" id="ByteCode" readonly><br>
+															<label class="control-label">Ngày áp dụng: </label> 
+															<input class="form-control" id="ApplicableDate" readonly><br>
+															<label class="control-label">Ngày hết hạng: </label> 
+															<input class="form-control" id="ExpirationDate" readonly><br>
+														</div>
+													</div>
+												</div>
+										</div>
+												<!-- /.modal-content -->
+											</div>
+											<!-- /.modal-dialog -->
                                             <a th:href="@{'/api/admin/DiscountCode/edit/' + ${item.Id}}"><i class="fa fa-pencil-square-o icon_del" aria-hidden="true"></i></a>
                                             <a th:href="@{'/api/admin/DiscountCode/delete/' + ${item.Id}}"><i class="fa fa-trash-o icon_del" aria-hidden="true"></i></a>
                                         </td>
@@ -90,7 +127,7 @@
                             <ul class="header-right pagination">
 								<li class="disabled" th:class="${1== codePage.number+1} ? 'active':''">
 								<a th:href="@{/api/admin/DiscountCode/list-code(name=${keyword}, size = ${codePage.size}, page=${1})}" aria-label="Previous">
-								<span aria-hidden="true">«</span></a></li>
+								<span aria-hidden="true">Â«</span></a></li>
 								
 								<li th:each="pageNum:${pageNums}"
 										th:if="${codePage.totalPages>1}"
@@ -101,7 +138,7 @@
 								
 								<li th:class="${codePage.totalPages== codePage.number+1} ? 'active':''">
                                 <a th:href="@{/api/admin/DiscountCode/list-code(name=${keyword}, size = ${codePage.size}, page=${codePage.totalPages})}" 
-								aria-label="Next"><span aria-hidden="true">»</span></a></li>
+								aria-label="Next"><span aria-hidden="true">Â»</span></a></li>
 							</ul>
 
                         </div>

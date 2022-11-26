@@ -9,12 +9,12 @@
 <body class="cbp-spmenu-push">
     <div layout:fragment="content">
         <div id="page-wrapper">
-            <h2>Danh SÃ¡ch Sáº£n Pháº©m</h2>
+            <h2>Danh Sách Sản Phẩm</h2>
             <div class="row">
                 <ol class="breadcrumb">
-                    <li><a href="#">Trang Chá»§</a></li>
-                    <li><a>Sáº£n Pháº©m</a></li>
-                    <li class="active">Danh SÃ¡ch</li>
+                    <li><a href="#">Trang Chủ</a></li>
+                    <li><a href="#">Danh Sách</a></li>
+                    <li><a href="#">Thêm Mới</a></li>
                 </ol>
             </div>
 
@@ -49,31 +49,20 @@
                         <table class="table table-hover">
                             <thead>
                                 <tr>
-                                    <th>MÃ£ SP</th>
-                                    <th>áº¢nh SP</th>
-                                    <th>TÃªn SP</th>
-                                    <th>GiÃ¡</th>
-                                    <th>Giáº£m giÃ¡</th>
-                                    <th>Sá»‘ lÆ°á»£ng</th>
-                                    <th>Danh má»¥c</th>
-                                    <th>Tráº¡ng thÃ¡i</th>
+                                    <th>Ảnh SP</th>
+                                    <th>Tên SP</th>
+                                    <th>Giá</th>
+                                    <th>Số Lượng</th>
+                                    <th>Giảm Giá</th>
+                                    <th>Danh Mục</th>
+                                    <th>Thương Hiệu</th>
+                                    <th>Trạng Thái</th>
+                                    <th>Hoạt Động</th>
                                     <th>&nbsp;</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td><span class="label label-warning">in progress</span></td>
-                                    <td><span class="label label-warning">in progress</span></td>
-                                    <td><span class="badge badge-warning">30%</span></td>
-                                    <td><span class="label label-success">completed</span></td>
-                                    <td><span class="badge badge-success">80%</span></td>
-                                    <td><span class="label label-danger">in progress</span></td>
-                                    <td><span class="badge badge-info">70%</span></td>
-                                </tr>
-
                                 <tr th:each="item, iStart:${productPage}">
-                                    <td scope="row" th:text="${item.Id}"></td>
                                     <td><img class="tbl-list img-fluid" id="image"
                                             th:src="${item.thumbnail!=null?'/admin/product/images/'+item.thumbnail:'/images/Background.png'}"
                                             alt="edit"></td>
@@ -85,14 +74,78 @@
                                             <span class="badge badge-warning"
                                             th:text="${#numbers.formatDecimal(item.Discount/item.Price*100, 1, 'COMMA', 2, 'POINT')} + '%'"></span>
                                         </td>
-										<!-- <td th:text="${item.Category.name}"></td>
-                                        <td th:text="${item.brand.name}"></td> -->
+										 <td th:text="${item.Category.name}"></td>
+                                        <td th:text="${item.brand.name}"></td> 
                                         <td><span th:class="${item.Active==0?'label label-success':'label label-danger'}"
                                             th:text="${item.Active==0?'ACTIVE':'INACTIVE'}"></span>
                                         </td>
                                         <td>
-                                            <a th:href="@{'/admin/product/edit/' + ${item.Id}}"><i class="fa fa-pencil-square-o icon_del" aria-hidden="true"></i></a>
-                                            <a th:href="@{'/admin/product/delete/' + ${item.Id}}"><i class="fa fa-trash-o icon_del" aria-hidden="true"></i></a>
+                                        <a data-toggle="modal" data-target="#gridSystemModal"
+											th:attr="onclick=|showProfileProduct('${item.thumbnail}', '${item.Name}','${item.Price}',
+											'${item.Quantity}','${item.Discount}','${item.Category.name}','${item.brand.name}','${item.Active}')|"
+											class="fa fa-search"></a>
+										<div class="modal fade" id="gridSystemModal" tabindex="-1" role="dialog"
+											aria-labelledby="gridSystemModalLabel">
+											<div class="modal-dialog" role="document">
+												<div class="modal-content">
+													<div class="modal-header">
+														<button type="button" class="close" data-dismiss="modal"
+															aria-label="Close">
+															<span aria-hidden="true">&times;</span>
+														</button>
+														<h4 class="modal-title text-center" id="gridSystemModalLabel">Thông Tin</h4>
+													</div>
+													<div class="modal-body">
+
+
+														<!-- Email input -->
+														<div class="form-outline mb-4">
+															<label class="form-label">Ảnh:</label>
+															<input class="form-control" id="thumbnail" readonly/>
+														</div>
+														
+														<div class="form-outline mb-4">
+															<label class="form-label">Tên:</label>
+															<input class="form-control" id="Name" readonly />
+														</div>
+														
+														<div class="form-outline mb-4">
+															<label class="form-label">Giá:</label>
+															<input class="form-control" id="Price" readonly />
+														</div>
+														
+														<div class="form-outline mb-4">
+															<label class="form-label">Số lượng:</label>
+															<input class="form-control" id="Quantity" readonly />
+														</div>
+														
+														<div class="form-outline mb-4">
+															<label class="form-label">Giảm giá:</label>
+															<input class="form-control" id="Discount" readonly />
+														</div>
+														
+														<div class="form-outline mb-4">
+															<label class="form-label">Danh mục:</label>
+															<input class="form-control" id="Category.name" readonly />
+														</div>
+														
+														<div class="form-outline mb-4">
+															<label class="form-label">Thương hiệu:</label>
+															<input class="form-control" id="brand.name" readonly />
+														</div>
+														
+														<div class="form-outline mb-4">
+															<label class="form-label">Trạng thái:</label>
+															<input class="form-control" id="Active" readonly />
+														</div>
+													</div>
+												</div>
+												<!-- /.modal-content -->
+											</div>
+											<!-- /.modal-dialog -->
+										</div> <!-- /.modal --> 
+                                            <a th:href="@{'/api/admin/product/edit/' + ${item.Id}}"><i class="fa fa-pencil-square-o icon_del" aria-hidden="true"></i></a>
+                                            <a th:href="@{'/api/admin/product/delete/' + ${item.Id}}"><i class="fa fa-trash-o icon_del" aria-hidden="true"></i></a>
                                         </td>
                                       
                                       

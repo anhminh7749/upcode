@@ -30,70 +30,103 @@
                             </li>
                             <li class="treeview">
                                 <a href="#">
-                                    <i class="fa fa-laptop"></i>
+                                    <i class="fa fa-product-hunt"></i>
                                     <span>Product</span>
                                     <i class="fa fa-angle-left pull-right"></i>
                                 </a>
                                 <ul class="treeview-menu">
-                                    <li><a th:href="@{'list-product'}"><i class="fa fa-angle-right"></i> List Product</a></li>
-                                    <li><a th:href="@{'add-product'}"><i class="fa fa-angle-right"></i> Add Product</a></li>
+                                    <li><a th:href="@{/api/admin/product/list-product}"><i class="fa fa-angle-right"></i> List Product</a></li>
+                                    <li><a th:href="@{/api/admin/product/add-product}"><i class="fa fa-angle-right"></i> Add Product</a></li>
+                                </ul>
+                            </li>
+                             <li class="treeview">
+                                <a href="#">
+                                    <i class="fa fa-th-large"></i>
+                                    <span>Category</span>
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li><a th:href="@{/admin/categories/}"><i class="fa fa-angle-right"></i> List Category</a></li>
+                                    <li><a th:href="@{/admin/categories/add-category}"><i class="fa fa-angle-right"></i> Add Category</a></li>
+                                </ul>
+                            </li>
+                             <li class="treeview">
+                                <a href="#">
+                                    <i class="fa fa-drupal"></i>
+                                    <span>Brand</span>
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li><a th:href="@{/admin/brands/}"><i class="fa fa-angle-right"></i> List Brand</a></li>
+                                    <li><a th:href="@{/admin/brands/add-brand}"><i class="fa fa-angle-right"></i> Add Brand</a></li>
                                 </ul>
                             </li>
                             <li class="treeview">
                                 <a href="#">
-                                    <i class="fa fa-laptop"></i>
-                                    <span>Product</span>
+                                    <i class="fa fa-group"></i>
+                                    <span>Staff</span>
                                     <i class="fa fa-angle-left pull-right"></i>
                                 </a>
                                 <ul class="treeview-menu">
-                                    <li><a th:href="@{'list-product'}"><i class="fa fa-angle-right"></i> List cate</a></li>
-                                    <li><a th:href="@{'add-product'}"><i class="fa fa-angle-right"></i> Add Product</a></li>
-                                </ul>
-                            </li>
-                            <li class="treeview">
-                                <a href="charts.html">
-                                    <i class="fa fa-pie-chart"></i>
-                                    <span>Charts</span>
-                                    <span class="label label-primary pull-right">new</span>
-                                </a>
-                            </li>
-                            <li class="treeview">
-                                <a href="#">
-                                    <i class="fa fa-laptop"></i>
-                                    <span>UI Elements</span>
-                                    <i class="fa fa-angle-left pull-right"></i>
-                                </a>
-                                <ul class="treeview-menu">
-                                    <li><a href="general.html"><i class="fa fa-angle-right"></i> General</a></li>
-                                    <li><a href="icons.html"><i class="fa fa-angle-right"></i> Icons</a></li>
-                                    <li><a href="buttons.html"><i class="fa fa-angle-right"></i> Buttons</a></li>
-                                    <li><a href="typography.html"><i class="fa fa-angle-right"></i> Typography</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="widgets.html">
-                                    <i class="fa fa-th"></i> <span>Widgets</span>
-                                    <small class="label pull-right label-info">08</small>
-                                </a>
-                            </li>
-                            <li class="treeview">
-                                <a href="#">
-                                    <i class="fa fa-edit"></i> <span>Forms</span>
-                                    <i class="fa fa-angle-left pull-right"></i>
-                                </a>
-                                <ul class="treeview-menu">
-                                    <li><a href="forms.html"><i class="fa fa-angle-right"></i> General Forms</a></li>
-                                    <li><a href="validation.html"><i class="fa fa-angle-right"></i> Form Validations</a>
-                                    </li>
+                                   <li><a th:href="@{/admin/staffs/}"><i class="fa fa-angle-right"></i> List Staff</a></li>
+                                    <li><a th:href="@{/admin/staffs/add}"><i class="fa fa-angle-right"></i> Add Staff</a></li>
                                 </ul>
                             </li>
                             <li class="treeview">
                                 <a href="#">
-                                    <i class="fa fa-table"></i> <span>Tables</span>
+                                    <i class="fa fa-user"></i>
+                                    <span>Customer</span>
                                     <i class="fa fa-angle-left pull-right"></i>
                                 </a>
                                 <ul class="treeview-menu">
-                                    <li><a href="tables.html"><i class="fa fa-angle-right"></i> Simple tables</a></li>
+                                    <li><a th:href="@{/admin/customers/}"><i class="fa fa-angle-right"></i> List Customer</a></li>
+                                    <li><a th:href="@{/admin/customers/add}"><i class="fa fa-angle-right"></i> Add Customer</a></li>
+                                </ul>
+                            </li>
+                             <li class="treeview">
+                                <a href="#">
+                                    <i class="fa fa-spinner"></i>
+                                    <span>Raiting</span>
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li><a th:href="@{/api/admin/raiting/list-waiting}"><i class="fa fa-angle-right"></i> List Raiting</a></li>
+                                    <li><a th:href="@{/api/admin/raiting/list-check}"><i class="fa fa-angle-right"></i> Check Raiting</a></li>
+                                </ul>
+                            </li>
+                                                        </li>
+                             <li class="treeview">
+                                <a href="#">
+                                    <i class="fa fa-google-wallet"></i>
+                                    <span>Blog</span>
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li><a th:href="@{/admin/blog/list-blog}"><i class="fa fa-angle-right"></i> List Blog</a></li>
+                                    <li><a th:href="@{/admin/blog/add-blog}"><i class="fa fa-angle-right"></i> Add Blog</a></li>
+                                </ul>
+                            </li>
+                                                        </li>
+                             <li class="treeview">
+                                <a href="#">
+                                    <i class="fa fa-comments-o"></i>
+                                    <span>ChatBox</span>
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li><a th:href="@{/api/admin/chatbox}"><i class="fa fa-angle-right"></i> Admin ChatBox</a></li>
+                                </ul>
+                            </li>
+                                                        </li>
+                             <li class="treeview">
+                                <a href="#">
+                                    <i class="fa fa-gift"></i>
+                                    <span>Discount</span>
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li><a th:href="@{/api/admin/DiscountCode/list-code}"><i class="fa fa-angle-right"></i> List Discount</a></li>
+                                    <li><a th:href="@{/api/admin/DiscountCode/}"><i class="fa fa-angle-right"></i> Add Discount</a></li>
                                 </ul>
                             </li>
                             <li class="treeview">
@@ -103,8 +136,8 @@
                                         class="label pull-right label-info1">08</small><span
                                         class="label label-primary1 pull-right">02</span></a>
                                 <ul class="treeview-menu">
-                                    <li><a href="inbox.html"><i class="fa fa-angle-right"></i> Mail Inbox</a></li>
-                                    <li><a href="compose.html"><i class="fa fa-angle-right"></i> Compose Mail </a></li>
+                                    <li><a th:href="@{/admin/contacs/}"><i class="fa fa-bell-o"></i> Mail Inbox</a></li>
+                                    <li><a th:href="@{/admin/mail/form}"><i class="fa fa-angle-right"></i> Compose Mail </a></li>
                                 </ul>
                             </li>
                             <li class="treeview">

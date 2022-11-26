@@ -10,6 +10,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+
+import org.springframework.web.multipart.MultipartFile;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -21,14 +24,20 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class BrandDto implements Serializable{
 
-	private int Id;
+	private int id;
     
-	private String Name;
+	@NotEmpty
+	private String name;
 
+	@NotEmpty
 	private String thumbnail;
+	
+	private MultipartFile imageFile;
 
+	@NotEmpty
 	private String description;
 
-	private short Active;
+	private short active;
     
+	private Boolean isEdit = false;
 }

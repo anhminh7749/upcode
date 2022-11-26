@@ -16,65 +16,65 @@ import com.watch.shopwatchonline.Model.Category;
 @Service
 public interface CategoryService {
 
-	<S extends Category> S saveAndFlush(S entity);
-
-	<S extends Category> List<S> saveAllAndFlush(Iterable<S> entities);
-
-	<S extends Category> List<S> saveAll(Iterable<S> entities);
-
-	<S extends Category> S save(S entity);
-
-	Category getOne(Integer id);
-
-	Category getById(Integer id);
-
-	void flush();
-
-	<S extends Category> Optional<S> findOne(Example<S> example);
-
-	Optional<Category> findById(Integer id);
-
-	<S extends Category, R> R findBy(Example<S> example, Function<FetchableFluentQuery<S>, R> queryFunction);
-
-	List<Category> findAllById(Iterable<Integer> ids);
-
-	<S extends Category> Page<S> findAll(Example<S> example, Pageable pageable);
-
-	Page<Category> findAll(Pageable pageable);
-
 	<S extends Category> List<S> findAll(Example<S> example, Sort sort);
 
 	<S extends Category> List<S> findAll(Example<S> example);
 
-	List<Category> findAll(Sort sort);
-
-	List<Category> findAll();
-
-	boolean existsById(Integer id);
-
-	<S extends Category> boolean exists(Example<S> example);
-
-	void deleteInBatch(Iterable<Category> entities);
-
-	void deleteById(Integer id);
-
-	void deleteAllInBatch(Iterable<Category> entities);
-
-	void deleteAllInBatch();
-
-	void deleteAllByIdInBatch(Iterable<Integer> ids);
-
-	void deleteAllById(Iterable<? extends Integer> ids);
-
-	void deleteAll(Iterable<? extends Category> entities);
+	Category getById(Integer id);
 
 	void deleteAll();
 
+	void deleteAll(Iterable<? extends Category> entities);
+
+	Category getOne(Integer id);
+
+	void deleteAllInBatch();
+
+	void deleteAllById(Iterable<? extends Integer> ids);
+
+	<S extends Category, R> R findBy(Example<S> example, Function<FetchableFluentQuery<S>, R> queryFunction);
+
 	void delete(Category entity);
+
+	void deleteAllByIdInBatch(Iterable<Integer> ids);
+
+	void deleteById(Integer id);
+
+	<S extends Category> boolean exists(Example<S> example);
+
+	long count();
+
+	void deleteAllInBatch(Iterable<Category> entities);
 
 	<S extends Category> long count(Example<S> example);
 
-	long count();
+	void deleteInBatch(Iterable<Category> entities);
+
+	<S extends Category> Page<S> findAll(Example<S> example, Pageable pageable);
+
+	<S extends Category> List<S> saveAllAndFlush(Iterable<S> entities);
+
+	boolean existsById(Integer id);
+
+	<S extends Category> S saveAndFlush(S entity);
+
+	void flush();
+
+	<S extends Category> List<S> saveAll(Iterable<S> entities);
+
+	Optional<Category> findById(Integer id);
+
+	List<Category> findAllById(Iterable<Integer> ids);
+
+	List<Category> findAll(Sort sort);
+
+	Page<Category> findAll(Pageable pageable);
+
+	List<Category> findAll();
+
+	<S extends Category> Optional<S> findOne(Example<S> example);
+
+	<S extends Category> S save(S entity);
 
 	
 }

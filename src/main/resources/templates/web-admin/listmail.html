@@ -1,0 +1,138 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{web-admin/layout}">
+
+<head>
+
+</head>
+
+<body class="cbp-spmenu-push">
+	<div layout:fragment="content">
+		<div id="page-wrapper">
+			<h2>Danh Sách Phản Hồi</h2>
+			<div class="row">
+				<ol class="breadcrumb">
+					<li><a href="#">Trang Chủ</a></li>
+					<li><a href="#">Danh Sách</a></li>
+					<li><a href="#">Thêm Mới</a></li>
+				</ol>
+			</div>
+
+			<div class="main-page">
+				<div class="tables">
+					<div class="bs-example widget-shadow" data-example-id="hoverable-table">
+						<table class="table table-hover">
+							<thead>
+								<tr>
+									<th>Email</th>
+									<th>Tiêu Đề</th>
+									<th>Mô Tả</th>
+									<th>Ngày nhận phản hồi</th>
+									<th>Ngày phản hồi</th>
+									<th>Trạng Thái</th>
+									<th>Hoạt động</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each=" item : ${mails}">
+									<td th:text="${item.gmail}"></td>
+									<td th:text="${item.title}"></td>
+									<td th:text="${item.description}"></td>
+									<td th:text="${item.createAt}"></td>
+									<td th:text="${item.updateAt}"></td>
+									<td>
+										<span th:class="${item.status==0?'label label-danger':'label  label-success'}"
+											th:text="${item.status==0?'chua phan hoi':'da phan hoi'}">
+										</span>
+									</td>
+									<td><a data-toggle="modal" data-target="#gridSystemModal"
+											th:attr="onclick=|showProfile('${item.gmail}', '${item.title}','${item.description}')|"
+											class="fa fa-search"></a>
+										<div class="modal fade" id="gridSystemModal" tabindex="-1" role="dialog"
+											aria-labelledby="gridSystemModalLabel">
+											<div class="modal-dialog" role="document">
+												<div class="modal-content">
+													<div class="modal-header">
+														<button type="button" class="close" data-dismiss="modal"
+															aria-label="Close">
+															<span aria-hidden="true">&times;</span>
+														</button>
+														<h4 class="modal-title text-center" id="gridSystemModalLabel">Thông Tin</h4>
+													</div>
+													<div class="modal-body">
+
+
+														<!-- Email input -->
+														<div class="form-outline mb-4">
+															<label class="form-label">Email:</label>
+															<input class="form-control" id="gmailgmail" readonly/>
+														</div>
+														
+														<div class="form-outline mb-4">
+															<label class="form-label">Tiêu Đề:</label>
+															<input class="form-control" id="titletitle" readonly />
+														</div>
+
+														<!-- Message input -->
+														<div class="form-outline mb-4">
+															<label class="form-label">Nội Dung:</label>
+															<textarea class="form-control" id="description" readonly
+																rows="4"></textarea>
+														</div>
+													</div>
+												</div>
+												<!-- /.modal-content -->
+											</div>
+											<!-- /.modal-dialog -->
+										</div> <!-- /.modal --> <a th:if="${item.status==0}"
+											th:href="@{'/admin/contacs/edit/' + ${item.mailId}}" class="fa fa-edit"></a>
+										<a th:data-id="${item.mailId}" th:data-name="${item.gmail}"
+											onclick="showConfirmModelDialog(this.getAttribute('data-id'), this.getAttribute('data-name'))"
+											class="fa fa-trash-o"> </a>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						<!--  
+						<script>
+							function showConfirmModelDialog(id, name) {
+								$('#mailName').text(name);
+								$('#yesOption').attr('href',
+										'/site/contacs/delete/' + id);
+								$('#confirmationId').model('show');
+							}
+						</script>
+						-->
+						<div class="modal fade" id="confirmationId" tabindex="-1" role="dialog"
+							aria-labelledby="modelTitleId" aria-hidden="true">
+							<div class="modal-dialog" role="document">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h5 class="modal-title">Confirmation</h5>
+										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+											<span aria-hidden="true">&times;</span>
+										</button>
+									</div>
+									<div class="modal-body">
+										Bạn có muốn xóa không "<span id="mailName"></span>"?
+									</div>
+									<div class="modal-footer">
+										<a id="yesOption" type="button" class="btn btn-danger">Có</a>
+										<button type="button" class="btn btn-secondary"
+											data-dismiss="modal">Không</button>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+</body>
+
+</html>

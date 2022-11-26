@@ -6113,6 +6113,33 @@ i.fa.fa-facebook.profile-icon {
 /*--//widgets-page--*/
 
 /*-- todo inbox chat section in index page --*/
+.panel-default{
+    bottom: 50px;
+    border-radius: 5px;
+    box-shadow: 0px 5px 35px 9px #ccc;
+}
+.panel-default .panel-body ul li {
+    /* line-height: 1.5rem; */
+    padding: 10px 20px;
+    margin: 0;
+    border-bottom: 1px solid #f4f4f4;
+}
+.panel-default .panel-body #messageArea i {
+    width: 42px;
+    height: 42px;
+    overflow: hidden;
+    left: 10px;
+    top: 11px;
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 18px;
+    line-height: 42px;
+    color: #fff;
+    text-align: center;
+    border-radius: 50%;
+    font-style: normal;
+    text-transform: uppercase;
+}
 .panel-default > .panel-heading + .panel-collapse > .panel-body {
     border-top-color: #ddd;
     color: #444;
