@@ -9,24 +9,24 @@
 <body layout:fragment="content" class="cbp-spmenu-push">
 			<div id="page-wrapper">
 			<div class="main-page login-page ">
-				<h2 class="title1">Login</h2>
+				<h2 class="title1">Đăng nhập</h2>
 				<div class="widget-shadow">
 					<div class="login-body">
 						<form th:action="@{/api/auth/signin}" method="post">
-							<input type="text" class="user" name="username" placeholder="Enter Your user name" required="">
-							<input type="password" name="password" class="lock" placeholder="Password" required="">
+							<input type="text" class="user" name="username" placeholder="Tên đăng nhập" required="">
+							<input type="password" name="password" class="lock" placeholder="Mật khẩu" required="">
 							<div class="forgot-grid">
-								<label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i></i>Remember me</label>
+								<label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i></i>Ghi nhớ tôi</label>
 								<div class="forgot">
-									<a href="#">forgot password?</a>
+									<a href="#">Quên mật khẩu?</a>
 								</div>
 								<div class="clearfix"> </div>
 							</div>
-							<input type="submit" name="Sign In" value="Sign In">
+							<input type="submit" name="Sign In" value="Đăng nhập">
 							<div class="registration">
-								Don't have an account ?
+								Không có tài khoản?
 								<a class="" href="signup.html">
-									Create an account
+									Tạo một tài khoản mới
 								</a>
 							</div>
 						</form>
