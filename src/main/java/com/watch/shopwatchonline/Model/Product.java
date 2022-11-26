@@ -67,11 +67,11 @@ public class Product implements Serializable{
 	@Column(nullable = false)
 	private short active;
 
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIMESTAMP)
 	@Column(nullable = false)
 	private Date createAt;
 
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIMESTAMP)
 	@Column(nullable = false)
 	private Date updateAt;
 
@@ -88,6 +88,9 @@ public class Product implements Serializable{
 
 	@OneToMany(mappedBy = "Product", cascade = CascadeType.ALL)
 	private Set<wishlist> wishlists;
+	
+	@OneToMany(mappedBy = "Product")
+	private Set<OrderDetail> orderDetails;
 
 	@OneToMany(mappedBy = "Product", cascade = CascadeType.ALL)
 	private Set<Blog> blogs;

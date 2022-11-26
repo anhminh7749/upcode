@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{web-site/layout}">
+<body layout:fragment="content">
+<div class=" men"></div>
+    <div class="container">
+        <h1>VALID ADDRESS FORM</h1>
+        <form id="test_form" th:action="@{/api/address/up}" method="post" th:object="${address}">
+            <fieldset><input type="text" hidden name="id" value="">
+                <legend class="section-title aits">Your Information</legend>
+                <div class="section agileinfo row">
+                    <fieldset>
+                        <div class="form-group wthree col-md-6">
+                            <label class="control-label" for="first-name-1">Name</label>
+                            <input class="form-control" id="first-name-1" name="name" value="" type="text"
+                                maxlength="50" required>
+                        </div>
+
+                        <div class="form-group agileits-w3layouts col-md-6">
+                            <label class="control-label" for="phone"> Phone</label>
+                            <input class="form-control" id="phone" name="phone" value="" type="tel"
+                                maxlength="25" required />
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="section w3-agileits">
+                    <fieldset>
+                        <legend>Address</legend>
+                        <div class="form-group">
+                            <label class="control-label" for="street-address">Address </label>
+                            <input class="form-control" id="street-address" name="address" value="" type="text"
+                                maxlength="200">
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="city">specific address</label>
+                            <input class="form-control" id="city" name="specificAddress" value="" type="text" maxlength="50">
+                        </div>
+
+                    </fieldset>
+                </div>
+                <div class="section">
+                    <fieldset>
+                        <fieldset>
+                            <legend>Default Address</legend>
+                            <label for="yes" class="radio-inline">
+                                <input type="radio" id="yes" value="1" name="status" required> Yes
+                            </label>
+                            <label for="no" class="radio-inline wthree">
+                                <input type="radio" value="0" id="no" name="status"> No
+                            </label>
+                        </fieldset>
+                    </fieldset>
+                </div>
+            </fieldset>
+            <div class="form-group w3-agile mt-2">
+                <button type="submit" value="Submit" class="btn btn-lg agile btn-primary submit">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+
+</html>
