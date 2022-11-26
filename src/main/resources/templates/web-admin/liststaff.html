@@ -1,42 +1,42 @@
 <!DOCTYPE HTML>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{web-admin/layout}">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{web-admin/layout}">
+
 <head>
-   
+
 </head>
 
 <body class="cbp-spmenu-push">
-    <div layout:fragment="content">
-        <div id="page-wrapper">
-            <h2>Danh Sách Nhân Viên</h2>
-            <div class="row">
-                <ol class="breadcrumb">
-                   <li><a href="#">Trang Chủ</a></li>
-                    <li><a href="#">Danh Sách</a></li>
-                    <li><a href="#">Thêm Mới</a></li>                    
-                </ol>
-            </div>
-           
-            <div class="main-page">
-                <div class="tables">
-                    <div class="bs-example widget-shadow" data-example-id="hoverable-table">
-                       
-                        <table class="table table-hover">
-                            <thead>
-                               	<tr>
+	<div layout:fragment="content">
+		<div id="page-wrapper">
+			<h2>Danh Sách Nhân Viên</h2>
+			<div class="row">
+				<ol class="breadcrumb">
+					<li><a href="#">Trang Chủ</a></li>
+					<li><a href="#">Danh Sách</a></li>
+					<li><a href="#">Thêm Mới</a></li>
+				</ol>
+			</div>
+
+			<div class="main-page">
+				<div class="tables">
+					<div class="bs-example widget-shadow" data-example-id="hoverable-table">
+
+						<table class="table table-hover">
+							<thead>
+								<tr>
 									<th>Email</th>
 									<th>Tên</th>
 									<th>Phòng Ban</th>
 									<th>Chức Vụ</th>
 									<th>SĐT</th>
-                                    <th>Ngày Bắt Đầu</th>
-                                    <th>Lương</th>
-                                    <th>Hoạt động</th>
+									<th>Ngày Bắt Đầu</th>
+									<th>Lương</th>
+									<th>Hoạt động</th>
 								</tr>
-                            </thead>
-                            <tbody>
-                                <tr th:each=" item : ${staffs}">
+							</thead>
+							<tbody>
+								<tr th:each=" item : ${staffs}">
 									<td th:text="${item.email}">1</td>
 									<td th:text="${item.name}">1</td>
 									<td th:text="${item.pBan}">1</td>
@@ -44,8 +44,8 @@
 									<td th:text="${item.phone}">1</td>
 									<td th:text="${item.ngayBD}">1</td>
 									<td th:text="${item.luong}">1</td>
-                                    <td>
-                                    <a data-toggle="modal" data-target="#gridSystemModal"
+									<td>
+										<a data-toggle="modal" data-target="#gridSystemModal"
 											th:attr="onclick=|showProfileStaff('${item.email}', '${item.name}','${item.pBan}','${item.cVu}','${item.phone}','${item.ngayBD}','${item.luong}')|"
 											class="fa fa-search"></a>
 										<div class="modal fade" id="gridSystemModal" tabindex="-1" role="dialog"
@@ -57,49 +57,48 @@
 															aria-label="Close">
 															<span aria-hidden="true">&times;</span>
 														</button>
-														<h4 class="modal-title text-center" id="gridSystemModalLabel">Thông Tin</h4>
+														<h4 class="modal-title text-center" id="gridSystemModalLabel">
+															Thông Tin</h4>
 													</div>
 													<div class="modal-body">
 														<div>
-															<label class="control-label">Email: </label> 
-															<input class="form-control" id="email" readonly><br> 
-															<label class="control-label">Tên:</label> 
+															<label class="control-label">Email: </label>
+															<input class="form-control" id="email" readonly><br>
+															<label class="control-label">Tên:</label>
 															<input class="form-control" id="name" readonly><br>
-															<label class="control-label">Phòng Ban: </label> 
+															<label class="control-label">Phòng Ban: </label>
 															<input class="form-control" id="pBan" readonly><br>
-															<label class="control-label">Chức Vụ: </label> 
+															<label class="control-label">Chức Vụ: </label>
 															<input class="form-control" id="cVu" readonly><br>
-															<label class="control-label">SĐT: </label> 
+															<label class="control-label">SĐT: </label>
 															<input class="form-control" id="phone" readonly><br>
-															<label class="control-label">Ngày Bắt Đầu: </label> 
+															<label class="control-label">Ngày Bắt Đầu: </label>
 															<input class="form-control" id="ngayBD" readonly><br>
-															<label class="control-label">Lương: </label> 
+															<label class="control-label">Lương: </label>
 															<input class="form-control" id="luong" readonly><br>
 														</div>
 													</div>
 												</div>
-										</div>
-												<!-- /.modal-content -->
 											</div>
-											<!-- /.modal-dialog -->
-                                        <a th:href="@{'/admin/staffs/edit/' + ${item.staffId}}" class="fa fa-edit"></a>
-                                        <a th:data-id="${item.staffId}"
-										th:data-name="${item.name}"
-										onclick="showConfirmModelDialogStaff(this.getAttribute('data-id'), this.getAttribute('data-name'))"
-										class="fa fa-trash-o"> </a>
-                                    </td>
+											<!-- /.modal-content -->
+										</div>
+										<!-- /.modal-dialog -->
+										<a th:href="@{'/admin/staffs/edit/' + ${item.staffId}}" class="fa fa-edit"></a>
+										<a th:data-id="${item.staffId}" th:data-name="${item.name}"
+											onclick="showConfirmModelDialogStaff(this.getAttribute('data-id'), this.getAttribute('data-name'))"
+											class="fa fa-trash-o"> </a>
+									</td>
 								</tr>
-                            </tbody>
-                        </table>
-                        
-                        <div class="modal fade" id="confirmationId" tabindex="-1"
-							role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+							</tbody>
+						</table>
+
+						<div class="modal fade" id="confirmationId" tabindex="-1" role="dialog"
+							aria-labelledby="modelTitleId" aria-hidden="true">
 							<div class="modal-dialog" role="document">
 								<div class="modal-content">
 									<div class="modal-header">
 										<h5 class="modal-title">Confirmation</h5>
-										<button type="button" class="close" data-dismiss="modal"
-											aria-label="Close">
+										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 											<span aria-hidden="true">&times;</span>
 										</button>
 									</div>
@@ -108,21 +107,20 @@
 									</div>
 									<div class="modal-footer">
 										<a id="yesOption" type="button" class="btn btn-danger">Yes</a>
-										<button type="button" class="btn btn-secondary"
-											data-dismiss="modal">No</button>
+										<button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
 									</div>
 								</div>
 							</div>
 						</div>
 
-                    </div>
+					</div>
 
-                </div>
-            </div>
-        </div>
-        </div>
+				</div>
+			</div>
+		</div>
+	</div>
 
-    
+
 </body>
 
 </html>

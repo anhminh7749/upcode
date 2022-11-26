@@ -37,10 +37,12 @@
                             <div class="header-right" style="
                             position: relative;
                         ">
-                            <input class="sb-search-input input__field--madoka search" placeholder="Search........name, brand, category" type="search"  name="keyword" id="search-input">
-                            <label class="input__label" for="search-input">
-                                <i class="fa fa-search"></i>
-                            </label>
+                                <input class="sb-search-input input__field--madoka search"
+                                    placeholder="Search........name, brand, category" type="search" name="keyword"
+                                    id="search-input">
+                                <label class="input__label" for="search-input">
+                                    <i class="fa fa-search"></i>
+                                </label>
                             </div>
                         </form>
 
@@ -67,113 +69,119 @@
                                             th:src="${item.thumbnail!=null?'/admin/product/images/'+item.thumbnail:'/images/Background.png'}"
                                             alt="edit"></td>
                                     <td th:text="${item.Name}"></td>
-                                    <td th:text="${#numbers.formatDecimal(item.Price, 0, 'COMMA', 2, 'POINT')} +'VND'"></td>
-										<td th:text="${#numbers.formatDecimal(item.Quantity, 0, 'COMMA', 0, 'POINT')}"></td>
-                                        
-										<td>
-                                            <span class="badge badge-warning"
+                                    <td th:text="${#numbers.formatDecimal(item.Price, 0, 'COMMA', 2, 'POINT')} +'VND'">
+                                    </td>
+                                    <td th:text="${#numbers.formatDecimal(item.Quantity, 0, 'COMMA', 0, 'POINT')}"></td>
+
+                                    <td>
+                                        <span class="badge badge-warning"
                                             th:text="${#numbers.formatDecimal(item.Discount/item.Price*100, 1, 'COMMA', 2, 'POINT')} + '%'"></span>
-                                        </td>
-										 <td th:text="${item.Category.name}"></td>
-                                        <td th:text="${item.brand.name}"></td> 
-                                        <td><span th:class="${item.Active==0?'label label-success':'label label-danger'}"
+                                    </td>
+                                    <td th:text="${item.Category.name}"></td>
+                                    <td th:text="${item.brand.name}"></td>
+                                    <td><span th:class="${item.Active==0?'label label-success':'label label-danger'}"
                                             th:text="${item.Active==0?'ACTIVE':'INACTIVE'}"></span>
-                                        </td>
-                                        <td>
-                                        <a data-toggle="modal" data-target="#gridSystemModal"
-											th:attr="onclick=|showProfileProduct('${item.thumbnail}', '${item.Name}','${item.Price}',
+                                    </td>
+                                    <td>
+                                        <a data-toggle="modal" data-target="#gridSystemModal" th:attr="onclick=|showProfileProduct('${item.thumbnail}', '${item.Name}','${item.Price}',
 											'${item.Quantity}','${item.Discount}','${item.Category.name}','${item.brand.name}','${item.Active}')|"
-											class="fa fa-search"></a>
-										<div class="modal fade" id="gridSystemModal" tabindex="-1" role="dialog"
-											aria-labelledby="gridSystemModalLabel">
-											<div class="modal-dialog" role="document">
-												<div class="modal-content">
-													<div class="modal-header">
-														<button type="button" class="close" data-dismiss="modal"
-															aria-label="Close">
-															<span aria-hidden="true">&times;</span>
-														</button>
-														<h4 class="modal-title text-center" id="gridSystemModalLabel">Thông Tin</h4>
-													</div>
-													<div class="modal-body">
+                                            class="fa fa-search"></a>
+                                        <div class="modal fade" id="gridSystemModal" tabindex="-1" role="dialog"
+                                            aria-labelledby="gridSystemModalLabel">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal"
+                                                            aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                        <h4 class="modal-title text-center" id="gridSystemModalLabel">
+                                                            Thông Tin</h4>
+                                                    </div>
+                                                    <div class="modal-body">
 
 
-														<!-- Email input -->
-														<div class="form-outline mb-4">
-															<label class="form-label">Ảnh:</label>
-															<input class="form-control" id="thumbnail" readonly/>
-														</div>
-														
-														<div class="form-outline mb-4">
-															<label class="form-label">Tên:</label>
-															<input class="form-control" id="Name" readonly />
-														</div>
-														
-														<div class="form-outline mb-4">
-															<label class="form-label">Giá:</label>
-															<input class="form-control" id="Price" readonly />
-														</div>
-														
-														<div class="form-outline mb-4">
-															<label class="form-label">Số lượng:</label>
-															<input class="form-control" id="Quantity" readonly />
-														</div>
-														
-														<div class="form-outline mb-4">
-															<label class="form-label">Giảm giá:</label>
-															<input class="form-control" id="Discount" readonly />
-														</div>
-														
-														<div class="form-outline mb-4">
-															<label class="form-label">Danh mục:</label>
-															<input class="form-control" id="Category.name" readonly />
-														</div>
-														
-														<div class="form-outline mb-4">
-															<label class="form-label">Thương hiệu:</label>
-															<input class="form-control" id="brand.name" readonly />
-														</div>
-														
-														<div class="form-outline mb-4">
-															<label class="form-label">Trạng thái:</label>
-															<input class="form-control" id="Active" readonly />
-														</div>
-													</div>
-												</div>
-												<!-- /.modal-content -->
-											</div>
-											<!-- /.modal-dialog -->
-										</div> <!-- /.modal --> 
-                                            <a th:href="@{'/api/admin/product/edit/' + ${item.Id}}"><i class="fa fa-pencil-square-o icon_del" aria-hidden="true"></i></a>
-                                            <a th:href="@{'/api/admin/product/delete/' + ${item.Id}}"><i class="fa fa-trash-o icon_del" aria-hidden="true"></i></a>
-                                        </td>
-                                      
-                                      
-									</tr>
-                            
-                       
+                                                        <!-- Email input -->
+                                                        <div class="form-outline mb-4">
+                                                            <label class="form-label">Ảnh:</label>
+                                                            <input class="form-control" id="thumbnail" readonly />
+                                                        </div>
+
+                                                        <div class="form-outline mb-4">
+                                                            <label class="form-label">Tên:</label>
+                                                            <input class="form-control" id="Name" readonly />
+                                                        </div>
+
+                                                        <div class="form-outline mb-4">
+                                                            <label class="form-label">Giá:</label>
+                                                            <input class="form-control" id="Price" readonly />
+                                                        </div>
+
+                                                        <div class="form-outline mb-4">
+                                                            <label class="form-label">Số lượng:</label>
+                                                            <input class="form-control" id="Quantity" readonly />
+                                                        </div>
+
+                                                        <div class="form-outline mb-4">
+                                                            <label class="form-label">Giảm giá:</label>
+                                                            <input class="form-control" id="Discount" readonly />
+                                                        </div>
+
+                                                        <div class="form-outline mb-4">
+                                                            <label class="form-label">Danh mục:</label>
+                                                            <input class="form-control" id="Category.name" readonly />
+                                                        </div>
+
+                                                        <div class="form-outline mb-4">
+                                                            <label class="form-label">Thương hiệu:</label>
+                                                            <input class="form-control" id="brand.name" readonly />
+                                                        </div>
+
+                                                        <div class="form-outline mb-4">
+                                                            <label class="form-label">Trạng thái:</label>
+                                                            <input class="form-control" id="Active" readonly />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- /.modal-content -->
+                                            </div>
+                                            <!-- /.modal-dialog -->
+                                        </div> <!-- /.modal -->
+                                        <a th:href="@{'/api/admin/product/edit/' + ${item.Id}}"><i
+                                                class="fa fa-pencil-square-o icon_del" aria-hidden="true"></i></a>
+                                        <a th:href="@{'/api/admin/product/delete/' + ${item.Id}}"><i
+                                                class="fa fa-trash-o icon_del" aria-hidden="true"></i></a>
+                                    </td>
+
+
+                                </tr>
+
+
                             </tbody>
                         </table>
-                        
+
                         <div class="row" th:if="${productPage.totalPages >1}">
 
                             <h5 class="avatar_left items" th:text="${productPage.size}+'/'+${tt}"></h5>
                             <ul class="header-right pagination">
-								<li class="disabled" th:class="${1== productPage.number+1} ? 'active':''">
-								<a th:href="@{/admin/product/list-product(name=${keyword}, size = ${productPage.size}, page=${1})}" aria-label="Previous">
-								<span aria-hidden="true">«</span></a></li>
-								
-								<li th:each="pageNum:${pageNums}"
-										th:if="${productPage.totalPages>1}"
-										th:class="${pageNum==productPage.number+1}?'page-item active':'page-item'"><a class="page-link"
-										th:href="@{/admin/product/list-product(name=${keyword}, size = ${productPage.size}, page=${pageNum})}"
-										th:text="${pageNum}"></a>
-									</li>
-								
-								<li th:class="${productPage.totalPages== productPage.number+1} ? 'active':''">
-                                <a th:href="@{/admin/product/list-product(name=${keyword}, size = ${productPage.size}, page=${productPage.totalPages})}" 
-								aria-label="Next"><span aria-hidden="true">»</span></a></li>
-							</ul>
+                                <li class="disabled" th:class="${1== productPage.number+1} ? 'active':''">
+                                    <a th:href="@{/admin/product/list-product(name=${keyword}, size = ${productPage.size}, page=${1})}"
+                                        aria-label="Previous">
+                                        <span aria-hidden="true">«</span></a>
+                                </li>
+
+                                <li th:each="pageNum:${pageNums}" th:if="${productPage.totalPages>1}"
+                                    th:class="${pageNum==productPage.number+1}?'page-item active':'page-item'"><a
+                                        class="page-link"
+                                        th:href="@{/admin/product/list-product(name=${keyword}, size = ${productPage.size}, page=${pageNum})}"
+                                        th:text="${pageNum}"></a>
+                                </li>
+
+                                <li th:class="${productPage.totalPages== productPage.number+1} ? 'active':''">
+                                    <a th:href="@{/admin/product/list-product(name=${keyword}, size = ${productPage.size}, page=${productPage.totalPages})}"
+                                        aria-label="Next"><span aria-hidden="true">»</span></a>
+                                </li>
+                            </ul>
 
                         </div>
                     </div>
@@ -181,9 +189,9 @@
                 </div>
             </div>
         </div>
-        </div>
+    </div>
 
-    
+
 </body>
 
 </html>

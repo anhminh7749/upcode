@@ -1,53 +1,53 @@
 <!DOCTYPE HTML>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{web-admin/layout}">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{web-admin/layout}">
+
 <head>
-   
+
 </head>
 
 <body class="cbp-spmenu-push">
-    <div layout:fragment="content">
-        <div id="page-wrapper">
-            <h2>Danh Sach Khach Hang</h2>
-            <div class="row">
-                <ol class="breadcrumb">
-                   <li><a href="#">Trang Chủ</a></li>
-                    <li><a href="#">Danh Sách</a></li>
-                    <li><a href="#">Thêm Mới</a></li>                 
-                </ol>
-            </div>
-           
-            <div class="main-page">
-                <div class="tables">
-                    <div class="bs-example widget-shadow" data-example-id="hoverable-table">
-                       
-                        <table class="table table-hover">
-                            <thead>
-                               	<tr>
+	<div layout:fragment="content">
+		<div id="page-wrapper">
+			<h2>Danh Sach Khach Hang</h2>
+			<div class="row">
+				<ol class="breadcrumb">
+					<li><a href="#">Trang Chủ</a></li>
+					<li><a href="#">Danh Sách</a></li>
+					<li><a href="#">Thêm Mới</a></li>
+				</ol>
+			</div>
+
+			<div class="main-page">
+				<div class="tables">
+					<div class="bs-example widget-shadow" data-example-id="hoverable-table">
+
+						<table class="table table-hover">
+							<thead>
+								<tr>
 									<th>Email</th>
 									<th>Tên</th>
 									<th>Giới tính</th>
 									<th>Bản tin</th>
 									<th>Ngày sinh</th>
-                                    <th>Hoạt động</th>
+									<th>Hoạt động</th>
 								</tr>
-                            </thead>
-                            <tbody>
-                                <tr th:each=" item : ${customers}">
+							</thead>
+							<tbody>
+								<tr th:each=" item : ${customers}">
 									<td th:text="${item.email}">1</td>
 									<td th:text="${item.name}">1</td>
 									<td><span th:class="${item.gender==0?'label label-danger':'label  label-success'}"
 											th:text="${item.gender==0?'Nam':'Nữ'}">
-									</span></td>
+										</span></td>
 									<td>
-									<span th:class="${item.status==0?'label label-danger':'label  label-success'}"
+										<span th:class="${item.status==0?'label label-danger':'label  label-success'}"
 											th:text="${item.status==0?'đã ngừng hoạt động':'đang hoạt động'}">
-									</span>
+										</span>
 									</td>
 									<td th:text="${item.birthday}">1</td>
-                                    <td>
-                                    <a data-toggle="modal" data-target="#gridSystemModal"
+									<td>
+										<a data-toggle="modal" data-target="#gridSystemModal"
 											th:attr="onclick=|showProfileCustomer('${item.email}', '${item.name}','${item.gender}','${item.status}','${item.birthday}')|"
 											class="fa fa-info-circle"></a>
 										<div class="modal fade" id="gridSystemModal" tabindex="-1" role="dialog"
@@ -65,9 +65,9 @@
 													<div class="modal-body">
 														<div class="form-outline mb-4">
 															<label class="form-label">Email:</label>
-															<input class="form-control" id="email" readonly/>
+															<input class="form-control" id="email" readonly />
 														</div>
-														
+
 														<div class="form-outline mb-4">
 															<label class="form-label">Tên:</label>
 															<input class="form-control" id="name" readonly />
@@ -77,40 +77,39 @@
 															<label class="form-label">Giới tính:</label>
 															<input class="form-control" id="gender" readonly />
 														</div>
-														
+
 														<div class="form-outline mb-4">
 															<label class="form-label">Trạng thái:</label>
 															<input class="form-control" id="status" readonly />
 														</div>
-														
+
 														<div class="form-outline mb-4">
 															<label class="form-label">Ngày sinh:</label>
 															<input class="form-control" id="birthday" readonly />
 														</div>
 													</div>
 												</div>
-										</div>
-												<!-- /.modal-content -->
 											</div>
-											<!-- /.modal-dialog -->
-                                        <a th:href="@{'/admin/customers/edit/' + ${item.customerId}}" class="fa fa-edit"></a>
-                                        <a th:data-id="${item.customerId}"
-										th:data-name="${item.name}"
-										onclick="showConfirmModelDialogCustomer(this.getAttribute('data-id'), this.getAttribute('data-name'))"
-										class="fa fa-trash-o"> </a>
-                                    </td>
+											<!-- /.modal-content -->
+										</div>
+										<!-- /.modal-dialog -->
+										<a th:href="@{'/admin/customers/edit/' + ${item.customerId}}"
+											class="fa fa-edit"></a>
+										<a th:data-id="${item.customerId}" th:data-name="${item.name}"
+											onclick="showConfirmModelDialogCustomer(this.getAttribute('data-id'), this.getAttribute('data-name'))"
+											class="fa fa-trash-o"> </a>
+									</td>
 								</tr>
-                            </tbody>
-                        </table>
-                        
-                        <div class="modal fade" id="confirmationId" tabindex="-1"
-							role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+							</tbody>
+						</table>
+
+						<div class="modal fade" id="confirmationId" tabindex="-1" role="dialog"
+							aria-labelledby="modelTitleId" aria-hidden="true">
 							<div class="modal-dialog" role="document">
 								<div class="modal-content">
 									<div class="modal-header">
 										<h5 class="modal-title">Confirmation</h5>
-										<button type="button" class="close" data-dismiss="modal"
-											aria-label="Close">
+										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 											<span aria-hidden="true">&times;</span>
 										</button>
 									</div>
@@ -119,21 +118,20 @@
 									</div>
 									<div class="modal-footer">
 										<a id="yesOption" type="button" class="btn btn-danger">Yes</a>
-										<button type="button" class="btn btn-secondary"
-											data-dismiss="modal">No</button>
+										<button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
 									</div>
 								</div>
 							</div>
 						</div>
 
-                    </div>
+					</div>
 
-                </div>
-            </div>
-        </div>
-        </div>
+				</div>
+			</div>
+		</div>
+	</div>
 
-    
+
 </body>
 
 </html>

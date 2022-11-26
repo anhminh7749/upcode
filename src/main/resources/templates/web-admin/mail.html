@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
-	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorate="~{web-admin/layout}">
+
 <head>
 
 </head>
@@ -28,18 +28,17 @@
 						</div>
 						<div class="form-three widget-shadow">
 							<div class=" panel-body-inputin">
-								<form class="form-horizontal" th:action="@{/admin/contacs/send}"
-									method="post" th:object="${mail}">
-									<input type="hidden" th:filed="*{isEdit}"> <input
-										type="text" hidden th:field="*{mailId}">
+								<form class="form-horizontal" th:action="@{/admin/contacs/send}" method="post"
+									th:object="${mail}">
+									<input type="hidden" th:filed="*{isEdit}"> <input type="text" hidden
+										th:field="*{mailId}">
 									<div class="form-group">
 										<label class="col-md-2 control-label">Gmail</label>
 										<div class="col-md-8">
 											<div class="input-group">
-												<span class="input-group-addon"> <i
-													class="fa fa-google-plus"></i>
-												</span> <input type="text" class="form-control1"
-													th:field="*{gmail}" readonly>
+												<span class="input-group-addon"> <i class="fa fa-google-plus"></i>
+												</span> <input type="text" class="form-control1" th:field="*{gmail}"
+													readonly>
 											</div>
 											<small th:if="${#fields.hasErrors('gmail')}" id="EmailHid"
 												class="form-text text-muted">Email is required</small>
@@ -49,13 +48,12 @@
 										<label class="col-md-2 control-label">Title:</label>
 										<div class="col-md-8">
 											<div class="input-group">
-												<span class="input-group-addon"> <i
-													class="fa fa-pencil"></i>
+												<span class="input-group-addon"> <i class="fa fa-pencil"></i>
 												</span> <input type="text" class="form-control1" name="title"
 													placeholder="Title">
 											</div>
-											<small th:if="${#fields.hasErrors('title')}"
-												id="customerIdHid" class="form-text text-muted">Name
+											<small th:if="${#fields.hasErrors('title')}" id="customerIdHid"
+												class="form-text text-muted">Name
 												is required</small>
 										</div>
 									</div>
@@ -63,8 +61,7 @@
 										<label class="col-md-2 control-label">Message</label>
 										<div class="col-md-8">
 											<div class="input-group">
-												<span class="input-group-addon"> <i
-													class="fa fa-comment-o"></i>
+												<span class="input-group-addon"> <i class="fa fa-comment-o"></i>
 												</span> <input type="text" class="form-control1" name="description"
 													placeholder="Message">
 											</div>

@@ -37,46 +37,47 @@
                                     <td th:text="${item.thumbnail}"></td>
                                     <td th:text="${item.description}">1</td>
                                     <td>
-                                    <a data-toggle="modal" data-target="#gridSystemModal"
-											th:attr="onclick=|showProfileBrand('${item.name}', '${item.thumbnail}','${item.description}')|"
-											class="fa fa-search"></a>
-										<div class="modal fade" id="gridSystemModal" tabindex="-1" role="dialog"
-											aria-labelledby="gridSystemModalLabel">
-											<div class="modal-dialog" role="document">
-												<div class="modal-content">
-													<div class="modal-header">
-														<button type="button" class="close" data-dismiss="modal"
-															aria-label="Close">
-															<span aria-hidden="true">&times;</span>
-														</button>
-														<h4 class="modal-title text-center" id="gridSystemModalLabel">Thông Tin</h4>
-													</div>
-													<div class="modal-body">
+                                        <a data-toggle="modal" data-target="#gridSystemModal"
+                                            th:attr="onclick=|showProfileBrand('${item.name}', '${item.thumbnail}','${item.description}')|"
+                                            class="fa fa-search"></a>
+                                        <div class="modal fade" id="gridSystemModal" tabindex="-1" role="dialog"
+                                            aria-labelledby="gridSystemModalLabel">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal"
+                                                            aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                        <h4 class="modal-title text-center" id="gridSystemModalLabel">
+                                                            Thông Tin</h4>
+                                                    </div>
+                                                    <div class="modal-body">
 
 
-														<!-- Email input -->
-														<div class="form-outline mb-4">
-															<label class="form-label">Name:</label>
-															<input class="form-control" id="name" readonly/>
-														</div>
-														
-														<div class="form-outline mb-4">
-															<label class="form-label">Image:</label>
-															<input class="form-control" id="thumbnail" readonly />
-														</div>
+                                                        <!-- Email input -->
+                                                        <div class="form-outline mb-4">
+                                                            <label class="form-label">Name:</label>
+                                                            <input class="form-control" id="name" readonly />
+                                                        </div>
 
-														<!-- Message input -->
-														<div class="form-outline mb-4">
-															<label class="form-label">Nội Dung:</label>
-															<textarea class="form-control" id="description" readonly
-																rows="4"></textarea>
-														</div>
-													</div>
-												</div>
-												<!-- /.modal-content -->
-											</div>
-											<!-- /.modal-dialog -->
-										</div> <!-- /.modal --> 
+                                                        <div class="form-outline mb-4">
+                                                            <label class="form-label">Image:</label>
+                                                            <input class="form-control" id="thumbnail" readonly />
+                                                        </div>
+
+                                                        <!-- Message input -->
+                                                        <div class="form-outline mb-4">
+                                                            <label class="form-label">Nội Dung:</label>
+                                                            <textarea class="form-control" id="description" readonly
+                                                                rows="4"></textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- /.modal-content -->
+                                            </div>
+                                            <!-- /.modal-dialog -->
+                                        </div> <!-- /.modal -->
                                         <a th:href="@{'/admin/brands/edit/' + ${item.id}}" class="fa fa-edit"></a>
                                         <a th:data-id="${item.id}" th:data-name="${item.name}"
                                             onclick="showConfirmModelDialogBrand(this.getAttribute('data-id'), this.getAttribute('data-name'))"

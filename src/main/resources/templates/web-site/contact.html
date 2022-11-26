@@ -1,6 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
-	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorate="~{web-site/layout}">
 
 <head>
@@ -29,16 +28,15 @@
 						</ul>
 						<ul class="iphone">
 							<i class="flag"> </i>
-							<li class="phone_desc">Website : <a
-								href="mailto:mail@demolink.org">www.demolink.com</a></li>
+							<li class="phone_desc">Website : <a href="mailto:mail@demolink.org">www.demolink.com</a>
+							</li>
 							<div class="clearfix"></div>
 						</ul>
 					</div>
 					<div class="grid_3">
 						<ul class="iphone">
 							<i class="msg"> </i>
-							<li class="phone_desc">Email : <a
-								href="mailto:mail@demolink.org">mail(at)watches.com</a>
+							<li class="phone_desc">Email : <a href="mailto:mail@demolink.org">mail(at)watches.com</a>
 							</li>
 							<div class="clearfix"></div>
 						</ul>
@@ -53,21 +51,18 @@
 				</div>
 				<div class="contact_form">
 					<h2>Feedback</h2>
-					<form class="com-mail" th:action="@{/site/mail/send}"
-						method="post">
+					<form class="com-mail" th:action="@{/site/mail/send}" method="post">
 						<div class="col-md-6 to">
-						
-							<input type="text" class="form-control1 control3"
-										name="gmail" placeholder="Mail :"> 
-										
-							<input type="text" class="form-control1 control3" 
-									    name="title" placeholder="Title :"> <br>
-											
+
+							<input type="text" class="form-control1 control3" name="gmail" placeholder="Mail :">
+
+							<input type="text" class="form-control1 control3" name="title" placeholder="Title :"> <br>
+
 						</div>
 						<div class="col-md-6 text">
-							<textarea rows="6" class="form-control1 control2"
-										name="description"placeholder="Message :"></textarea>
-											
+							<textarea rows="6" class="form-control1 control2" name="description"
+								placeholder="Message :"></textarea>
+
 						</div>
 						<div class="clearfix"></div>
 						<div class="but__center">
@@ -84,4 +79,5 @@
 		</div>
 	</div>
 </body>
+
 </html>

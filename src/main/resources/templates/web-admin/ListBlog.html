@@ -37,10 +37,11 @@
                             <div class="header-right" style="
                             position: relative;
                         ">
-                            <input class="sb-search-input input__field--madoka search" placeholder="Search...." type="search"  name="keyword" id="search-input">
-                            <label class="input__label" for="search-input">
-                                <i class="fa fa-search"></i>
-                            </label>
+                                <input class="sb-search-input input__field--madoka search" placeholder="Search...."
+                                    type="search" name="keyword" id="search-input">
+                                <label class="input__label" for="search-input">
+                                    <i class="fa fa-search"></i>
+                                </label>
                             </div>
                         </form>
 
@@ -49,7 +50,7 @@
                         <table class="table table-hover">
                             <thead>
                                 <tr>
-                               
+
                                     <th>Ảnh</th>
                                     <th>Tên</th>
                                     <th>Tiêu Đề</th>
@@ -61,92 +62,98 @@
                             <tbody>
 
                                 <tr th:each="item, iStart:${blogPage}">
-                                    
+
                                     <td><img class="tbl-list img-fluid" id="image"
                                             th:src="${item.banner!=null?'/admin/blog/images/'+item.banner:'/images/Background.png'}"
                                             alt="edit"></td>
-                                   
-                                       
-                                        <td th:text="${item.product.name}"></td> 
-                                   <td th:text="${item.title}"></td>
-                                     
-                                        <td><span th:class="${item.Active==0?'label label-success':'label label-danger'}"
+
+
+                                    <td th:text="${item.product.name}"></td>
+                                    <td th:text="${item.title}"></td>
+
+                                    <td><span th:class="${item.Active==0?'label label-success':'label label-danger'}"
                                             th:text="${item.Active==0?'ACTIVE':'INACTIVE'}"></span>
-                                        </td>
-                                        <td>
+                                    </td>
+                                    <td>
                                         <a data-toggle="modal" data-target="#gridSystemModal"
-											th:attr="onclick=|showProfileBlog('${item.banner}', '${item.product.name}','${item.title}','${item.Active}')|"
-											class="fa fa-search"></a>
-										<div class="modal fade" id="gridSystemModal" tabindex="-1" role="dialog"
-											aria-labelledby="gridSystemModalLabel">
-											<div class="modal-dialog" role="document">
-												<div class="modal-content">
-													<div class="modal-header">
-														<button type="button" class="close" data-dismiss="modal"
-															aria-label="Close">
-															<span aria-hidden="true">&times;</span>
-														</button>
-														<h4 class="modal-title text-center" id="gridSystemModalLabel">Thông Tin</h4>
-													</div>
-													<div class="modal-body">
+                                            th:attr="onclick=|showProfileBlog('${item.banner}', '${item.product.name}','${item.title}','${item.Active}')|"
+                                            class="fa fa-search"></a>
+                                        <div class="modal fade" id="gridSystemModal" tabindex="-1" role="dialog"
+                                            aria-labelledby="gridSystemModalLabel">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal"
+                                                            aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                        <h4 class="modal-title text-center" id="gridSystemModalLabel">
+                                                            Thông Tin</h4>
+                                                    </div>
+                                                    <div class="modal-body">
 
 
-														<!-- Email input -->
-														<div class="form-outline mb-4">
-															<label class="form-label">Ảnh:</label>
-															<input class="form-control" id="banner" readonly/>
-														</div>
-														
-														<div class="form-outline mb-4">
-															<label class="form-label">Tên:</label>
-															<input class="form-control" id="name" readonly />
-														</div>
-														
-														<div class="form-outline mb-4">
-															<label class="form-label">Tiêu đề:</label>
-															<input class="form-control" id="title" readonly />
-														</div>
+                                                        <!-- Email input -->
+                                                        <div class="form-outline mb-4">
+                                                            <label class="form-label">Ảnh:</label>
+                                                            <input class="form-control" id="banner" readonly />
+                                                        </div>
 
-														<div class="form-outline mb-4">
-															<label class="form-label">Trạng thái:</label>
-															<input class="form-control" id="Active" readonly />
-														</div>
-													</div>
-												</div>
-												<!-- /.modal-content -->
-											</div>
-											<!-- /.modal-dialog -->
-										</div> <!-- /.modal --> 
-                                            <a th:href="@{'/admin/blog/edit/' + ${item.Id}}"><i class="fa fa-pencil-square-o icon_del" aria-hidden="true"></i></a>
-                                            <a th:href="@{'/admin/blog/delete/' + ${item.Id}}"><i class="fa fa-trash-o icon_del" aria-hidden="true"></i></a>
-                                        </td>
-                                      
-                                      
-									</tr>
-                            
-                       
+                                                        <div class="form-outline mb-4">
+                                                            <label class="form-label">Tên:</label>
+                                                            <input class="form-control" id="name" readonly />
+                                                        </div>
+
+                                                        <div class="form-outline mb-4">
+                                                            <label class="form-label">Tiêu đề:</label>
+                                                            <input class="form-control" id="title" readonly />
+                                                        </div>
+
+                                                        <div class="form-outline mb-4">
+                                                            <label class="form-label">Trạng thái:</label>
+                                                            <input class="form-control" id="Active" readonly />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- /.modal-content -->
+                                            </div>
+                                            <!-- /.modal-dialog -->
+                                        </div> <!-- /.modal -->
+                                        <a th:href="@{'/admin/blog/edit/' + ${item.Id}}"><i
+                                                class="fa fa-pencil-square-o icon_del" aria-hidden="true"></i></a>
+                                        <a th:href="@{'/admin/blog/delete/' + ${item.Id}}"><i
+                                                class="fa fa-trash-o icon_del" aria-hidden="true"></i></a>
+                                    </td>
+
+
+                                </tr>
+
+
                             </tbody>
                         </table>
-                        
+
                         <div class="row" th:if="${blogPage.totalPages >1}">
 
                             <h5 class="avatar_left items" th:text="${blogPage.size}+'/'+${tt}"></h5>
                             <ul class="header-right pagination">
-								<li class="disabled" th:class="${1== blogPage.number+1} ? 'active':''">
-								<a th:href="@{/admin/blog/list-blog(name=${keyword}, size = ${blogPage.size}, page=${1})}" aria-label="Previous">
-								<span aria-hidden="true">«</span></a></li>
-								
-								<li th:each="pageNum:${pageNums}"
-										th:if="${blogPage.totalPages>1}"
-										th:class="${pageNum==blogPage.number+1}?'page-item active':'page-item'"><a class="page-link"
-										th:href="@{/admin/blog/list-blog(name=${keyword}, size = ${blogPage.size}, page=${pageNum})}"
-										th:text="${pageNum}"></a>
-									</li>
-								
-								<li th:class="${blogPage.totalPages== blogPage.number+1} ? 'active':''">
-                                <a th:href="@{/admin/blog/list-blog(name=${keyword}, size = ${blogPage.size}, page=${blogPage.totalPages})}" 
-								aria-label="Next"><span aria-hidden="true">»</span></a></li>
-							</ul>
+                                <li class="disabled" th:class="${1== blogPage.number+1} ? 'active':''">
+                                    <a th:href="@{/admin/blog/list-blog(name=${keyword}, size = ${blogPage.size}, page=${1})}"
+                                        aria-label="Previous">
+                                        <span aria-hidden="true">«</span></a>
+                                </li>
+
+                                <li th:each="pageNum:${pageNums}" th:if="${blogPage.totalPages>1}"
+                                    th:class="${pageNum==blogPage.number+1}?'page-item active':'page-item'"><a
+                                        class="page-link"
+                                        th:href="@{/admin/blog/list-blog(name=${keyword}, size = ${blogPage.size}, page=${pageNum})}"
+                                        th:text="${pageNum}"></a>
+                                </li>
+
+                                <li th:class="${blogPage.totalPages== blogPage.number+1} ? 'active':''">
+                                    <a th:href="@{/admin/blog/list-blog(name=${keyword}, size = ${blogPage.size}, page=${blogPage.totalPages})}"
+                                        aria-label="Next"><span aria-hidden="true">»</span></a>
+                                </li>
+                            </ul>
 
                         </div>
                     </div>
@@ -154,9 +161,9 @@
                 </div>
             </div>
         </div>
-        </div>
+    </div>
 
-    
+
 </body>
 
 </html>
