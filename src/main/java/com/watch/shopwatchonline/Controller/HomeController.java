@@ -30,6 +30,7 @@ import com.watch.shopwatchonline.Repository.ChatBoxRepository;
 import com.watch.shopwatchonline.Repository.RaitingRepository;
 import com.watch.shopwatchonline.Repository.UserRepository;
 import com.watch.shopwatchonline.Service.StogareService;
+import com.watch.shopwatchonline.security.jwt.JwtUtils;
 
 
 @CrossOrigin(origins = "*", maxAge = 3600)
@@ -43,7 +44,8 @@ public class HomeController {
   private ChatBoxRepository boxRepository;
   @Autowired
   private UserRepository userRepository   ;
-  
+  @Autowired
+  private JwtUtils jwtUtils;
 
   @GetMapping("/login")
   public String allAccess() {
@@ -93,5 +95,12 @@ public class HomeController {
   public ResponseEntity < Resource > serverFile(@PathVariable(name = "filename") String fileName) {
     Resource file = StogareService.loadResource(fileName);
     return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + file.getFilename() + "\"").body(file);
+  }
+  
+  public String getUser( HttpServletRequest request){
+      String token = jwtUtils.getJwtFromCookies(request);
+      String username = jwtUtils.getUserNameFromJwtToken(token);
+
+      return username;
   }
 }

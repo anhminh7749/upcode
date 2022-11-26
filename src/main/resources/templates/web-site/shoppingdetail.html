@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{web-site/layout}">
+
+<body layout:fragment="content">
+    <div class="container  pt-5">
+        <div class="row ">
+            <div class="col-3 ">
+                <div th:replace="web-site/user/sidebar :: sidebar"></div>
+            </div>
+            <div class="col-9">
+                <div class="row">
+                    <div class="navigation text-center border-bottom">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <a class=""><i class="icon-angle-left"></i> Trở lại</a>
+                            </div>
+                            <div class="col-md-4 offset-md-4">
+                                <p class="">
+                                    <span>Đơn hàng</span> | <span>ĐƠN HÀNG ĐÃ GIAO</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="my-3 p-3 bg-body rounded shadow-sm"  th:each="item:${detail}">
+
+                        <div class="d-flex text-muted pt-3">
+                            <div class="">
+                                <img class="bd-placeholder-img flex-shrink-0 me-2 img-fluid rounded float-start"
+                                th:src="${item.thumbnail!=null?'/api/site/product/images/'+item.thumbnail:'/images/Background.png'}" alt="" srcset="">
+                            </div>
+                            <div class="pb-3 mb-0  lh-sm border-bottom p-3 ps-3 w500">
+
+                                <p th:utext="${item.name}"></p>
+                                    <strong class=" text-gray-dark" >sdasd</strong>
+                                <div class="pt-2  pe-3">
+                                    <strong class=" text-gray-dark" th:utext="'x'+${item.quantity}"></strong>
+                                    <div class="float-end" th:if="${item.discount ==0}">
+                                        <strong class=" text-gray-dark " th:utext="${item.price}"></strong>
+
+                                    </div>
+                                    <div class="float-end" th:if="${item.discount >0}">
+                                        <strong class=" text-gray-dark " th:utext="${item.price}"></strong>
+                                        <strong class=" text-gray-dark ms-2" th:utext="${item.discount}"></strong>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="float-end pt-3 pe-3" >
+                            <button type="button" class="btn btn-info me-2">Thêm lại giỏ hàng</button>
+
+                            <button type="button" class="btn btn-outline-secondary">Đánh giá</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

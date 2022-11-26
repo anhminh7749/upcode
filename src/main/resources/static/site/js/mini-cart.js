@@ -1,4 +1,3 @@
-
 const cartDOM = document.querySelector(".cart__items");
 const addToCartBtn = document.querySelectorAll(".btn__add__to__cart");
 const cartCounter = document.querySelector(".cart__counter");
@@ -8,7 +7,7 @@ const checkOutBtn = document.querySelector(".check_out_btn");
 
 
 let username = sessionStorage.getItem("UserName");
-
+var xmlhttprequest = new XMLHttpRequest();
 // assign all values from local stoarge
 let cartItems = (JSON.parse(localStorage.getItem(username)) || []);
 
@@ -22,6 +21,7 @@ checkOutBtn.addEventListener("click", () => {
 })
 
 cartCounter.addEventListener("click", () => {
+    updateCart();
     cartDOM.classList.toggle("active");
 })
 
@@ -35,7 +35,7 @@ addToCartBtn.forEach(btn => {
         const product = {
             id: parentElement.querySelector("#product__id").value,
             name: parentElement.querySelector(".product__name").innerText,
-            image: parentElement.querySelector("#image").getAttribute("src"),
+            thumbnail: parentElement.querySelector("#image").getAttribute("src"),
             price: parentElement.querySelector(".product__price").innerText.replace("$", ""),
             discount: parentElement.querySelector(".product__discount").innerText.replace("$", ""),
             quantity: 1
@@ -73,10 +73,10 @@ addToCartBtn.forEach(btn => {
 
 function loadData() {
     if (cartItems.length > 0) {
+      
         cartItems.forEach(product => {
             addItemToTheDOM(product);
-            const cartDOMItems = document.querySelectorAll(".cart_item");
-          
+            const cartDOMItems = document.querySelectorAll(".cart_item"); 
             cartDOMItems.forEach(individualItem => {
                 if (individualItem.querySelector("#product__id").value === product.id) {
                     // increrase
@@ -107,14 +107,14 @@ function calculateTotal() {
 }
 
 function saveToLocalStorage() {
-
+    
     localStorage.setItem(username, JSON.stringify(cartItems));
-
+   
 }
 
 function clearCartItems() {
 
-    localStorage.clear();
+    localStorage.removeItem(username);
     cartItems = [];
 
     document.querySelectorAll(".cart__items").forEach(item => {
@@ -133,7 +133,7 @@ function addItemToTheDOM(product) {
     // Adding the new Item to the Dom
     cartDOM.insertAdjacentHTML("afterbegin", `<div class="cart_item">
             <input type="hidden" id="product__id" value="${product.id}">
-           <img id="product_image" src="${product.image}" alt="" srcset="">
+           <img id="product_image" src="${product.thumbnail}" alt="" srcset="">
            <h4 class="product__name">${product.name}</h4>
            <a class="btn__small" action="decrease">&minus;</a> <h4 class="product__quantity">${product.quantity}</h4><a class="btn__small" action="increase">&plus;</a>
           <span id="product__price">${product.price - product.discount}</span>
@@ -209,78 +209,29 @@ function removeItem(individualItem, product) {
 
 
 
-// function clearShopcartItems() {
-
-//     localStorage.clear();
-//     cartItems = [];
-
-//     document.querySelectorAll(".shop_cart_items").forEach(item => {
-
-//         item.querySelectorAll(".shop_cart_item").forEach(node => {
-//             node.remove();
-//         });
-//     });
-//     shopcartDOM.classList.toggle("active");
-//     calculateTotal();
-// }
 
 
-
-
-// function increaseItemShop(individualItem, product) {
-
-//     individualItem.querySelector("[action='increase_shop']").addEventListener('click', () => {
-//         // Actual Array
-//         cartItems.forEach(cartItem => {
-//             if (cartItem.id === product.id) {
-//                 individualItem.querySelector(".product__quantity").innerText = ++cartItem.quantity;
-       
-//                 calculateTotal();
-//                 saveToLocalStorage();
-//             }
-//         })
-//     });
-
-// }
-
-// function decreaseItemShop(individualItem, product) {
-
-//     individualItem.querySelector("[action='decrease']").addEventListener('click', () => {
-//         // all cart items in the dom
-//        cartItems.forEach(cartItem => {
-//             // Actual Array
-//             if (cartItem.id === product.id) {
-//                 if (cartItem.quantity > 1) {
-//                     individualItem.querySelector(".product__quantity").innerText = --cartItem.quantity;
-//                     calculateTotal();
-//                     saveToLocalStorage();
-//                 } else {
-//                     // removing this element and assign the new elemntos to the old of the array
-                  
-
-//                     cartItems = cartItems.filter(newElements => newElements.id !== product.id);
-//                     individualItem.remove();
-
-//                     calculateTotal();
-//                     saveToLocalStorage();
-
-//                 }
-
-//             }
-//         })
-//     });
-// }
-
-// function removeItemShop(individualItem, product) {
-
-//     individualItem.querySelector("[action='remove_item_shop']").addEventListener('click', () => {
-//         cartItems.forEach(cartItem => {
-//             if (cartItem.id === product.id) {
-//               cartItems = cartItems.filter(newElements => newElements.id !== product.id);
-//                 individualItem.remove();
-//                 calculateTotal();
-//                saveToLocalStorage();
-//             }
-//         })
-//     });
-// }
+function updateCart(){
+   
+    xmlhttprequest.open("GET", "/api/filter");
+    xmlhttprequest.setRequestHeader(
+      "shoppingcart",
+      encodeURIComponent(localStorage.getItem(sessionStorage.getItem("UserName")))
+    );
+   
+    xmlhttprequest.setRequestHeader("Content-Type","UTF-8");
+   
+    xmlhttprequest.send();
+  
+    xmlhttprequest.onreadystatechange = () => {
+      if (xmlhttprequest.readyState === xmlhttprequest.HEADERS_RECEIVED) {
+        const UpdateShoppingCart = decodeURIComponent(
+          xmlhttprequest.getResponseHeader("Update-Shopping-Cart")
+        );
+        localStorage.setItem(
+          sessionStorage.getItem("UserName"),
+          UpdateShoppingCart
+        );
+      }
+    };
+}

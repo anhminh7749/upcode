@@ -1,8 +1,6 @@
 const shopcartDOM = document.querySelector(".shop_cart_items");
-const shoptotalCost = document.querySelector(".shop__total__cost");
-const shoptotalCount = document.querySelector("#shop__total__counter");
-
-
+const shoptotalCost = document.getElementById("shop__total__cost");
+const onchangepage = document.querySelector("#shoppingcart");
 
 let usernameshop = sessionStorage.getItem("UserName");
 
@@ -11,17 +9,34 @@ let shopCartItems = (JSON.parse(localStorage.getItem(usernameshop)) || []);
 
 
 document.addEventListener("DOMContentLoaded", loadDatashop);
+var dress =[
+    name = null,
+    phone = null,
+    detail = null,
+    address =null
+]
 
+function setaddress(id,name,phone,detail,address){
+    dress =[
+        id=id,
+        name = name,
+        phone = phone,
+        detail = detail,
+        address=address
+        
+    ]
+   
+}
+function getaddress(){ 
+    document.getElementById("name-phone").innerHTML= dress.at(1)+'  '+dress.at(2);
+    document.getElementById("address-detail").innerHTML=dress.at(3) +', '+ dress.at(4); 
+    document.getElementById("addressId").setAttribute('value', dress.at(0));
+    closeModels();
+}
 
-// checkOutBtn.addEventListener("click", () => {
-//     alert("Your Order Sent Succesfully");
-//     clearCartItems();
-// })
-
-
-
-
-
+function closeModels(){
+    document.getElementById('closeModels').click();
+}
 
 function loadDatashop() {
     if (shopCartItems.length > 0) {
@@ -53,12 +68,10 @@ function loadDatashop() {
 function shopcalculateTotal() {
     let total = 0;
     shopCartItems.forEach(item => {
-        
         total += (item.price - item.discount) * item.quantity;
-       
     });
-  
-    shoptotalCost.innerText = total;
+
+    shoptotalCost.innerHTML = total;
 }
 
 function shopsaveToLocalStorage() {
@@ -67,9 +80,10 @@ function shopsaveToLocalStorage() {
 
 }
 
-function clearCartItems() {
+function clearCartShopItems() {
 
-    localStorage.clear();
+    
+    localStorage.removeItem(usernameshop);
     shopCartItems = [];
 
     document.querySelectorAll(".shop_cart_items").forEach(item => {
@@ -91,7 +105,7 @@ function ShowItemToTheDOM(product) {
     <div class="close1 btn__small btn_remove" action="remove">&times;</div>
     <div class="cart-sec simpleCart_shelfItem">
         <div class="cart-item cyc">
-            <img id="product_image" src="${product.image}" class="img-responsive" alt="" />
+            <img id="product_image" src="${product.thumbnail}" class="img-responsive" alt="" />
         </div>
         <div class="cart-item-info">
             <input type="hidden" id="product__id" value="${product.id}">

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{web-site/layout}">
+
+<body layout:fragment="content">
+  <div class="container text-center setting-user">
+    <div class="row">
+      <div class="col-3">
+        <div th:replace="web-site/user/sidebar :: sidebar"></div>
+      </div>
+      <div class="col-9">
+        <header>
+          <ul class="nav nav-pills d-flex justify-content-between">
+            <li class="nav-item"><a href="#" class="nav-link">Tất cả</a></li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">Chờ xác nhận</a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">Đang giao</a>
+            </li>
+            <li class="nav-item"><a href="#" class="nav-link">Đã giao</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">Đã hủy</a></li>
+          </ul>
+        </header>
+
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">Mã đơn hàng</th>
+              <th scope="col">Số sản phẩm</th>
+              <th scope="col">Tổng tiền</th>
+              <th scope="col">Ngày đặt</th>
+              <th scope="col">Hành động</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr th:each="item:${orders}">
+              <th scope="row" th:utext="${item.Id}"></th>
+              <td th:utext="${item.totalQuantity}"></td>
+              <td th:utext="${item.totalAmount}"></td>
+              <td th:utext="${#dates.format(item.createAt, 'dd-MM-yyyy hh:mm:ss')}"
+                ></td>
+                <td>
+                  <a  th:if="${item.status==0}" 
+                  data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+                  th:attr="onclick=|cancelorder('${item.id}')|"> <i class="icon-remove"></i></a>
+                  <a> <i class="icon-exclamation"></i> </a>
+
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <span>Bạn có chắc chắn muốn hủy đơn hàng này!</span>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" id="cancel" data-bs-dismiss="modal">Hủy bỏ</button>
+        <button type="button" id="AgreeDel" class="btn btn-primary">Đồng ý</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
