@@ -1,51 +1,152 @@
-<!DOCTYPE HTML>
-	<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-		layout:decorate="~{web-site/layout}">
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{web-site/layout}">
+
+<body layout:fragment="content">
+	<div class="account-in">
+		<div class="container">
+			<div class="check_box">
+				<div class="col-md-8">
+					<h1>My Shopping Bag (2)</h1>
+
+					<div class="shop_cart_items"></div>
+				</div>
+				<div class="col-md-4 cart-total">
+					<div>
+						<!-- th:action="@{/filter}" method="post" -->
+						<a class="continue" href="#">Continue to basket</a>
+						<div class="price-details">
+							<h4>Delivery Address</h4>
+							<div>
+								<input type="text" name="addressId" id="addressId" hidden />
+								<span id="name-phone" style="display: contents"></span>
+								<p id="address-detail"></p>
 
 
-	<body layout:fragment="content">
-	
-   <div class="account-in">
-   	 <div class="container">
-		  <div class="check_box">	 
-		<div class="col-md-9">
-			 <h1>My Shopping Bag (2)</h1>
-			
-			 <div class="shop_cart_items">
-				 
-			 </div>
-					
-		 </div>
-		 <div class="col-md-3 cart-total">
-			 <a class="continue" href="#">Continue to basket</a>
-			 <div class="price-details">
-				 <h3>Price Details</h3>
-				 <span>Total</span>
-				 <span class="shop__total__cost">6200.00</span>
-				 <span>Discount</span>
-				 <span class="total1">---</span>
-				 <span>Delivery Charges</span>
-				 <span class="total1">150.00</span>
-				 <div class="clearfix"></div>				 
-			 </div>	
-			 <ul class="total_price">
-			   <li class="last_price"> <h4>TOTAL</h4></li>	
-			   <li ><span >0</span></li>
-			   <div class="clearfix"> </div>
-			 </ul>
-			 <div class="clearfix"></div>
-			 <a class="order" href="#">Place Order</a>
-			 <div class="total-item">
-				 <h3>OPTIONS</h3>
-				 <h4>COUPONS</h4>
-				 <a class="cpns" href="#">Apply Coupons</a>
-				 <p><a href="#">Log In</a> to use accounts - linked coupons</p>
-			 </div>
+								<a class="btn btn-primary" data-bs-toggle="modal" href="#modal-list-address"
+									role="button">Địa
+									CHỉ Nhận Hàng</a>
+							</div>
+							<div class="clearfix"></div>
+						</div>
+						<div class="price-details" id="alltotal">
+							<h3>Price Details</h3>
+							<ul>
+								<li>
+									<span>Total Cost</span> <a id="shop__total__cost">0</a>
+								</li>
+								<li>
+									<span>Discount</span> <a class="total1" id="discount">0</a>
+								</li>
+								<li>
+									<span>Delivery Charges</span> <a class="total1">150.00</a>
+								</li>
+							</ul>
+							<div class="clearfix"></div>
+						</div>
+						<ul class="total_price">
+							<li class="last_price">
+								<h4>TOTAL</h4>
+							</li>
+							<li><span id="total_price">0</span></li>
+							<div class="clearfix"></div>
+						</ul>
+
+						<div class="total-item">
+							<h3>OPTIONS</h3>
+
+							<input type="text" name="discountcode" id="discountcode" placeholder="COUPONS" />
+							<a class="cpns btn" id="checkdiscountcode">Apply Coupons</a>
+						</div>
+
+						<div class="clearfix"></div>
+
+						<a class="order" id="checkout">Place Order</a>
+					</div>
+
+
+
+
+					<div class="modal fade" id="modal-list-address" aria-hidden="true"
+						aria-labelledby="modal-list-address" tabindex="-1">
+						<div class="modal-dialog modal-dialog-centered">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h1 class="modal-title fs-5" id="modal-list-address">Modal 1</h1>
+									<button type="button" class="btn-close" data-bs-dismiss="modal"
+										aria-label="Close"></button>
+								</div>
+								<div class="modal-body">
+									<div class="listaddress" th:each="item, iStart:${listaddress}">
+										<input type="radio" name="abcs"
+											th:attr="onclick=|setaddress('${item.id}','${item.name}', '${item.phone}','${item.specificAddress}','${item.address}')|"
+											required />
+
+										<div th:if="${item.status==1}">
+											<span th:text="${item.status}">defaut</span>
+										</div>
+										<ul>
+											<li class="row">
+												<span th:utext="${item.name}"></span>
+												<p th:utext="${item.phone}"></p>
+											</li>
+											<li>
+												<p th:utext="${item.address}"></p>
+											</li>
+											<li>
+												<p th:utext="${item.specificAddress}"></p>
+											</li>
+										</ul>
+									</div>
+									<a class="btn btn-primary" href="#new-address" data-bs-toggle="modal">Thêm Địa
+										Chỉ</a>
+
+
+								</div>
+								
+
+								<div class="modal-footer">
+									<button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+										id="closeModels">
+										Đóng
+									</button>
+									<button type="button" class="btn btn-primary" th:onclick="getaddress()">
+										Hoàn Thành
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+					<div class="modal fade" id="new-address" aria-hidden="true"
+						aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
+						<div class="modal-dialog modal-dialog-centered">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h1 class="modal-title fs-5" id="exampleModalToggleLabel2">Thêm Địa Chỉ</h1>
+									<button type="button" class="btn-close" data-bs-dismiss="modal"
+										aria-label="Close"></button>
+								</div>
+								<div class="modal-body">
+									<div th:replace="web-site/pages/address-model :: add"></div>
+									<a type="button" class="btn btn-secondary" id="closeFormAddress"
+									data-dismiss="modal">
+									Close
+								</a>
+								<a class="btn btn-primary" id="createAddress" href="#modal-list-address"
+									data-bs-toggle="modal">Hoàn Thành</a>
+								</div>
+								
+							</div>
+						</div>
+					</div>
+
+
+				</div>
 			</div>
-			<div class="clearfix"></div>
-	     </div>
-	  </div>
-   </div>
-  
+		</div>
+	</div>
 </body>
-</html>		
+
+</html>

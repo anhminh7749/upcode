@@ -70,8 +70,6 @@ public class JwtUtils {
   }
   
   public String generateTokenFromUsername(String username) {   
-    // System.out.println("generateTokenFromUsername-------------------------------------------------------------------------------");
-    // System.out.println(username);
     return Jwts.builder()
         .setSubject(username)
         .setIssuedAt(new Date())
@@ -79,4 +77,11 @@ public class JwtUtils {
         .signWith(SignatureAlgorithm.HS512, jwtSecret)
         .compact();
   }
+  
+  public String getUser( HttpServletRequest request){
+	    String token = getJwtFromCookies(request);
+	    String username = getUserNameFromJwtToken(token);
+
+	    return username;
+	}
 }

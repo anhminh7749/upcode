@@ -48,5 +48,6 @@ public class DiscountCode implements Serializable{
      @Column 
      private Short status;
 
-
+     @OneToOne(mappedBy = "discountCode")
+     private Order orders;
 }
