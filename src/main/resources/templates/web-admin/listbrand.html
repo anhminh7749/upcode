@@ -17,6 +17,11 @@
                     <li><a href="#">Thêm Mới</a></li>
                 </ol>
             </div>
+            <div class="form-inline my-2 my-lg-0 text-right">
+								<input class="form-control mr-sm-2" type="search" placeholder="Search"
+									aria-label="Search">
+								<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+							</div>
 
             <div class="main-page">
                 <div class="tables">
@@ -34,7 +39,7 @@
                             <tbody>
                                 <tr th:each=" item : ${brands}">
                                     <td th:text="${item.name}">1</td>
-                                    <td th:text="${item.thumbnail}"></td>
+                                    <td><img th:src="'/api/admin/product/images/'+${item.thumbnail}"></td>
                                     <td th:text="${item.description}">1</td>
                                     <td>
                                         <a data-toggle="modal" data-target="#gridSystemModal"
@@ -63,7 +68,7 @@
 
                                                         <div class="form-outline mb-4">
                                                             <label class="form-label">Image:</label>
-                                                            <input class="form-control" id="thumbnail" readonly />
+                                                            <img th:src="'/api/admin/product/images/'+${item.thumbnail}" id="thumbnail">
                                                         </div>
 
                                                         <!-- Message input -->
@@ -78,7 +83,7 @@
                                             </div>
                                             <!-- /.modal-dialog -->
                                         </div> <!-- /.modal -->
-                                        <a th:href="@{'/admin/brands/edit/' + ${item.id}}" class="fa fa-edit"></a>
+                                        <a th:href="@{'/api/admin/brands/edit/' + ${item.id}}" class="fa fa-edit"></a>
                                         <a th:data-id="${item.id}" th:data-name="${item.name}"
                                             onclick="showConfirmModelDialogBrand(this.getAttribute('data-id'), this.getAttribute('data-name'))"
                                             class="fa fa-trash-o"> </a>

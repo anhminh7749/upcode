@@ -10,7 +10,7 @@ function showProfileBrand(name,ig, des) {
 console.log(name,ig,des);
 	document.getElementById("name").value = name;
 
-	document.getElementById("thumbnail").value = ig;
+	document.getElementById("thumbnail").innerHTML = ig;
 
 	document.getElementById("description").innerHTML = des;
 }
@@ -81,30 +81,30 @@ function showProfileDiscountcode(name,ra,aa,qt,bc,ad,ed) {
 function showConfirmModelDialog(id, name) {
 	$('#mailName').text(name);
 	$('#yesOption').attr('href',
-		'/admin/contacs/delete/' + id);
+		'/api/admin/contacs/delete/' + id);
 	$('#confirmationId').modal('show');
 }
 function showConfirmModelDialogCustomer(id, name) {
 	$('#mailName').text(name);
 	$('#yesOption').attr('href',
-		'/admin/customers/delete/' + id);
+		'/api/admin/customers/delete/' + id);
 	$('#confirmationId').modal('show');
 }
 function showConfirmModelDialogStaff(id, name) {
 	$('#mailName').text(name);
 	$('#yesOption').attr('href',
-		'/admin/staffs/delete/' + id);
+		'/api/admin/staffs/delete/' + id);
 	$('#confirmationId').modal('show');
 }
 function showConfirmModelDialogCategory(id, name) {
 	$('#mailName').text(name);
 	$('#yesOption').attr('href',
-		'/admin/categories/delete/' + id);
+		'/api/admin/categories/delete/' + id);
 	$('#confirmationId').modal('show');
 }
 function showConfirmModelDialogBrand(id, name) {
 	$('#mailName').text(name);
 	$('#yesOption').attr('href',
-		'/admin/brands/delete/' + id);
+		'/api/admin/brands/delete/' + id);
 	$('#confirmationId').modal('show');
 }

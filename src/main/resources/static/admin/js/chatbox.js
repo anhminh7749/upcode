@@ -108,9 +108,8 @@ function onMessageReceived(payload) {
   var message = JSON.parse(payload.body);
 
   var messageElement = document.createElement('li');
-
+  var divElement = document.createElement('div');
   if (message.type == 'JOIN') {
-    // messageArea.innerHTML = '';
     messageElement.classList.add('event-message');
     message.content = message.sender + ' joined!';
   } else if (message.type == 'LEAVE') {
@@ -123,24 +122,35 @@ function onMessageReceived(payload) {
     var avatarText = document.createTextNode(message.sender[0]);
     avatarElement.appendChild(avatarText);
     avatarElement.style['background-color'] = getAvatarColor(message.sender);
-
     messageElement.appendChild(avatarElement);
 
     var usernameElement = document.createElement('span');
     var usernameText = document.createTextNode(message.sender);
     usernameElement.appendChild(usernameText);
-    messageElement.appendChild(usernameElement);
+    divElement.appendChild(usernameElement);
+
+    var timeElement = document.createElement('strong');
+    var timeText = document.createTextNode(getCurrentTime());
+    timeElement.appendChild(timeText);
+    divElement.appendChild(usernameElement);
   }
+  var divText = document.createTextNode(getCurrentTime());
+    divElement.appendChild(divText);
+    messageElement.appendChild(divElement);
 
   var textElement = document.createElement('p');
   var messageText = document.createTextNode(message.content);
   textElement.appendChild(messageText);
-
-  messageElement.appendChild(textElement);
+  divElement.appendChild(textElement);
 
   messageArea.appendChild(messageElement);
   messageArea.scrollTop = messageArea.scrollHeight;
 }
+
+function getCurrentTime() {
+  return new Date().toLocaleTimeString().replace(/([\d]+:[\d]{2})(:[\d]{2})(.*)/, "$1$3");
+}
+
 
 function getAvatarColor(messageSender) {
   var hash = 0;

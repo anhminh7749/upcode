@@ -31,7 +31,7 @@ public class Brand implements Serializable{
     @Column(columnDefinition = "nvarchar(50)" ,nullable = false)
 	private String name;
 
-	@Column(length = 50,nullable = false)
+	@Column(nullable = false)
 	private String thumbnail;
 
     @Column(columnDefinition = "nvarchar(max) not null")

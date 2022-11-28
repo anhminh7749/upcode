@@ -24,7 +24,7 @@ import com.watch.shopwatchonline.Model.Staff;
 import com.watch.shopwatchonline.Service.StaffService;
 
 @Controller
-@RequestMapping("admin/staffs")
+@RequestMapping("api/admin/staffs")
 public class StaffController {
     @Autowired
     StaffService staffService;
@@ -56,7 +56,7 @@ public class StaffController {
 
         model.addAttribute("message", "Staff is existed");
 
-        return new ModelAndView("forward:/admin/staffs", model);
+        return new ModelAndView("forward:/api/admin/staffs", model);
     }
 
     @GetMapping("delete/{staffId}")
@@ -67,7 +67,7 @@ public class StaffController {
 
         model.addAttribute("message", "Staff is delete!");
 
-        return new ModelAndView("forward:/admin/staffs", model);
+        return new ModelAndView("forward:/api/admin/staffs", model);
     }
 
     @PostMapping("saveOrUpdate")
@@ -83,7 +83,7 @@ public class StaffController {
 
         model.addAttribute("message", "Staff is saved!");
 
-        return new ModelAndView("forward:/admin/staffs", model);
+        return new ModelAndView("forward:/api/admin/staffs", model);
     }
 
     @RequestMapping("")

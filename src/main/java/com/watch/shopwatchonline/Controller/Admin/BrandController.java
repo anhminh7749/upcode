@@ -31,7 +31,7 @@ import com.watch.shopwatchonline.Service.BrandService;
 import com.watch.shopwatchonline.Service.StogareService;
 
 @Controller
-@RequestMapping("admin/brands")
+@RequestMapping("api/admin/brands")
 public class BrandController {
 
 	@Autowired
@@ -67,7 +67,7 @@ public class BrandController {
 
 		model.addAttribute("message", "Brand is existed");
 
-		return new ModelAndView("forward:/admin/brands", model);
+		return new ModelAndView("forward:/api/admin/brands", model);
 	}
 //
 //	@GetMapping("images/{filename:.+}")
@@ -88,24 +88,29 @@ public class BrandController {
 
 		model.addAttribute("message", "Brand is delete!");
 
-		return new ModelAndView("forward:/admin/brands", model);
+		return new ModelAndView("forward:/api/admin/brands", model);
 	}
 
 	@PostMapping("saveOrUpdate")
 	public ModelAndView saveOrUpdate(ModelMap model, @Valid @ModelAttribute("brand") BrandDto dto,
 			BindingResult result) {
+		try {
+			if (result.hasErrors()) {
 
-		if (result.hasErrors()) {
-			return new ModelAndView("web-admin/Addbrand");
+				return new ModelAndView("web-admin/Addbrand");
+			}
+			Brand entity = new Brand();
+			BeanUtils.copyProperties(dto, entity);
+//			System.out.println(dto.getThumbnail());
+			
+		    brandService.save(entity);
+
+			model.addAttribute("message", "Brand is saved!");
+		} catch (Exception e) {
+			e.getMessage();
 		}
-		Brand entity = new Brand();
-		BeanUtils.copyProperties(dto, entity);
 
-		brandService.save(entity);
-
-		model.addAttribute("message", "Brand is saved!");
-
-		return new ModelAndView("forward:/admin/brands", model);
+		return new ModelAndView("forward:/api/admin/brands", model);
 	}
 
 	@RequestMapping("")

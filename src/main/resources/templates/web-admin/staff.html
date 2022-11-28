@@ -29,7 +29,7 @@
 						</div>
 						<div class="form-three widget-shadow">
 							<div class=" panel-body-inputin">
-								<form class="form-horizontal" th:action="@{/admin/staffs/saveOrUpdate}" method="post"
+								<form class="form-horizontal" th:action="@{/api/admin/staffs/saveOrUpdate}" method="post"
 									th:object="${staff}">
 									<input type="text" hidden th:field="*{staffId}">
 									<div class="form-group"
@@ -135,7 +135,7 @@
 										</div>
 									</div>
 									<div class="card-footer text-center">
-										<a th:href="@{/admin/staffs/}" class="btn btn-success">Danh Sách</a>
+										<a th:href="@{/api/admin/staffs/}" class="btn btn-success">Danh Sách</a>
 
 										<button class="btn btn-primary">
 											<span th:if="${staff.isEdit}">Cập Nhật</span> <span

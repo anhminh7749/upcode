@@ -64,7 +64,7 @@
                                 <tr th:each="item, iStart:${blogPage}">
 
                                     <td><img class="tbl-list img-fluid" id="image"
-                                            th:src="${item.banner!=null?'/admin/blog/images/'+item.banner:'/images/Background.png'}"
+                                            th:src="${item.banner!=null?'/api/admin/blog/images/'+item.banner:'/images/Background.png'}"
                                             alt="edit"></td>
 
 
@@ -96,7 +96,7 @@
                                                         <!-- Email input -->
                                                         <div class="form-outline mb-4">
                                                             <label class="form-label">Ảnh:</label>
-                                                            <input class="form-control" id="banner" readonly />
+                                                            <img th:src="'/api/admin/blog/images/'+${item.banner}" id="banner">
                                                         </div>
 
                                                         <div class="form-outline mb-4">
@@ -119,9 +119,9 @@
                                             </div>
                                             <!-- /.modal-dialog -->
                                         </div> <!-- /.modal -->
-                                        <a th:href="@{'/admin/blog/edit/' + ${item.Id}}"><i
+                                        <a th:href="@{'/api/admin/blog/edit/' + ${item.Id}}"><i
                                                 class="fa fa-pencil-square-o icon_del" aria-hidden="true"></i></a>
-                                        <a th:href="@{'/admin/blog/delete/' + ${item.Id}}"><i
+                                        <a th:href="@{'/api/admin/blog/delete/' + ${item.Id}}"><i
                                                 class="fa fa-trash-o icon_del" aria-hidden="true"></i></a>
                                     </td>
 

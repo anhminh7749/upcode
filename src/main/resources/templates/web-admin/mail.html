@@ -22,13 +22,13 @@
 							</ul>
 
 							<div class="form-inline my-2 my-lg-0 text-right">
-								<a th:href="@{/admin/contacs/}" class="btn btn-primary">Trở
+								<a th:href="@{/api/admin/contacs/}" class="btn btn-primary">Trở
 									Về &gt;&gt;</a>
 							</div>
 						</div>
 						<div class="form-three widget-shadow">
 							<div class=" panel-body-inputin">
-								<form class="form-horizontal" th:action="@{/admin/contacs/send}" method="post"
+								<form class="form-horizontal" th:action="@{/api/admin/contacs/send}" method="post"
 									th:object="${mail}">
 									<input type="hidden" th:filed="*{isEdit}"> <input type="text" hidden
 										th:field="*{mailId}">
@@ -65,7 +65,7 @@
 												</span> <input type="text" class="form-control1" name="description"
 													placeholder="Message">
 											</div>
-											<small th:if="${#fields.hasErrors('gmail')}" id="EmailHid"
+											<small th:if="${#fields.hasErrors('description')}" id="EmailHid"
 												class="form-text text-muted">Email is required</small>
 										</div>
 									</div>

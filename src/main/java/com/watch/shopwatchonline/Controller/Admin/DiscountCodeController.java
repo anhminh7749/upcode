@@ -1,5 +1,8 @@
 package com.watch.shopwatchonline.Controller.Admin;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -18,6 +21,7 @@ import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -34,7 +38,7 @@ import com.watch.shopwatchonline.Repository.DiscountCodeRepository;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @Controller
-@RequestMapping("api/admin/DiscountCode")
+@RequestMapping("/api/admin/DiscountCode")
 public class DiscountCodeController {
 
 	@Autowired
@@ -98,10 +102,19 @@ public class DiscountCodeController {
 	}
 
 	@PostMapping("/update")
-	public String update(ModelMap model, @Valid @ModelAttribute("code") DiscountCodeDto dto, BindingResult result)
-			 {
+	public String update(ModelMap model, @Valid @ModelAttribute("code") DiscountCodeDto dto, BindingResult result) {
 		if (result.hasErrors()) {
-			return "/api/admin/DiscountCode/add-code";
+
+			return "web-admin/AddDiscountCode";
+		}
+		try {
+			System.out.println("yyyyyyyyyy" + result.getAllErrors());
+			if (compareDates(dto.getApplicableDate(), dto.getExpirationDate(), result)) {
+
+				return "web-admin/AddDiscountCode";
+			}
+		} catch (ParseException | java.text.ParseException e) {
+			e.printStackTrace();
 		}
 		DiscountCode code = new DiscountCode();
 		BeanUtils.copyProperties(dto, code);
@@ -134,5 +147,35 @@ public class DiscountCodeController {
 		codeRepository.deleteById(id);
 
 		return "redirect:/api/admin/DiscountCode/list-code";
+	}
+
+	private Boolean compareDates(Date star, Date end, BindingResult result)
+			throws ParseException, java.text.ParseException {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
+		String now = sdf.format(new Date());
+		Date nowdate = sdf.parse(now);
+		Calendar calnow = Calendar.getInstance();
+		Calendar calstar = Calendar.getInstance();
+		Calendar calend = Calendar.getInstance();
+		calnow.setTime(nowdate);
+
+		System.out.println("1");
+		calstar.setTime(star);
+		if (!calstar.after(calnow)) {
+			result.addError(
+					new FieldError("ApplicableDate", "ApplicableDate", "Ngày áp dụng phải lớn hơn ngày hiện tại"));
+			System.out.println("2");
+			return true;
+		}
+
+		calend.setTime(end);
+		if (!calend.after(calstar) || calend.equals(calstar)) {
+			System.out.println("4");
+			result.addError(new FieldError("ExpirationDate", "ExpirationDate", "Ngày hết hạn phải lớn ngày áp dụng"));
+			return true;
+		}
+
+		return false;
+
 	}
 }

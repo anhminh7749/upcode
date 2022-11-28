@@ -66,7 +66,7 @@
                             <tbody>
                                 <tr th:each="item, iStart:${productPage}">
                                     <td><img class="tbl-list img-fluid" id="image"
-                                            th:src="${item.thumbnail!=null?'/admin/product/images/'+item.thumbnail:'/images/Background.png'}"
+                                            th:src="${item.thumbnail!=null?'/api/admin/product/images/'+item.thumbnail:'/images/Background.png'}"
                                             alt="edit"></td>
                                     <td th:text="${item.Name}"></td>
                                     <td th:text="${#numbers.formatDecimal(item.Price, 0, 'COMMA', 2, 'POINT')} +'VND'">
@@ -104,7 +104,7 @@
                                                         <!-- Email input -->
                                                         <div class="form-outline mb-4">
                                                             <label class="form-label">Ảnh:</label>
-                                                            <input class="form-control" id="thumbnail" readonly />
+                                                            <img th:src="'/api/admin/product/images/'+${item.thumbnail}" id=thumbnail>
                                                         </div>
 
                                                         <div class="form-outline mb-4">
@@ -165,7 +165,7 @@
                             <h5 class="avatar_left items" th:text="${productPage.size}+'/'+${tt}"></h5>
                             <ul class="header-right pagination">
                                 <li class="disabled" th:class="${1== productPage.number+1} ? 'active':''">
-                                    <a th:href="@{/admin/product/list-product(name=${keyword}, size = ${productPage.size}, page=${1})}"
+                                    <a th:href="@{/api/admin/product/list-product(name=${keyword}, size = ${productPage.size}, page=${1})}"
                                         aria-label="Previous">
                                         <span aria-hidden="true">«</span></a>
                                 </li>
@@ -173,12 +173,12 @@
                                 <li th:each="pageNum:${pageNums}" th:if="${productPage.totalPages>1}"
                                     th:class="${pageNum==productPage.number+1}?'page-item active':'page-item'"><a
                                         class="page-link"
-                                        th:href="@{/admin/product/list-product(name=${keyword}, size = ${productPage.size}, page=${pageNum})}"
+                                        th:href="@{/api/admin/product/list-product(name=${keyword}, size = ${productPage.size}, page=${pageNum})}"
                                         th:text="${pageNum}"></a>
                                 </li>
 
                                 <li th:class="${productPage.totalPages== productPage.number+1} ? 'active':''">
-                                    <a th:href="@{/admin/product/list-product(name=${keyword}, size = ${productPage.size}, page=${productPage.totalPages})}"
+                                    <a th:href="@{/api/admin/product/list-product(name=${keyword}, size = ${productPage.size}, page=${productPage.totalPages})}"
                                         aria-label="Next"><span aria-hidden="true">»</span></a>
                                 </li>
                             </ul>

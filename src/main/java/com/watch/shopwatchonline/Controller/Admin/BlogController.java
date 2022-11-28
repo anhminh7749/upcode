@@ -57,7 +57,7 @@ import com.watch.shopwatchonline.Service.BlogService;
 import com.watch.shopwatchonline.Service.BrandService;
 
 @Controller
-@RequestMapping("admin/blog")
+@RequestMapping("api/admin/blog")
 public class BlogController {
 
 	@Autowired
@@ -136,7 +136,7 @@ public class BlogController {
 
 		if (result.hasErrors()) {
 
-			return new ModelAndView("admin/blog/AddBlog");
+			return new ModelAndView("api/admin/blog/AddBlog");
 		}
 		if (!dto.getIsEdit().booleanValue()) {
 			dto.setCreateAt(new Date());
@@ -169,7 +169,7 @@ public class BlogController {
 
 		blogService.save(bl);
 
-		return new ModelAndView("redirect:/admin/blog/list-blog");
+		return new ModelAndView("redirect:/api/admin/blog/list-blog");
 	}
 
 	public Set<Image> uploadImage(MultipartFile[] multipartFiles) throws IOException {
@@ -199,7 +199,7 @@ public class BlogController {
 	public String delete(ModelMap map, @PathVariable("Id") Integer id) {
 		blogService.deleteById(id);
 
-		return "redirect:/admin/blog/list-blog";
+		return "redirect:/api/admin/blog/list-blog";
 	}
 
 	@GetMapping("edit/{Id}")

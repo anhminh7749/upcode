@@ -1,4 +1,4 @@
-package com.watch.shopwatchonline.Controller.Admin;
+package com.watch.shopwatchonline.Controller.Site;
 
 import java.util.Date;
 

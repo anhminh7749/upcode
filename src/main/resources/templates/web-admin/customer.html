@@ -20,14 +20,16 @@
 									<h4>Thông Tin Khách Hàng:</h4>
 								</label>
 							</ul>
-
 							<div class="form-inline my-2 my-lg-0 text-right">
-								<a th:href="@{/admin/customers/}" class="btn btn-success">ListStaff</a>
+								<input class="form-control mr-sm-2" type="search" placeholder="Search"
+									aria-label="Search">
+								<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
 							</div>
+
 						</div>
 						<div class="form-three widget-shadow">
 							<div class=" panel-body-inputin">
-								<form class="form-horizontal" th:action="@{/admin/customers/saveOrUpdate}" method="post"
+								<form class="form-horizontal" th:action="@{/api/admin/customers/saveOrUpdate}" method="post"
 									th:object="${customer}">
 									<input type="hidden" th:filed="*{isEdit}"> <input type="text" hidden
 										th:field="*{customerId}">
@@ -103,6 +105,7 @@
 										</div>
 									</div>
 									<div class="card-footer text-center">
+								<a th:href="@{/api/admin/customers/}" class="btn btn-success">ListStaff</a>
 										<button class="btn btn-primary">
 											<span th:if="${customer.isEdit}">Sửa</span> <span
 												th:unless="${customer.isEdit}">Thêm</span>

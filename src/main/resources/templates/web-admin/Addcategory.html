@@ -22,12 +22,12 @@
 							</ul>
 
 							<div class="form-inline my-2 my-lg-0 text-right">
-								<a th:href="@{/admin/categories/}" class="btn btn-success">ListStaff</a>
+								<a th:href="@{/api/admin/categories/}" class="btn btn-success">ListStaff</a>
 							</div>
 						</div>
 						<div class="form-three widget-shadow">
 							<div class=" panel-body-inputin">
-								<form class="form-horizontal" th:action="@{/admin/categories/saveOrUpdate}"
+								<form class="form-horizontal" th:action="@{/api/admin/categories/saveOrUpdate}"
 									method="post" th:object="${category}">
 									<input type="hidden" th:filed="*{isEdit}">
 									<input type="text" hidden th:field="*{id}">

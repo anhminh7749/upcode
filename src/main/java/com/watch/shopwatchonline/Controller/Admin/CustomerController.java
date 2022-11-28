@@ -23,7 +23,7 @@ import com.watch.shopwatchonline.Model.Customer;
 import com.watch.shopwatchonline.Service.CustomerService;
 
 @Controller
-@RequestMapping("admin/customers")
+@RequestMapping("api/admin/customers")
 public class CustomerController {
     @Autowired
     CustomerService customerService;
@@ -55,7 +55,7 @@ public class CustomerController {
 
         model.addAttribute("message", "Customer is existed");
 
-        return new ModelAndView("forward:/admin/customers", model);
+        return new ModelAndView("forward:/api/admin/customers", model);
     }
 
     @GetMapping("delete/{customerId}")
@@ -66,7 +66,7 @@ public class CustomerController {
 
         model.addAttribute("message", "Customer is delete!");
 
-        return new ModelAndView("forward:/admin/customers", model);
+        return new ModelAndView("forward:/api/admin/customers", model);
     }
 
     @PostMapping("saveOrUpdate")
@@ -84,7 +84,7 @@ public class CustomerController {
 
         model.addAttribute("message", "Customer is saved!");
 
-        return new ModelAndView("forward:/admin/customers", model);
+        return new ModelAndView("forward:/api/admin/customers", model);
     }
 
     @RequestMapping("")
@@ -97,6 +97,6 @@ public class CustomerController {
 
     @GetMapping("search")
     public String search() {
-        return "web-admin/customers";
+        return "web-admin/customer";
     }
 }

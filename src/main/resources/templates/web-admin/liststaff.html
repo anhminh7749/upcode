@@ -9,15 +9,28 @@
 <body class="cbp-spmenu-push">
 	<div layout:fragment="content">
 		<div id="page-wrapper">
-			<h2>Danh Sách Nhân Viên</h2>
+			<div class="main-page">
 			<div class="row">
-				<ol class="breadcrumb">
-					<li><a href="#">Trang Chủ</a></li>
-					<li><a href="#">Danh Sách</a></li>
-					<li><a href="#">Thêm Mới</a></li>
-				</ol>
-			</div>
-
+                <ol class="breadcrumb">
+                    <li><a href="#">Trang Chủ</a></li>
+                    <li><a href="#">Danh Sách</a></li>
+                    <li><a href="#">Thêm Mới</a></li>
+                </ol>
+            </div>
+				<div class="tables">
+					<div class="table-responsive bs-example widget-shadow">
+						<div class="collapse navbar-collapse">
+						<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+								<label class="nav-item active">
+									<h4>Danh Sách Nhân Viên:</h4>
+								</label>
+							</ul>
+							<div class="form-inline my-2 my-lg-0 text-right">
+								<input class="form-control mr-sm-2" type="search" placeholder="Search"
+									aria-label="Search">
+								<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+							</div>
+						</div>	
 			<div class="main-page">
 				<div class="tables">
 					<div class="bs-example widget-shadow" data-example-id="hoverable-table">
@@ -83,7 +96,7 @@
 											<!-- /.modal-content -->
 										</div>
 										<!-- /.modal-dialog -->
-										<a th:href="@{'/admin/staffs/edit/' + ${item.staffId}}" class="fa fa-edit"></a>
+										<a th:href="@{'/api/admin/staffs/edit/' + ${item.staffId}}" class="fa fa-edit"></a>
 										<a th:data-id="${item.staffId}" th:data-name="${item.name}"
 											onclick="showConfirmModelDialogStaff(this.getAttribute('data-id'), this.getAttribute('data-name'))"
 											class="fa fa-trash-o"> </a>
@@ -112,9 +125,10 @@
 								</div>
 							</div>
 						</div>
-
+						</div>
 					</div>
-
+					</div>
+					</div>
 				</div>
 			</div>
 		</div>

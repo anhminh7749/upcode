@@ -1,4 +1,4 @@
-package com.watch.shopwatchonline.Controller.Site;
+package com.watch.shopwatchonline.Controller.Admin;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -28,7 +28,7 @@ import com.watch.shopwatchonline.Model.Mail;
 import com.watch.shopwatchonline.Repository.MailRepository;
 
 @Controller
-@RequestMapping("admin/contacs")
+@RequestMapping("api/admin/contacs")
 public class ContactController {
 	@Autowired
 	JavaMailSender javaMailSender;
@@ -55,7 +55,7 @@ public class ContactController {
 
 		model.addAttribute("message", "Mail is existed");
 
-		return new ModelAndView("forward:/admin/contacs", model);
+		return new ModelAndView("forward:/api/admin/contacs", model);
 	}
 
 	@GetMapping("delete/{mailId}")
@@ -66,7 +66,7 @@ public class ContactController {
 
 		model.addAttribute("message", "Mail is delete!");
 
-		return new ModelAndView("redirect:/admin/contacs", model);
+		return new ModelAndView("redirect:/api/admin/contacs", model);
 	}
 
 	@PostMapping("send")
@@ -110,7 +110,7 @@ public class ContactController {
 
 		mailRepository.save(entity);
 		model.addAttribute("message", "Mail is saved!");
-		return new ModelAndView("redirect:/admin/contacs", model);
+		return new ModelAndView("redirect:/api/admin/contacs", model);
 	}
 
 	@RequestMapping("")

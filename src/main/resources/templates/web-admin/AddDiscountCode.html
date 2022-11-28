@@ -37,56 +37,97 @@
 													th:errors="*{name}"> </small>
 											</div>
 										</div>
-										<div class="col-md-6"
-											>
-											<label>Email address</label> <input type="email"
-												class="form-control" id="exampleInputEmail1"
-												placeholder="Email">
-										</div>
+										
 									</div>
 
 									<div class="form-group">
 										<div class="col-md-6">
-											<label>Ngày hết hạn::</label> <input type="datetime-local"
+											<label>Ngày áp dụng:</label> <input type="datetime-local"
+												class="form-control1" th:field="*{ApplicableDate}"
+												name="ApplicableDate"><div class="has-error">
+												<small th:if="${#fields.hasErrors('ApplicableDate')}"
+													id="customerIdHid" class="form-text text-muted help-block"
+													th:errors="*{ApplicableDate}"> </small>
+											</div>
+										</div>
+										<div class="col-md-6">
+											<label>Ngày hết hạn:</label> <input type="datetime-local"
 												class="form-control1" th:field="*{ExpirationDate}"
-												name="ExpirationDate">
+												name="ExpirationDate"><div class="has-error">
+												<small th:if="${#fields.hasErrors('ExpirationDate')}"
+													id="customerIdHid" class="form-text text-muted help-block"
+													th:errors="*{ExpirationDate}"> </small>
+											</div>
 										</div>
-										<div class="col-md-6"
-											th:classappend="${#fields.hasErrors('ApplicableDate')} ? 'has-error'">
-											<label>Mã byte:</label> <input type="text"
-												class="form-control1" th:field="*{ByteCode}" name="ByteCode">
-										</div>
+										
 									</div>
 									<div class="form-group">
 										<div class="col-md-6">
 											<label>Số lượng:</label> <input type="number"
-												class="form-control1" th:field="*{Quantity}" name="Quantity">
+												class="form-control1" value="" min="0" th:field="*{Quantity}" name="Quantity"><div class="has-error">
+												<small th:if="${#fields.hasErrors('Quantity')}"
+													id="customerIdHid" class="form-text text-muted help-block"
+													th:errors="*{Quantity}"> </small>
+											</div>
 										</div>
 										<div class="col-md-6"
 											th:classappend="${#fields.hasErrors('ApplicableDate')} ? 'has-error'">
 											<label> Giá giảm:</label> <input type="number"
-												class="form-control1" th:field="*{ReductionAmount}"
-												name="ReductionAmount">
+												class="form-control1"  min="0" th:field="*{ReductionAmount}"
+												name="ReductionAmount"><div class="has-error">
+												<small th:if="${#fields.hasErrors('ReductionAmount')}"
+													id="customerIdHid" class="form-text text-muted help-block"
+													th:errors="*{ReductionAmount}"> </small>
+											</div>
 										</div>
 									</div>
 									<div class="form-group">
 										<div class="col-md-6">
 											<label>Giá áp dụng:</label> <input type="number"
-												class="form-control1" th:field="*{AmountApplied}"
-												name="AmountApplied">
+												class="form-control1" th:field="*{AmountApplied}"  min="0"
+												name="AmountApplied"><div class="has-error">
+												<small th:if="${#fields.hasErrors('AmountApplied')}"
+													id="customerIdHid" class="form-text text-muted help-block"
+													th:errors="*{AmountApplied}"> </small>
+											</div>
 										</div>
 										<div class="col-md-6"
-											th:classappend="${#fields.hasErrors('ApplicableDate')} ? 'has-error'">
+											th:classappend="${#fields.hasErrors('Description')} ? 'has-error'">
 											<label> Mô tả:</label>
 											<textarea class="form-control1" th:field="*{Description}"
-												name="Description"></textarea>
+												name="Description"></textarea><div class="has-error">
+												<small th:if="${#fields.hasErrors('Description')}"
+													id="customerIdHid" class="form-text text-muted help-block"
+													th:errors="*{Description}"> </small>
+											</div>
 										</div>
 									</div>
 									<div class="form-group">
 										<div class="col-md-6">
-											<label>Trạng thái:</label> <input type="number"
-												class="form-control1" th:field="*{status}"
-												name="ReductionAmount">
+											<label>Trạng thái:</label> 
+											
+												<select th:field="*{status}" name="status" 
+													class="form-control input-sm">
+													
+													<option value="0" >Ẩn với người dùng</option>
+													<option value="1" >Hiện với người dùng</option>
+												
+												</select><div class="has-error">
+												<small th:if="${#fields.hasErrors('status')}"
+													id="customerIdHid" class="form-text text-muted help-block"
+													th:errors="*{status}"> </small>
+											</div>
+												
+										</div>
+										<div class="col-md-6"
+											th:classappend="${#fields.hasErrors('ApplicableDate')} ? 'has-error'">
+											<label>Mã byte:</label> <input type="text"
+												class="form-control1" th:field="*{ByteCode}" name="ByteCode">
+												<div class="has-error">
+												<small th:if="${#fields.hasErrors('ByteCode')}"
+													id="customerIdHid" class="form-text text-muted help-block"
+													th:errors="*{ByteCode}"> </small>
+											</div>
 										</div>
 									</div>
 									<div class="card-footer text-center">

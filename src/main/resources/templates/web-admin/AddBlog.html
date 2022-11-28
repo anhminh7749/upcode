@@ -21,7 +21,7 @@
 						</ol>
 					</div>
 				</div>
-				<form th:action="@{/admin/blog/update}" method="post" enctype="multipart/form-data" th:object="${blog}">
+				<form th:action="@{/api/admin/blog/update}" method="post" enctype="multipart/form-data" th:object="${blog}">
 
 					<input type="hidden" th:field="*{isEdit}">
 					<input hidden readonly="readonly" th:field="*{Id}">
@@ -38,7 +38,7 @@
 										onclick="changeContentThumbnail()" type="file" />
 									<i class="fa fa-plus-circle icon-add-image"></i>
 									<img class="chosen" th:field="*{banner}" id="chosen-thumbnail" alt="edit"
-										th:src="${blog.banner!=null?'/admin/blog/images/'+blog.banner:'/images/Background.png'}">
+										th:src="${blog.banner!=null?'/api/admin/blog/images/'+blog.banner:'/images/Background.png'}">
 									<a class="name-add-image" id="file-thumbnail">Ảnh Bìa</a>
 								</label>
 

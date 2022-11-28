@@ -24,7 +24,7 @@ import com.watch.shopwatchonline.Service.CategoryService;
 
 
 @Controller
-@RequestMapping("admin/categories")
+@RequestMapping("api/admin/categories")
 public class CategoryController {
 
     @Autowired
@@ -57,7 +57,7 @@ public class CategoryController {
 
         model.addAttribute("message", "Category is existed");
 
-        return new ModelAndView("forward:/admin/categories", model);
+        return new ModelAndView("forward:/api/admin/categories", model);
     }
 
     @GetMapping("delete/{id}")
@@ -68,7 +68,7 @@ public class CategoryController {
 
         model.addAttribute("message", "Category is delete!");
 
-        return new ModelAndView("forward:/admin/categories", model);
+        return new ModelAndView("forward:/api/admin/categories", model);
     }
 
     @PostMapping("saveOrUpdate")
@@ -85,7 +85,7 @@ public class CategoryController {
 
         model.addAttribute("message", "Category is saved!");
 
-        return new ModelAndView("forward:/admin/categories", model);
+        return new ModelAndView("forward:/api/admin/categories", model);
     }
 
     @RequestMapping("")
