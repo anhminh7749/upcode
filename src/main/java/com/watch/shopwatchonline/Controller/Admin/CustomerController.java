@@ -28,12 +28,12 @@ public class CustomerController {
     @Autowired
     CustomerService customerService;
 
-    @GetMapping("add")
+    @GetMapping("add-customer")
     public String add(Model model) {
         CustomerDto dto = new CustomerDto();
         dto.setIsEdit(false);
         model.addAttribute("customer", dto);
-        return "web-admin/customer";
+        return "web-admin/Addcustomer";
     }
 
     @GetMapping("edit/{customerId}")
@@ -50,7 +50,7 @@ public class CustomerController {
 
             model.addAttribute("customer", dto);
 
-            return new ModelAndView("web-admin/customer", model);
+            return new ModelAndView("web-admin/Addcustomer", model);
         }
 
         model.addAttribute("message", "Customer is existed");
@@ -74,7 +74,7 @@ public class CustomerController {
             BindingResult result) {
 
         if(result.hasErrors()) {
-            return new ModelAndView("web-admin/customer");
+            return new ModelAndView("web-admin/Addcustomer");
         }
         Customer entity = new Customer();
         BeanUtils.copyProperties(dto, entity);

@@ -29,12 +29,12 @@ public class StaffController {
     @Autowired
     StaffService staffService;
 
-    @GetMapping("add")
+    @GetMapping("add-staff")
     public String add(Model model) {
         StaffDto dto = new StaffDto();
         dto.setIsEdit(false);
         model.addAttribute("staff", dto);
-        return "web-admin/staff";
+        return "web-admin/Addstaff";
     }
 
     @GetMapping("edit/{staffId}")
@@ -51,7 +51,7 @@ public class StaffController {
 
             model.addAttribute("staff", dto);
 
-            return new ModelAndView("web-admin/staff", model);
+            return new ModelAndView("web-admin/Addstaff", model);
         }
 
         model.addAttribute("message", "Staff is existed");
@@ -74,7 +74,7 @@ public class StaffController {
     public ModelAndView saveOrUpdate(ModelMap model, @Valid @ModelAttribute("staff") StaffDto dto,
             BindingResult result) {
         if (result.hasErrors()) {
-            return new ModelAndView("web-admin/staff");
+            return new ModelAndView("web-admin/Addstaff");
         }
         Staff entity = new Staff();
         BeanUtils.copyProperties(dto, entity);
