@@ -39,17 +39,18 @@
 
 }
 .custom-file-upload1 img{
-    width: 458px;
-    height: 128px;
-    position: relative;
-    left: 313px;
-    bottom: 7px;
-    border: 1px solid #8fd3ff;
-    border-radius: 5px;
+  width: 370px;
+  height: 128px;
+  position: relative;
+  left: 6px;
+  bottom: 0px;
+  border: 1px solid #8fd3ff;
+  border-radius: 5px;
 }
 .table img {
     vertical-align: middle;
     width: 180px;
+    margin-top: 20px;
 }
 #messageArea .chat-message {
 	display: flex;
